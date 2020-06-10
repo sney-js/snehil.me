@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Router, Switch } from 'react-router-dom';
+import { createHashHistory } from 'history';
+import './styles/main.scss';
+import Button from "./elements/Button";
+
+const history = createHashHistory();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route path='/rewards' component={() => <h1>sdfdf</h1>} />
+        <Route path='/' component={() => <Button>csvxxxsdfdf</Button>} />
+      </Switch>
+    </Router>
   );
 }
 
