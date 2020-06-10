@@ -1,36 +1,34 @@
 $font-primary: 'UniverseBP';
 
 /**
-  e.g.: src/assets/fonts/UniverseBP-Bold/UniverseBP-Bold.woff2
+  e.g.: public/assets/fonts/UniverseBP-Bold/UniverseBP-Bold.woff2
  */
-$font-loc: '../assets/fonts/';
+$font-loc: '/assets/fonts/';
 
 @mixin get-font-all($name, $weight) {
   font-family: $font-primary;
-  src: /* Safari, Android, iOS */ url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff')
+  src: url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff')
       format('woff'),
-    /* Legacy iOS */
-      url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.ttf')
+    url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.ttf')
       format('truetype'),
-    /* Modern Browsers */
-      url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff2')
+    url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff2')
       format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
-  //@include get-font-all($font-primary, 'Light');
+  @include get-font-all($font-primary, 'Light');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  //@include get-font-all($font-primary, 'Roman');
+  @include get-font-all($font-primary, 'Roman');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  //@include get-font-all($font-primary, 'Bold');
+  @include get-font-all($font-primary, 'Bold');
   font-weight: bold;
   font-style: normal;
 }

@@ -26,7 +26,7 @@ export const basic = (): any => {
     'Theme',
     {
       Dark: 'dark',
-      Light: 'light',
+      Light: 'light'
     },
     'none'
   );
@@ -37,7 +37,7 @@ export const basic = (): any => {
         <Card
           image={
             <div className='container-image'>
-              <img src='images/hero.jpg' alt='Alt Text' />
+              <img src={'/assets/images/example.jpg'} alt='Alt Text' />
             </div>
           }
           title={title}
@@ -49,7 +49,7 @@ export const basic = (): any => {
             </p>
           }
           footnote={footnote}
-          className='background-Primary'
+          className={theme === 'dark' ? 'background-Primary' : ''}
           link={link}
         />
       </Grid>

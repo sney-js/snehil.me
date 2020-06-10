@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import Button from '../Button';
 import { ButtonProps } from '../Button/Button';
+import { Link as RouterLink } from 'react-router-dom';
 
 export type LinkTypeLocal = {
   /**
@@ -70,5 +71,8 @@ const Link: FC<LinkProps> = (props: LinkProps) => {
 };
 
 Link.displayName = 'Link';
-Link.defaultProps = {};
+// TODO change this link if using a different router
+Link.defaultProps = {
+  provider: <RouterLink/>
+};
 export default Link;

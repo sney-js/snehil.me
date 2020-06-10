@@ -14,7 +14,7 @@
   position: relative;
 
    &__body {
-     padding: 0 var(--spacing-gap-tablet) var(--spacing-gap-tablet);
+     //padding: 0 var(--spacing-gap-tablet) var(--spacing-gap-tablet);
 
      @media #{$screen-mobile} {
        padding: 0 var(--spacing-gap) var(--spacing-gap);
@@ -22,27 +22,11 @@
    }
 
    &__header {
-     margin: 0 0 var(--spacing-gap-tablet);
-
-     @media #{$screen-mobile} {
-       margin-bottom: var(--spacing-gap);
-     }
-
-     &:before {
-       @extend %title-strip;
-       content: " ";
-       background: var(--color-primary-lighter);
-       position: absolute;
-       width: 100%;
-       left: 0;
-     }
    }
 
    &__title {
-     color: var(--color-secondary);
      display: block;
-     position: absolute;
-     transform: translateY(-100%);
+     margin: var(--spacing-gap) 0;
    }
 
    &__subtitle {

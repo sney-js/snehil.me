@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
-import { LinkType } from '../../models';
+import { GenericProps, LinkType } from "../../models";
 import Grid from 'components/Grid';
 import Link from 'elements/Link';
 
@@ -34,7 +34,7 @@ export type CardType = {
    * ```
    */
   image?: JSX.Element;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & GenericProps;
 
 type CardProps = CardType;
 
@@ -60,10 +60,10 @@ const Card: FC<CardProps> = (props: CardProps) => {
     <div className={classes}>
       <div className='d-card__image'>{image}</div>
       <div className='d-card__body'>
-        <h3 className='d-card__header'>
-          <span className='d-card__title'>{title}</span>
-          <span className='d-card__subtitle'>{subTitle && subTitle}</span>
-        </h3>
+        <div className='d-card__header'>
+          <h3 className='d-card__title'>{title}</h3>
+          <h5 className='d-card__subtitle'>{subTitle && subTitle}</h5>
+        </div>
 
         <div className='d-card__description'>{description}</div>
 

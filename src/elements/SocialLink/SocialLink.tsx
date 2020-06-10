@@ -49,9 +49,9 @@ const SocialLink: FC<SocialProps> = (props: SocialProps) => {
         to={url}
         newTab
         aria-label={platform}
-        appearance='secondary'
-        icon={<SocialIcon name={platform} />}
-      />
+      >
+        <SocialIcon name={platform} />
+      </Link>
     </span>
   );
 };

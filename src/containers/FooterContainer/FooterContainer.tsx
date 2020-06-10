@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import Styles from './FooterContainer.module.scss';
+import Footer from "../../components/Footer";
 
 type FooterContainerProps = {
   /**
@@ -17,8 +18,19 @@ type FooterContainerProps = {
 const FooterContainer: FC<FooterContainerProps> = (
   props: FooterContainerProps
 ) => {
-  const classes = makeClass([Styles.dFooterContainer, props.className]);
-  return <div className={classes}>FooterContainer</div>;
+    const siteLinks = [
+    { title: 'Home', to: '/' },
+    { title: 'Contact Us', to: '/' },
+    { title: 'Cookies Policy', to: '/' },
+    { title: 'Privacy Policy', to: '/' },
+    { title: 'Terms & Condition', to: '/' }
+  ];
+    const socialLinks = [
+    { title: 'facebook', to: 'http://facebook.com' },
+    { title: 'twitter', to: 'http://twitter.com' },
+    { title: 'youtube', to: 'http://youtube.com' }
+  ];
+  return <Footer socialLinks={socialLinks} siteLinks={siteLinks} theme={"dark"} copyright={"All Ltd. Copyright@ 2020"}/>;
 };
 
 export default FooterContainer;

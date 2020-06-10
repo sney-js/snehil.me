@@ -1,7 +1,15 @@
+@import '../../styles/helpers/main';
 .d-footer {
-  --color-footer-bg-first: var(--color-bg-primary-darker);
-  --color-footer-bg-mid: var(--color-bg-primary);
-  --color-footer-bg-last: var(--color-bg-primary-lighter);
+  #{$themeDarkSelf}{
+    --color-footer-bg-first: var(--color-primary);
+    --color-footer-bg-mid: var(--color-primary-darker);
+    --color-footer-bg-last: var(--color-primary-darker-2);
+  }
+  #{$themeLightSelf}{
+    --color-footer-bg-first: var(--color-secondary);
+    --color-footer-bg-mid: var(--color-secondary);
+    --color-footer-bg-last: var(--color-secondary-darker);
+  }
 
   &__first-block {
     background-color: var(--color-footer-bg-first);
@@ -56,7 +64,6 @@
     }
 
     &-title {
-      margin-right: var(--spacing-gap-xs);
     }
     &-links {
       flex-grow: 0.5;
@@ -81,22 +88,6 @@
       }
     }
   }
-  &__app {
-    &-title {
-      @media #{$screen-mobile} {
-        text-align: center;
-        display: none;
-      }
-    }
-    &-icons {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      @media #{$screen-mobile} {
-        justify-content: space-evenly;
-      }
-    }
-  }
   .layout-grid {
     align-items: center;
   }
@@ -104,12 +95,9 @@
     padding: var(--spacing-gap-xs) 0;
     align-items: center;
   }
-  &__brand {
-    &-title {
-      margin: 1em;
-    }
-    display: flex;
-    align-items: center;
-    padding-top: var(--spacing-gap-m);
+
+  .d-social-link {
+    width: 1em;
+    height: 1em;
   }
 }

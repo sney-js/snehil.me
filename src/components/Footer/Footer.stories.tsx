@@ -40,11 +40,12 @@ export const basic = () => {
   const socialTitle = text('Social Title', 'Follow us');
   const copyright = text('Copyright', 'BP Oil Ltd. Copyright@ 2019');
   return (
-    <Container theme={theme}>
+    <Container>
       <Footer
         socialLinks={socialLinks}
         siteLinks={siteLinks}
         copyright={copyright}
+        theme={theme}
       />
     </Container>
   );
