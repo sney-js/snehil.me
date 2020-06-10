@@ -13,7 +13,7 @@ const HomePage: FunctionComponent<Props> = (props) => {
     setTimeout(() => setTime(true), 5000);
   }, []);
   if (!timeout) return null;
-  return <div>{timeout? <Card title={'sfssd'} /> : null}</div>;
+  return <div>{timeout? <Card title={'sfsssd'} /> : null}</div>;
 };
 
 export default HomePage;

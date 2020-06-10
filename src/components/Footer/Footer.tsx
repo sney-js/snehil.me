@@ -19,18 +19,6 @@ type FooterProps = {
    * Determines copyright as string 'BP Oil Ltd. Copyright@ 2019'
    */
   copyright?: string;
-  /**
-   * Displays footnote on the right with logo
-   * e.g.
-   * Determines footnote as string 'Everyday, Brighter'
-   */
-  footnote?: string;
-  /**
-   * Displays logo on the right.
-   * e.g.
-   * Pass <IcBrandlogo /> as icon
-   */
-  brandIcon?: JSX.Element;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 /**
@@ -42,8 +30,6 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
     socialTitle,
     siteLinks,
     copyright,
-    footnote,
-    brandIcon,
     className
   } = props;
   const classes = makeClass(['d-footer', className]);
@@ -54,6 +40,28 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
           Newsletter,
           SocialLinks with litle
       */}
+      {siteLinks && (
+        <div className='d-footer__mid-block'>
+          <Container layout='maxWidth' pad='Horizontal'>
+            <Grid
+              template='3fr 1fr'
+              templateTablet='2fr 1fr'
+              templateMobile='1fr'
+            >
+              <ul className='d-footer__sitemap'>
+                {siteLinks &&
+                siteLinks.map((item) => (
+                  <li key={item.title} className='d-footer__sitemap-item'>
+                    <Link to={item.to} aria-label={item.title}>
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          </Container>
+        </div>
+      )}
       {socialLinks && (
         <div className='d-footer__first-block'>
           <Container layout='maxWidth' pad='Horizontal'>
@@ -79,36 +87,6 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
           </Container>
         </div>
       )}
-      {/* Footer Middle Block with two columns-.
-            SiteLinks,
-            Applinks with title
-        */}
-      {siteLinks && (
-        <div className='d-footer__mid-block'>
-          <Container layout='maxWidth' pad='Horizontal'>
-            <Grid
-              template='3fr 1fr'
-              templateTablet='2fr 1fr'
-              templateMobile='1fr'
-            >
-              <ul className='d-footer__sitemap'>
-                {siteLinks &&
-                  siteLinks.map((item) => (
-                    <li key={item.title} className='d-footer__sitemap-item'>
-                      <Link to={item.to} aria-label={item.title}>
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </Grid>
-          </Container>
-        </div>
-      )}
-      {/* Footer Last Block with two columns-.
-            Copyright,
-            Brand title with logo
-        */}
       <div className='d-footer__last-block'>
         <Container layout='maxWidth' pad='Horizontal'>
           <Grid
@@ -118,12 +96,6 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
           >
             {copyright && (
               <span className='d-footer__copyright'>{copyright}</span>
-            )}
-            {(footnote || brandIcon) && (
-              <div className='d-footer__brand'>
-                <span className='d-footer__brand-title'>{footnote}</span>
-                <span className='d-footer__brand-logo'>{brandIcon}</span>
-              </div>
             )}
           </Grid>
         </Container>

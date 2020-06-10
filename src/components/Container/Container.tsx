@@ -17,7 +17,7 @@ export type ContainerProps = {
   /**
    * `'dark' | 'light' | 'default' | 'none'`
    */
-  theme?: 'dark' | 'light' | 'default' | 'none' | 'dslight' | 'dsdark';
+  theme?: 'dark' | 'light' | 'default' | 'none';
   /**
    * Whether this container should only show on given breakpoint
    * `'Desktop' | 'Tablet' | 'Mobile'`.

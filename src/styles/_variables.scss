@@ -1,24 +1,22 @@
 :root {
   // --------------CONSTANTS---------------
-  --font-primary: 'UniverseBP';
-  --font-secondary: 'UniverseBP';
+  --font-primary: 'Roboto';
+  --font-secondary: 'Helvetica';
 
-  --color-primary: #036b38;
+  --color-primary: #6f3ed5;
 
-  --color-primary-darker: #025a38;
-  --color-primary-lighter: #008d49;
-  --color-primary-disabled: rgb(2, 142, 73);
+  --color-primary-darker: #5d33b2;
+  --color-primary-lighter: #9468ee;
+  --color-primary-disabled: rgb(93, 76, 122);
 
-  --color-primary-translucent-1: rgba(50, 193, 136, 0.11);
-  --color-primary-translucent-2: rgba(50, 193, 136, 0.4);
+  --color-primary-translucent-1: rgba(111, 62, 213, 0.11);
+  --color-primary-translucent-2: rgba(111, 62, 213, 0.4);
 
-  --color-secondary: #ccff00;
-  --color-secondary-darken: #bceb00;
+  --color-secondary: #ffffff;
+  --color-secondary-darker: #e5e5e5;
 
   --color-light: #fff;
   --color-dark: #222222;
-  --color-gray: #b6b8ba;
-  --color-gray-darker: #111111;
 
   --color-highlight-text: rgba(0, 0, 0, 0.2);
   --color-highlight: rgba(0, 0, 0, 0.1);
@@ -34,10 +32,9 @@
   --transition-ui: 0.25s ease-out;
   --transition: 0.5s ease-out;
   --border-style: solid;
-  --border-width-small: 2px;
   --border-radius-small: 2px;
   --border-radius-medium: 8px;
-  --border-radius-button: 24px;
+  --border-radius-button: 2px;
 
   --val-max-width: 1200px;
   --val-max-width-narrow: 700px;
@@ -52,9 +49,6 @@
   //---------------DEFAULT VALUES------------
   --color-body: var(--color-dark);
   --color-bg: var(--color-light);
-  --color-bg-primary: var(--color-primary);
-  --color-bg-primary-lighter: var(--color-primary-lighter);
-  --color-bg-primary-darker: var(--color-primary-darker);
 
   //--------------DYNAMIC----------------
   --gap-layout: var(--spacing-gap-large);
@@ -82,78 +76,6 @@
 .data-theme-light,
 [data-theme='light'] {
   color: var(--color-body);
-  --color-bg-primary: var(--color-light);
-  --color-bg-primary-lighter: var(--color-light);
-  --color-bg-primary-darker: var(--color-light);
-}
-
-// use $darkTheme inside components
-.data-theme-dsdark,
-[data-theme='dsdark'] {
-  --color-body: var(--color-light);
-  --color-bg: var(--color-dark);
-  --color-primary: var(--color-dark);
-  --color-primary-lighter: var(--color-gray);
-  --color-primary-darker: var(--color-gray-darker);
-  --color-secondary: var(--color-gray);
-  --border-radius-button: var(--border-radius-medium);
-  --color-highlight: rgba(255, 255, 255, 0.2);
-  --color-highlight-text: rgba(255, 255, 255, 0.3);
-  --color-highlight-darker: rgba(0, 0, 0, 0.2);
-  --color-error: #ff7979;
-  --color-bg-primary: var(--color-gray);
-  --color-bg-primary-lighter: rgba(97, 97, 97, 0.3);
-  --color-bg-primary-darker: var(--color-dark);
-  color: var(--color-body);
-  .background-Primary {
-    background-color: var(--color-dark);
-  }
-  .primary.d-button {
-    background-color: var(--color-gray);
-  }
-}
-
-// use $darkTheme inside components
-.data-theme-dslight,
-[data-theme='dslight'] {
-  --color-body: var(--color-dark);
-  --color-bg: var(--color-light);
-  --color-primary: var(--color-gray);
-  --color-primary-lighter: var(--color-dark);
-  --color-primary-darker: #000;
-  --color-secondary: var(--color-dark);
-
-  --border-radius-button: var(--border-radius-medium);
-
-  --color-highlight: rgba(255, 255, 255, 0.2);
-  --color-highlight-text: rgba(255, 255, 255, 0.3);
-  --color-highlight-darker: rgba(0, 0, 0, 0.2);
-  --color-bg-primary: var(--color-dark);
-  --color-bg-primary-lighter: rgba(97, 97, 97, 0.3);
-  --color-bg-primary-darker: var(--color-gray);
-  --color-error: #ff7979;
-  .background-Primary {
-    background-color: var(--color-gray);
-  }
-  .primary.d-button {
-    background-color: var(--color-dark);
-  }
-  color: var(--color-body);
-}
-
-.data-theme-dsdark,
-[data-theme='dsdark'],
-.data-theme-dslight,
-[data-theme='dslight'] {
-  --val-max-width: 1200px;
-  --val-max-width-narrow: 700px;
-  --spacing-gap: 8px;
-  --spacing-gap-xxs: 2px;
-  --spacing-gap-xs: 4px;
-  --spacing-gap-m: 16px;
-  --spacing-gap-mobile: 8px;
-  --spacing-gap-tablet: 16px;
-  --spacing-gap-large: 32px;
 }
 
 body {
@@ -164,18 +86,6 @@ body {
   background-color: var(--color-bg);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1,h2,h3,h4,h5{
   font-family: var(--font-secondary) inherit;
-}
-
-svg:not(.no-fill) {
-  text,
-  path {
-  }
-  rect {
-  }
 }

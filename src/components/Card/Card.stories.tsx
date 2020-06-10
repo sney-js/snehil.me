@@ -27,8 +27,6 @@ export const basic = (): any => {
     {
       Dark: 'dark',
       Light: 'light',
-      DefaultDark: 'dsdark',
-      DefaultLight: 'dslight'
     },
     'none'
   );
