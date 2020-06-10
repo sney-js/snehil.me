@@ -80,11 +80,14 @@
     list-style: none;
     padding: var(--spacing-gap-xs) 0;
     &-item {
-      width: 30%;
+      width: 40%;
+      font-size: 0.8em;
+      line-height: 2;
 
       @media #{$screen-mobile} {
         padding: var(--spacing-gap-mobile) var(--spacing-gap-mobile) 0 0;
-        width: auto;
+        width: 100%;
+        line-height: 1;
       }
     }
   }

@@ -1,3 +1,5 @@
+@import "Navigation/Navigation";
+
 %flex-vars {
   display: flex;
   align-items: center;
@@ -6,12 +8,12 @@
 
 .d-header {
   @extend %flex-vars;
-  position: fixed;
   background: var(--color-bg);
   width: 100%;
   top: 0;
   left: 0;
   min-height: 90px;
+  box-shadow: 0px 5px 10px var(--color-highlight-lighter);
 
   @media #{$screen-tablet} {
     margin: 0;

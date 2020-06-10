@@ -1,7 +1,14 @@
+import React from "react";
 import { addParameters } from '@storybook/react';
 import '../src/styles/main.scss';
 import '../src/styles/development/main.scss';
 import { StorySorter } from './sorter';
+import { addDecorator } from '@storybook/react';
+import { MemoryRouter } from 'react-router';
+
+addDecorator((story) => (
+  <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+));
 
 const customViewports = {
   mobile: {

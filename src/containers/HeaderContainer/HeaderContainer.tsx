@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import * as styles from './HeaderContainer.module.scss';
+import Header from "../../components/Header";
 
 type HeaderContainerProps = {
   /**
@@ -17,8 +18,15 @@ type HeaderContainerProps = {
 const HeaderContainer: FC<HeaderContainerProps> = (
   props: HeaderContainerProps
 ) => {
-  const classes = makeClass(['d-HeaderContainer', props.className]);
-  return <div className={classes}>HeaderContainer</div>;
+  const navLinks = [
+    { title: 'Home', to: '/' },
+    { title: 'Redeem', to: '/' },
+    { title: 'Donate', to: '/' },
+    { title: 'Offer', to: '/' },
+    { title: 'Help & Faq', to: '/' },
+    { title: 'Contact Us', to: '/' }
+  ];
+  return <Header siteLinks={navLinks}/>;
 };
 
 export default HeaderContainer;

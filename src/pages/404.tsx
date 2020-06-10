@@ -5,7 +5,7 @@ type Props = {};
 
 const ErrorPage: FunctionComponent<Props> = (props) => {
   return (
-    <Container>
+    <Container layout={"maxWidth"} pad={"All"}>
       <h1>404</h1>
     </Container>
   );
