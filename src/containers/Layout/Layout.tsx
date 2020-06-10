@@ -1,11 +1,11 @@
 import React from 'react';
 import { getUrl } from '../../utils/RespImage';
-import { makeClass, setCSSVar } from "utils/Helpers";
+import { makeClass, setCSSVar } from 'utils/Helpers';
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
-// import CookieBannerContainer from 'components/CookieBannerContainer';
 import { Helmet } from 'react-helmet';
 import Container from '../../components/Container';
+import CookieBanner from '../../components/CookieBanner';
 
 const styles = require('./layout.module.scss');
 
@@ -50,6 +50,8 @@ export const GlobalContext = React.createContext(globalInitialVals);
 function Layout(props: LayoutProps) {
   const globalState = {};
 
+  console.log(props.children, 'props.children');
+
   return (
     <div className={makeClass([styles.layout])}>
       <GlobalContext.Provider value={globalState}>
@@ -68,7 +70,9 @@ function Layout(props: LayoutProps) {
           />
         </Helmet>
 
-        {/*<div className={styles.cookieBanner}>{CookieBannerContainer()}</div>*/}
+        <div className={styles.cookieBanner}>
+          <CookieBanner/>
+        </div>
 
         <HeaderContainer />
 
@@ -76,9 +80,12 @@ function Layout(props: LayoutProps) {
           {props.children ? (
             <main>{props.children}</main>
           ) : (
-            <div style={setCSSVar({ '--ggs': '3' })}>
+            <Container
+              layout={'centered'}
+              style={setCSSVar({ '--val-spinner-size': '3' })}
+            >
               <i className='gg-spinner' />
-            </div>
+            </Container>
           )}
         </div>
 

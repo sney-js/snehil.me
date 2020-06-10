@@ -10,13 +10,11 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
-    <Layout>
       <Switch>
         <Route path='/project/:projectId' component={PAGES.project} />
         <Route path='/' exact component={PAGES.index} />
         <Route path='*'  component={PAGES.error} />
       </Switch>
-    </Layout>
     </Router>
   );
 }

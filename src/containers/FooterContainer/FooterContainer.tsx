@@ -22,7 +22,7 @@ const FooterContainer: FC<FooterContainerProps> = (
     { title: 'Home', to: '/' },
     { title: 'Contact Us', to: '/' },
     { title: 'Cookies Policy', to: '/' },
-    { title: 'Privacy Policy', to: '/' },
+    { title: 'Privacy Policy', to: '/privacy' },
     { title: 'Terms & Condition', to: '/' }
   ];
     const socialLinks = [
