@@ -33,7 +33,7 @@ export type CardType = {
    * <div className='d-image'><img src='https://via.placeholder.com/450x250' alt='Alt Text' /></div>
    * ```
    */
-  image: JSX.Element;
+  image?: JSX.Element;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type CardProps = CardType;

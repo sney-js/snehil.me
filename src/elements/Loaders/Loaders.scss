@@ -39,17 +39,17 @@
 
 @keyframes spinneralt {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(359deg)
+    transform: rotate(359deg);
   }
 }
 
 .gg-spinner-alt {
   --color-spinner: inherit;
   --val-spinner-size: 1;
-  transform: scale(var(--val-spinner-size, 1))
+  transform: scale(var(--val-spinner-size, 1));
 }
 
 .gg-spinner-alt,
@@ -58,22 +58,22 @@
   position: relative;
   display: block;
   width: 20px;
-  height: 20px
+  height: 20px;
 }
 
 .gg-spinner-alt::before {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 100px;
-  animation: spinneralt 1s cubic-bezier(.6, 0, .4, 1) infinite;
+  animation: spinneralt 1s cubic-bezier(0.6, 0, 0.4, 1) infinite;
   border: 3px solid transparent;
-  border-top-color: currentColor
+  border-top-color: currentColor;
 }
 
 .gg-spinner {
   --color-spinner: inherit;
   --val-spinner-size: 1;
-  transform: scale(var(--val-spinner-size, 1))
+  transform: scale(var(--val-spinner-size, 1));
 }
 
 .gg-spinner,
@@ -83,32 +83,32 @@
   position: relative;
   display: block;
   width: 20px;
-  height: 20px
+  height: 20px;
 }
 
 .gg-spinner::after,
 .gg-spinner::before {
-  content: "";
+  content: '';
   position: absolute;
-  border-radius: 100px
+  border-radius: 100px;
 }
 
 .gg-spinner::before {
   animation: spinner 1s linear infinite;
   border: 2px solid transparent;
-  border-top-color: currentColor
+  border-top-color: currentColor;
 }
 
 .gg-spinner::after {
   border: 2px solid;
-  opacity: .2
+  opacity: 0.2;
 }
 
 @keyframes spinner {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(359deg)
+    transform: rotate(359deg);
   }
 }

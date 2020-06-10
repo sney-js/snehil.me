@@ -1,10 +1,11 @@
 import React from 'react';
 import { getUrl } from '../../utils/RespImage';
-import { makeClass } from 'utils/Helpers';
+import { makeClass, setCSSVar } from "utils/Helpers";
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
 // import CookieBannerContainer from 'components/CookieBannerContainer';
 import { Helmet } from 'react-helmet';
+import Container from '../../components/Container';
 
 const styles = require('./layout.module.scss');
 
@@ -72,7 +73,13 @@ function Layout(props: LayoutProps) {
         <HeaderContainer />
 
         <div className={makeClass([styles.content])}>
-          <main>{props.children}</main>
+          {props.children ? (
+            <main>{props.children}</main>
+          ) : (
+            <div style={setCSSVar({ '--ggs': '3' })}>
+              <i className='gg-spinner' />
+            </div>
+          )}
         </div>
 
         <FooterContainer />

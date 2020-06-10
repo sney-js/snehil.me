@@ -1,15 +1,27 @@
 // second arg overwritews
 @function non-destructive-map-merge($parent-map, $child-map) {
-	$result: $parent-map;
-	@each $key, $value in $child-map {
-		@if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
-			$result: map-merge($result, ($key: $value));
-		}
-		@else {
-			$result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
-		}
-	}
-	@return $result;
+  $result: $parent-map;
+  @each $key, $value in $child-map {
+    @if (not map-has-key($result, $key)) or
+      (type-of(map-get($result, $key)) != type-of($value)) or
+      (not (type-of(map-get($result, $key)) == map and type-of($value) == map))
+    {
+      $result: map-merge(
+        $result,
+        (
+          $key: $value
+        )
+      );
+    } @else {
+      $result: map-merge(
+        $result,
+        (
+          $key: non-destructive-map-merge(map-get($result, $key), $value)
+        )
+      );
+    }
+  }
+  @return $result;
 }
 
 $type-style-map--default: (
@@ -65,7 +77,7 @@ $type-style-map--default: (
     ),
     button: (
       font-size: 16px,
-      line-height: 19px,
+      line-height: 19px
     )
   ),
   tablet: (
@@ -121,7 +133,10 @@ $type-style-map--default: (
 );
 
 $type-style-map: () !default;
-$type-style-map: non-destructive-map-merge($type-style-map--default, $type-style-map);
+$type-style-map: non-destructive-map-merge(
+  $type-style-map--default,
+  $type-style-map
+);
 
 // Function that uses the config above to populate css properties.
 @mixin setTypeStyles($style-type, $breakpoint: 'desktop') {

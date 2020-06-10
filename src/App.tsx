@@ -1,18 +1,22 @@
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
-import { createHashHistory } from 'history';
+import { createBrowserHistory } from 'history';
 import './styles/main.scss';
-import Button from "./elements/Button";
+import * as PAGES from 'pages';
+import Layout from "./containers/Layout";
 
-const history = createHashHistory();
+const history = createBrowserHistory();
 
 function App() {
   return (
     <Router history={history}>
+    <Layout>
       <Switch>
-        <Route path='/rewards' component={() => <h1>sdfdf</h1>} />
-        <Route path='/' component={() => <Button>csvxxxsdfdf</Button>} />
+        <Route path='/project/:projectId' component={PAGES.project} />
+        <Route path='/' exact component={PAGES.index} />
+        <Route path='*'  component={PAGES.error} />
       </Switch>
+    </Layout>
     </Router>
   );
 }

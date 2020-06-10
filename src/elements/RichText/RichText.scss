@@ -1,14 +1,14 @@
-@import "variables";
-@import "typography-utils";
+@import 'variables';
+@import 'typography-utils';
 
 .d-rich-text {
-    white-space: pre-line;
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: var(--color-heading);
-    }
+  white-space: pre-line;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-heading);
+  }
 }

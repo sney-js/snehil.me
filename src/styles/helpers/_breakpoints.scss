@@ -23,6 +23,8 @@ $screen-desktop: screen and
 $screen-tablet-only: screen and
   (
     min-width: #{$phone + 1}px
-  ) and (
-  max-width: #{$tablet}px
-);
+  )
+  and
+  (
+    max-width: #{$tablet}px
+  );

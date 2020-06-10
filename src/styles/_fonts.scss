@@ -6,13 +6,15 @@ $font-primary: 'UniverseBP';
 $font-loc: '../assets/fonts/';
 
 @mixin get-font-all($name, $weight) {
-    font-family: $font-primary;
-    src: /* Safari, Android, iOS */ url("#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff")
-            format("woff"),
-        /* Legacy iOS */ url("#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.ttf")
-            format("truetype"),
-        /* Modern Browsers */ url("#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff2")
-            format("woff2"); /* Modern Browsers */
+  font-family: $font-primary;
+  src: /* Safari, Android, iOS */ url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff')
+      format('woff'),
+    /* Legacy iOS */
+      url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.ttf')
+      format('truetype'),
+    /* Modern Browsers */
+      url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff2')
+      format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
