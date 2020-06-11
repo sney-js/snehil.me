@@ -173,7 +173,7 @@ $no-icon-hover: '&:not(.icon-secondary):not(.disabled):hover';
     .d-button-icon {
       position: static;
       transform: translate(0%, 0%);
-      padding-left: var(--spacing-gap);
+      margin-left: var(--spacing-gap);
     }
   }
 }

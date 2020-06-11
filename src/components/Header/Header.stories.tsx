@@ -30,9 +30,7 @@ export const basic = () => {
   return (
     <Container
       layout='columns'
-      pad='Horizontal'
       theme={theme}
-      style={{ backgroundColor: '#ccc', height: '1000px' }}
       className={theme === 'dark' ? 'background-Primary' : ''}
     >
       <Header siteLinks={navLinks} />

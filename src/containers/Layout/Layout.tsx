@@ -6,6 +6,7 @@ import FooterContainer from 'containers/FooterContainer';
 import { Helmet } from 'react-helmet';
 import Container from '../../components/Container';
 import CookieBanner from '../../components/CookieBanner';
+import CookieBannerContainer from '../CookieBannerContainer';
 
 const styles = require('./layout.module.scss');
 
@@ -55,25 +56,6 @@ function Layout(props: LayoutProps) {
   return (
     <div className={makeClass([styles.layout])}>
       <GlobalContext.Provider value={globalState}>
-        <Helmet>
-          <html lang={props.locale} />
-
-          <link rel='manifest' href='/manifest.json' />
-          <meta name='apple-mobile-web-app-capable' content='yes' />
-          <meta name='apple-mobile-web-app-title' content='BPL' />
-          <meta name='apple-mobile-web-app-status-bar-style' content='black' />
-          <link
-            rel='apple-touch-icon'
-            sizes='152x152'
-            href='/assets/app-icons/icon.png'
-            type='image/png'
-          />
-        </Helmet>
-
-        <div className={styles.cookieBanner}>
-          <CookieBanner/>
-        </div>
-
         <HeaderContainer />
 
         <div className={makeClass([styles.content])}>
@@ -87,6 +69,10 @@ function Layout(props: LayoutProps) {
               <i className='gg-spinner' />
             </Container>
           )}
+        </div>
+
+        <div className={styles.cookieBanner}>
+          <CookieBannerContainer />
         </div>
 
         <FooterContainer />
