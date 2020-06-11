@@ -23,7 +23,7 @@ const HeaderContainer: FC<HeaderContainerProps> = (
 ) => {
   const navLinks = [
     { title: 'Home', to: '/' },
-    { title: 'Redeem', to: '/' },
+    { title: 'Project', to: '/project/' },
     { title: 'Donate', to: '/' },
     { title: 'Offer', to: '/' },
     { title: 'Help & Faq', to: '/' },

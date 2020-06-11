@@ -3,7 +3,6 @@ import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import './styles/main.scss';
 import * as PAGES from 'pages';
-import Layout from "./containers/Layout";
 
 const history = createBrowserHistory();
 
@@ -12,6 +11,7 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route path='/project/:projectId' component={PAGES.project} />
+        <Route path='/project' component={PAGES.project} />
         <Route path='/' exact component={PAGES.index} />
         <Route path='*'  component={PAGES.error} />
       </Switch>

@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from "react";
 import Container from "components/Container";
 import Layout from "../containers/Layout";
+import { PageProps } from "./PageType";
 
-type Props = {};
-
-const ErrorPage: FunctionComponent<Props> = (props) => {
+const ErrorPage: FunctionComponent<PageProps> = (props) => {
   return (
         <Layout>
     <Container layout={"maxWidth"} pad={"All"}>
