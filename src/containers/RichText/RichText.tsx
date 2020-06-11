@@ -1,17 +1,20 @@
 import React from 'react';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import ImageElement from 'elements/Image';
 import LinkElement from 'elements/Link';
-import './rich-text.scss';
 import Markdown from 'react-markdown/with-html';
+import RespImage from 'containers/RespImage';
 
 const GLOBAL_OPTIONS = {
   renderText: (text) =>
     text.split('\n').flatMap((text, i) => [i > 0 && <br />, text]),
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      return <ImageElement content={node.data.target} />;
+      return (
+        <figure className={'d-image'}>
+          <RespImage image={node.data.target} />
+        </figure>
+      );
     },
     [INLINES.ENTRY_HYPERLINK]: (node) => {
       return (
@@ -45,10 +48,10 @@ export default (props: RichTextType) => {
     if (data.length && !data[data.length - 1].props.children[0]) {
       data.pop();
     }
-    return <section className='d-rich-text'>{data}</section>;
+    return <section className={'d-rich-text'}>{data}</section>;
   } else if (props.markdown) {
     return (
-      <section className='d-rich-text'>
+      <section className={'d-rich-text'}>
         <Markdown source={props.markdown} escapeHtml />
       </section>
     );

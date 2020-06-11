@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import Card from 'components/Card';
-import Grid from '../components/Grid';
-import Container from '../components/Container';
-import Layout from '../containers/Layout';
+import Grid from 'components/Grid';
+import Container from 'components/Container';
+import Layout from 'containers/Layout';
 
 interface OwnProps {}
 

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import LanguageSelector, {
   DEFAULT_LANGS,
-  generateLang
+  generateLang,
+  LanguageSelectorProps
 } from './LanguageSelector';
-import Container from "../../Container";
 
 export default {
   title: 'components/Header/LanguageSelector',
@@ -11,12 +11,15 @@ export default {
 };
 
 export const basic = (): any => {
+  let languages = DEFAULT_LANGS.map(
+    generateLang
+  ) as LanguageSelectorProps['languages'];
+  let activeLanguage = generateLang(
+    DEFAULT_LANGS[0]
+  ) as LanguageSelectorProps['activeLanguage'];
   return (
-    <div style={{width: "100px"}}>
-      <LanguageSelector
-        languages={DEFAULT_LANGS.map(generateLang)}
-        activeLanguage={generateLang(DEFAULT_LANGS[0])}
-      />
+    <div style={{ width: '100px' }}>
+      <LanguageSelector languages={languages} activeLanguage={activeLanguage} />
     </div>
   );
 };

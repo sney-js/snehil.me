@@ -1,2 +1,2 @@
 export { default } from './Layout';
-export { MetaData } from './Layout';
+export { default as MetaData } from './MetaData';

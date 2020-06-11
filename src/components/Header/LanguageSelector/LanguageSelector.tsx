@@ -26,27 +26,31 @@ const LanguageSelect = (props: LanguageSelectorProps) => {
 
   return (
     <div className={'d-LanguageSelector'} defaultValue={activeLanguage.code}>
-      <img src={activeLanguage.icon} onClick={() => setClosed(!isClosed)} />
+      <img
+        src={activeLanguage.icon}
+        onClick={() => setClosed(!isClosed)}
+        alt={activeLanguage.name}
+      />
       <ul className={makeClass(['languagepicker', isClosed && 'hidden'])}>
-        {languages.map((lang) => (
-          <li key={lang.code}>
-            <a
-              href={cleanPath(
-                (props.languageChangeUrlPrefix || '/') + lang.code
-              )}
-            >
-              <img src={lang.icon} alt={lang.name} title={lang.name} />
-            </a>
-          </li>
-        ))}
+        {languages
+          .filter((e) => e.name)
+          .map((lang) => (
+            <li key={lang.code}>
+              <a
+                href={cleanPath(
+                  (props.languageChangeUrlPrefix || '/') + lang.code
+                )}
+              >
+                <img src={lang.icon} alt={lang.name} title={lang.name} />
+              </a>
+            </li>
+          ))}
       </ul>
     </div>
   );
 };
 
-export const generateLang = (
-  code: typeof DEFAULT_LANGS[number]
-): LanguageType | undefined => {
+export const generateLang = (code: string): LanguageType | undefined => {
   const aPath = '/assets/images/languages/';
   switch (code) {
     case 'en':

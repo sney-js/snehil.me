@@ -2,10 +2,8 @@ import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import { LinkType } from 'models/Link';
 import Navigation from './Navigation';
-import Container from '../Container';
-import LanguageSelect, {
-  LanguageSelectorProps
-} from './LanguageSelector/LanguageSelector';
+import LanguageSelect from "./LanguageSelector/LanguageSelector";
+import Container from 'components/Container';
 
 type HeaderProps = {
   /**
@@ -16,7 +14,7 @@ type HeaderProps = {
    * `
    */
   siteLinks: LinkType[];
-  localeInfo?: LanguageSelectorProps;
+  localeInfo?: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 /**
