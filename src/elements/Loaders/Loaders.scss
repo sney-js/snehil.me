@@ -48,6 +48,7 @@
 .gg-spinner-alt {
   --color-spinner: inherit;
   transform: scale(var(--val-spinner-size, 1));
+  overflow: auto;
 }
 
 .gg-spinner-alt,
@@ -71,6 +72,7 @@
 .gg-spinner {
   --color-spinner: inherit;
   transform: scale(var(--val-spinner-size, 1));
+  overflow: auto;
 }
 
 .gg-spinner,
