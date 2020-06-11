@@ -2,6 +2,11 @@ import React from 'react';
 import Header from './Header';
 import { radios, withKnobs } from '@storybook/addon-knobs';
 import Container from 'components/Container';
+import {
+  DEFAULT_LANGS,
+  generateLang,
+  LanguageSelectorProps
+} from './LanguageSelector/LanguageSelector';
 
 export default {
   title: 'Components/Header',
@@ -33,7 +38,17 @@ export const basic = () => {
       theme={theme}
       className={theme === 'dark' ? 'background-Primary' : ''}
     >
-      <Header siteLinks={navLinks} />
+      <Header
+        siteLinks={navLinks}
+        localeInfo={{
+          languages: DEFAULT_LANGS.map(generateLang).filter(
+            (e) => !!e
+          ) as LanguageSelectorProps['languages'],
+          activeLanguage: generateLang(
+            DEFAULT_LANGS[0]
+          ) as LanguageSelectorProps['activeLanguage']
+        }}
+      />
     </Container>
   );
 };

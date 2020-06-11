@@ -25,3 +25,12 @@ export const setCSSVar = (obj: CSSVarType): CSSVarTypeReturn => {
   }
   return obj as CSSVarTypeReturn;
 };
+
+export const cleanPath = function(result: string) {
+    return (result + "/").toString().replace(/[\/]+/g, "/");
+};
+
+export const getPathBreaks = function() {
+    const pathname = WINDOW?.location?.pathname;
+    return WINDOW && pathname.split("/").filter(e => e.length);
+};

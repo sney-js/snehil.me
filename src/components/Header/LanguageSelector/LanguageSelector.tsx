@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { makeClass } from 'utils/Helpers';
+import { cleanPath, makeClass } from 'utils/Helpers';
 import './LanguageSelector.scss';
 
-type LanguageType = { code: string; icon: any; name: string };
+export type LanguageType = { code: string; icon: any; name: string };
 
-type LanguageSelectorProps = {
+export type LanguageSelectorProps = {
   /**
    * Array of `{ code: string; icon: any; name: string }`
    */
@@ -30,12 +30,12 @@ const LanguageSelect = (props: LanguageSelectorProps) => {
       <ul className={makeClass(['languagepicker', isClosed && 'hidden'])}>
         {languages.map((lang) => (
           <li key={lang.code}>
-            <a href={(props.languageChangeUrlPrefix || '#') + lang.code}>
-              <img
-                src={lang.icon}
-                alt={lang.name}
-                title={lang.name}
-              />
+            <a
+              href={cleanPath(
+                (props.languageChangeUrlPrefix || '/') + lang.code
+              )}
+            >
+              <img src={lang.icon} alt={lang.name} title={lang.name} />
             </a>
           </li>
         ))}
@@ -44,7 +44,9 @@ const LanguageSelect = (props: LanguageSelectorProps) => {
   );
 };
 
-export const generateLang = (code: String): LanguageType => {
+export const generateLang = (
+  code: typeof DEFAULT_LANGS[number]
+): LanguageType | undefined => {
   const aPath = '/assets/images/languages/';
   switch (code) {
     case 'en':

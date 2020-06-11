@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
-import * as styles from './HeaderContainer.module.scss';
-import Header from "../../components/Header";
+import Header from '../../components/Header';
+import {
+  DEFAULT_LANGS,
+  generateLang,
+  LanguageSelectorProps
+} from '../../components/Header/LanguageSelector/LanguageSelector';
 
 type HeaderContainerProps = {
   /**
@@ -26,7 +29,19 @@ const HeaderContainer: FC<HeaderContainerProps> = (
     { title: 'Help & Faq', to: '/' },
     { title: 'Contact Us', to: '/' }
   ];
-  return <Header siteLinks={navLinks}/>;
+  return (
+    <Header
+      siteLinks={navLinks}
+      localeInfo={{
+        languages: DEFAULT_LANGS.map(generateLang).filter(
+          (e) => !!e
+        ) as LanguageSelectorProps['languages'],
+        activeLanguage: generateLang(
+          DEFAULT_LANGS[0]
+        ) as LanguageSelectorProps['activeLanguage']
+      }}
+    />
+  );
 };
 
 export default HeaderContainer;
