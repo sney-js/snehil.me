@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cleanPath, makeClass } from 'utils/Helpers';
+import { cleanPath, makeClass } from '../../../utils/Helpers';
 import './LanguageSelector.scss';
 
 export type LanguageType = { code: string; icon: any; name: string };

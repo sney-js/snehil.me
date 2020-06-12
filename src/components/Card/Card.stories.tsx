@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Card from './Card';
-import Grid from 'components/Grid';
+import Grid from '../../components/Grid';
 import { text, withKnobs, radios } from '@storybook/addon-knobs';
-import Container from 'components/Container';
+import Container from '../../components/Container';
 
 export default {
   title: 'components/Card',

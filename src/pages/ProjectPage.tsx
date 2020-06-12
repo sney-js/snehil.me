@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from "react";
-import Container from "components/Container";
-import Layout from "../containers/Layout";
-import Link from "../elements/Link";
-import { PageProps } from "./PageType";
+import React, { FunctionComponent } from 'react';
+import Container from '../components/Container';
+import Layout from '../containers/Layout';
+import Link from '../elements/Link';
+import { PageProps } from './PageType';
 
 const ProjectPage: FunctionComponent<PageProps> = (props) => {
   const { projectId } = props.match.params;

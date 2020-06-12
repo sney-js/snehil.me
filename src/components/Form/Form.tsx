@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from 'elements/Button/Button';
+import Button from '../../elements/Button/Button';
 
 export type FormProps = {
   /**

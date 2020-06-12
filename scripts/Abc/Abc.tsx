@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
+import { makeClass } from '../../utils/Helpers';
 
 type AbcProps = {
   /**

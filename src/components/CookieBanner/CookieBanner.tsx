@@ -1,10 +1,10 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import { Cookie } from 'models/Cookie';
+import { Cookie } from '../../models/Cookie';
 
-import { makeClass, WINDOW } from 'utils/Helpers';
-import Container from 'components/Container';
-import Button from 'elements/Button';
+import { makeClass, WINDOW } from '../../utils/Helpers';
+import Container from '../../components/Container';
+import Button from '../../elements/Button';
 
 export type CookieBannerProps = {
   caption?: string;

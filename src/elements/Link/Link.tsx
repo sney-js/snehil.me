@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
+import { makeClass } from '../../utils/Helpers';
 import Button from '../Button';
 import { ButtonProps } from '../Button/Button';
 import { Link as RouterLink } from 'react-router-dom';

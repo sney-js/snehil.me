@@ -1,7 +1,7 @@
 import React, { FormEvent } from 'react';
 import InputMask from 'react-input-mask';
-import { FormState, FormValidationContext } from 'components/Form/Form';
-import { makeClass } from 'utils/Helpers';
+import { FormState, FormValidationContext } from '../../components/Form/Form';
+import { makeClass } from '../../utils/Helpers';
 
 type InputStateType = {
   error?: ErrorGroup;

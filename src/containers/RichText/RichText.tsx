@@ -1,9 +1,9 @@
 import React from 'react';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import LinkElement from 'elements/Link';
+import LinkElement from '../../elements/Link';
 import Markdown from 'react-markdown/with-html';
-import RespImage from 'containers/RespImage';
+import RespImage from '../../containers/RespImage';
 
 const GLOBAL_OPTIONS = {
   renderText: (text) =>

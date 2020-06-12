@@ -11,6 +11,8 @@ import * as Flatted from 'flatted';
 import RouteConfig from './RouteConfig';
 import { Route } from 'react-static';
 
+const TEMPLATES_FOLDER = `src/containers/page/Page_`;
+
 export type SiteData = {
   footer: IFooterFields;
   header: IHeaderFields;
@@ -39,8 +41,6 @@ export type RouteGeneratorConfig = {
   pages: Array<{ contentType: string; parentField?: string }>;
   defaultLocale: string;
 };
-
-const TEMPLATES_FOLDER = `src/app/pages/Page_`;
 
 class RouteGenerator {
   client;

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
-import Link from 'elements/Link/';
-import Button from 'elements/Button/';
-import { LinkType } from 'models';
+import { makeClass } from '../../../utils/Helpers';
+import Link from '../../../elements/Link/';
+import Button from '../../../elements/Button/';
+import { LinkType } from '../../../models';
 
 type NavigationProps = {
   /**

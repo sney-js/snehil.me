@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from './Footer';
 import { radios, text, withKnobs } from '@storybook/addon-knobs';
-import Container from 'components/Container';
+import Container from '../../components/Container';
 
 export default {
   title: 'Components/Footer',

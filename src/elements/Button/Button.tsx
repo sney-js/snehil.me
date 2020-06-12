@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
-import Spinner from 'elements/Loaders';
+import { makeClass } from '../../utils/Helpers';
+import Spinner from '../../elements/Loaders';
 
 export type ButtonProps = {
   /**
