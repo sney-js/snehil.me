@@ -1,9 +1,9 @@
 import React from 'react';
-import { makeClass, setCSSVar } from '../../utils/Helpers';
-import HeaderContainer from '../../containers/HeaderContainer';
-import FooterContainer from '../../containers/FooterContainer';
-import Container from '../../components/Container';
-import CookieBannerContainer from '../../containers/CookieBannerContainer';
+import { makeClass, setCSSVar } from 'utils/Helpers';
+import HeaderContainer from 'containers/HeaderContainer';
+import FooterContainer from 'containers/FooterContainer';
+import Container from 'components/Container';
+import CookieBannerContainer from 'containers/CookieBannerContainer';
 
 type LayoutProps = {
   locale?: string;

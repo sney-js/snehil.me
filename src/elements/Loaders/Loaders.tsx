@@ -1,5 +1,5 @@
 import React from 'react';
-import { setCSSVar } from '../../utils/Helpers';
+import { setCSSVar } from 'utils/Helpers';
 
 type SpinnerProps = {
   /**

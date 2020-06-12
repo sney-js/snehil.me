@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { makeClass } from '../../utils/Helpers';
-import { LinkType } from '../../models/Link';
+import { makeClass } from 'utils/Helpers';
+import { LinkType } from 'models/Link';
 import Navigation from './Navigation';
 import LanguageSelect from "./LanguageSelector/LanguageSelector";
-import Container from '../../components/Container';
+import Container from 'components/Container';
 
 type HeaderProps = {
   /**

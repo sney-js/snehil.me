@@ -4,7 +4,7 @@ import {
   DEFAULT_LANGS,
   generateLang,
   LanguageSelectorProps
-} from '../../components/Header/LanguageSelector/LanguageSelector';
+} from 'components/Header/LanguageSelector/LanguageSelector';
 
 type HeaderContainerProps = {
   /**

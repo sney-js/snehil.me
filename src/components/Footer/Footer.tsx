@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { makeClass } from '../../utils/Helpers';
-import Link from '../../elements/Link/';
-import Grid from '../../components/Grid';
-import Container from '../../components/Container';
-import SocialLink from '../../elements/SocialLink';
-import { GenericProps, LinkType } from '../../models';
+import { makeClass } from 'utils/Helpers';
+import Link from 'elements/Link/';
+import Grid from 'components/Grid';
+import Container from 'components/Container';
+import SocialLink from 'elements/SocialLink';
+import { GenericProps, LinkType } from 'models';
 
 type FooterProps = {
   siteLinks?: LinkType[];

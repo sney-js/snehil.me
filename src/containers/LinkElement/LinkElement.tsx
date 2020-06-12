@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { makeClass } from '../../utils/Helpers';
-import Link from '../../elements/Link';
+import { makeClass } from 'utils/Helpers';
+import Link from 'elements/Link';
 import { GenericProps, LinkData } from "../../models";
 
 /**

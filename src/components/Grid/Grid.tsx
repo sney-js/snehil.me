@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC } from 'react';
-import { makeClass, setCSSVar } from '../../utils/Helpers';
+import { makeClass, setCSSVar } from 'utils/Helpers';
 
 type GridProps = {
   /**

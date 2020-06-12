@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { makeClass } from '../../utils/Helpers';
+import { makeClass } from 'utils/Helpers';
 import { GenericProps, LinkType } from "../../models";
-import Grid from '../../components/Grid';
-import Link from '../../elements/Link';
+import Grid from 'components/Grid';
+import Link from 'elements/Link';
 
 export type CardType = {
   /**

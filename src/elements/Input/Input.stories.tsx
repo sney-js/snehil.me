@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Input from './Input';
 import { withKnobs } from '@storybook/addon-knobs';
-import Form from '../../components/Form';
-import { IcLock, IcDanger } from '../../elements/SvgElements';
+import Form from 'components/Form';
+import { IcLock, IcDanger } from 'elements/SvgElements';
 import { action } from '@storybook/addon-actions';
 import { InputType } from './InputModels';
 import {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Container, { ContainerProps } from './Container';
-import { DummyImage, StoryDivideContainer } from '../../stories/components/Dummies';
+import { DummyImage, StoryDivideContainer } from 'stories/components/Dummies';
 import {
   IcAdd,
   IcArrowLeft,

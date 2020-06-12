@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { makeClass } from '../../utils/Helpers';
-import Link from '../../elements/Link/';
-import * as iconsLists from '../../elements/SvgElements';
+import { makeClass } from 'utils/Helpers';
+import Link from 'elements/Link/';
+import * as iconsLists from 'elements/SvgElements';
 
 type SocialTypes = {
   /**

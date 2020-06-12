@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryDivideContainer } from '../../stories/components/Dummies';
+import { StoryDivideContainer } from 'stories/components/Dummies';
 import * as iconsList from './index';
 
 export default {

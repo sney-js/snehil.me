@@ -1,7 +1,7 @@
 import React from 'react';
-import RichText from '../containers/RichText';
-import RespImage from '../containers/RespImage';
-import Container from '../components/Container';
+import RichText from 'containers/RichText';
+import RespImage from 'containers/RespImage';
+import Container from 'components/Container';
 
 // Add all new contentful containers here.
 export const renderContentContainer = ({ item, key, ...rest }) => {
