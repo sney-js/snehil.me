@@ -21,7 +21,7 @@ export default {
     const routeGenerator = new RouteGenerator(client);
     return [
       {
-        page: { test },
+        page: { test:2 },
         name: 'hi',
         path: 'index',
         locale: 'en'

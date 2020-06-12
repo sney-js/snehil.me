@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "start:react-static": "tsc-watch --p tsconfig.static.json --onFirstSuccess \"react-static start -c tmp/contentful/static.config.js\"",
+    "start:react-static": "tsc-watch --p tsconfig.static.json --onFirstSuccess \"react-static start -c tmp/static.config.js\"",
     "build": "react-scripts build",
     "tsc:react-static": "tsc-watch --p tsconfig.static.json --onFirstSuccess \"echo Beep! Compilation done!\"",
     "test": "react-scripts test",

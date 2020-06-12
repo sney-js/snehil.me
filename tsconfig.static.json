@@ -20,15 +20,15 @@
     "isolatedModules": false,
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
-      "components/*": ["src/components/*"],
-      "containers/*": ["src/containers/*"],
-      "elements/*": ["src/elements/*"],
-      "contentful/*": ["src/contentful/*"],
-      "utils/*": ["src/utils/*"],
-      "models/*": ["src/models/*"],
+      "components/*": ["src/app/components/*"],
+      "containers/*": ["src/app/containers/*"],
+      "elements/*": ["src/app/elements/*"],
+      "contentful/*": ["src/app/contentful/*"],
+      "utils/*": ["src/app/utils/*"],
+      "models/*": ["src/app/models/*"],
       "types/*": ["types/*"]
     }
   },
   "exclude": ["node_modules"],
-  "files": ["src/contentful/static.config.ts"]
+  "files": ["static.config.ts"]
 }

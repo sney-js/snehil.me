@@ -1,21 +1,28 @@
-import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import './styles/main.scss';
-import * as PAGES from 'pages';
-
-const history = createBrowserHistory();
+import React, { useState } from 'react';
+import { Root, Routes } from 'react-static';
+import { Router } from '@reach/router';
 
 function App() {
+  if (typeof document !== 'undefined') {
+  }
+
+  const [dynamicRoutes, setDynamicRoutes] = useState([]);
+
+  let isLoading = false;
+
+  if (isLoading) {
+    return <Root>{/*<GlobalLoader />*/}</Root>;
+  }
+
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path='/project/:projectId' component={PAGES.project} />
-        <Route path='/project' component={PAGES.project} />
-        <Route path='/' exact component={PAGES.index} />
-        <Route path='*'  component={PAGES.error} />
-      </Switch>
-    </Router>
+    <Root>
+      <React.Suspense fallback={<small>Loading</small>}>
+        <Router>
+          {dynamicRoutes}
+          <Routes path='*' />
+        </Router>
+      </React.Suspense>
+    </Root>
   );
 }
 
