@@ -1,51 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { AppContainer } from "react-hot-loader";
-// import "./index.scss";
-// Your top level component
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-// Render your app
-if (typeof document !== "undefined") {
-    const target = document.getElementById("root");
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-    const render = (Comp: Function) => {
-        ReactDOM.render(
-            <AppContainer>
-                <Comp />
-            </AppContainer>,
-            target,
-        );
-    };
-
-    // Render!
-    render(App);
-
-    // Hot Module Replacement
-    if (module && module.hot) {
-        module.hot.accept("./App", () => {
-            render(App);
-        });
-    }
-
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-            navigator.serviceWorker.register("/sw.js").then(
-                function(registration) {
-                    // Registration was successful
-                    console.log(
-                        "ServiceWorker registration successful with scope: ",
-                        registration.scope,
-                    );
-                },
-                function(err) {
-                    // registration failed :(
-                    console.log("ServiceWorker registration failed: ", err);
-                },
-            );
-        });
-    }
-}
-
-// Export your top level component as JSX (for static rendering)
-export default App;
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

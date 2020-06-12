@@ -9,7 +9,15 @@ import {
 } from './@types/contentful';
 import * as Flatted from 'flatted';
 import RouteConfig from './RouteConfig';
-import { Route } from 'react-static';
+
+interface Route {
+  path: string
+  template?: string
+  redirect?: URL | string
+  children?: Route[]
+  getData?(): Promise<object> | object
+  replace?: boolean
+}
 
 export type SiteData = {
   footer: IFooterFields;
