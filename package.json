@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "start:react-static": "tsc-watch --p tsconfig.static.json --onFirstSuccess \"react-static start -c tmp/contentful/static.config.js\"",
     "build": "react-scripts build",
+    "tsc:react-static": "tsc-watch --p tsconfig.static.json --onFirstSuccess \"echo Beep! Compilation done!\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -s ./public -p 9001"
@@ -17,6 +19,7 @@
     "@contentful/rich-text-types": "^14.1.0",
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/theming": "^5.3.19",
+    "contentful": "^7.14.4",
     "enzyme-adapter-react-16": "^1.15.2",
     "js-cookie": "^2.2.1",
     "react": "^16.13.1",
@@ -24,12 +27,19 @@
     "react-input-mask": "^2.0.4",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.2.0",
-    "storybook-addon-themes": "^5.4.1"
+    "react-static": "^7.4.0",
+    "react-static-plugin-reach-router": "^7.4.0",
+    "react-static-plugin-sitemap": "^7.4.0",
+    "react-static-plugin-source-filesystem": "^7.4.0",
+    "react-static-plugin-typescript": "^7.4.0",
+    "storybook-addon-themes": "^5.4.1",
+    "tsc-watch": "^4.2.8"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
+    "react-dev-utils": "10.1.0",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
@@ -48,7 +58,7 @@
     "prettier": "^2.0.4",
     "react-dom": "^16.13.1",
     "react-on-visible": "latest",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "react-transition-group": "latest",
     "typescript": "~3.7.2"
   },

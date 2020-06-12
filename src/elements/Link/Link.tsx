@@ -73,6 +73,6 @@ const Link: FC<LinkProps> = (props: LinkProps) => {
 Link.displayName = 'Link';
 // TODO change this link if using a different router
 Link.defaultProps = {
-  provider: <RouterLink/>
+  // provider: <RouterLink/>
 };
 export default Link;

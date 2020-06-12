@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "strict": false,
+    "noUnusedParameters": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "outDir": "tmp",
+    "baseUrl": ".",
+    "isolatedModules": false,
+    "lib": ["dom", "es2015", "es2016"],
+    "paths": {
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
+      "elements/*": ["src/elements/*"],
+      "contentful/*": ["src/contentful/*"],
+      "utils/*": ["src/utils/*"],
+      "models/*": ["src/models/*"],
+      "types/*": ["types/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "files": ["src/contentful/static.config.ts"]
+}
