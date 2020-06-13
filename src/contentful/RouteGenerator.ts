@@ -1,4 +1,4 @@
-import { ContentfulApi } from './api';
+import { ContentfulApi } from './ContentfulApi';
 import { ContentfulEntry, resolve, resolveLinkInfo } from './Resolver';
 import { CleanupConfig, cleanupData } from './EntryCleaner';
 import {
@@ -92,7 +92,7 @@ class RouteGenerator {
     );
   }
 
-  private static generatePageData(
+  public static generatePageData(
     page: IPage,
     lang: string
   ): PageRouteData | undefined {

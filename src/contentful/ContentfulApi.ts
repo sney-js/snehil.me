@@ -62,7 +62,7 @@ export class ContentfulApi {
     return entries.items.find((en) => en.fields[field] === value);
   }
 
-  async fetchQuery(query, filter) {
+  async fetchQuery(query, filter?) {
     const entries = await this.client.getEntries(query);
 
     if (filter) {

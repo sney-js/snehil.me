@@ -4,7 +4,7 @@ import { Asset, Sys } from 'contentful';
 import { WINDOW } from '../utils/Helpers';
 
 export type ContentfulEntry = {
-  sys: Sys;
+  sys?: Sys;
   fields: any;
   type?: string;
   locale?: string;
@@ -87,7 +87,15 @@ export const getPathBreaks = function () {
 
 export const getContentType = (node?: ContentfulEntry) => {
   try {
-    return node!.type || node!.sys.contentType.sys.id;
+    return node!.type || node!.sys?.contentType.sys.id;
+  } catch (e) {
+    return undefined;
+  }
+};
+
+export const getContentLocale = (node?: ContentfulEntry) => {
+  try {
+    return node!.locale || node!.sys?.locale;
   } catch (e) {
     return undefined;
   }
@@ -114,7 +122,7 @@ const _resolvePagePath = (
     }
   }
 
-  const locale = page.locale || page?.sys?.locale;
+  const locale = getContentLocale(page);
   // DEFAULT_LOCALE is not undefined during build. From frontend, defaultLocale is essential
   if (locale && locale !== RouteConfig.defaultLocale) {
     pages.push(locale);

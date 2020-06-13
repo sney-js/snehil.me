@@ -1,5 +1,5 @@
 import RouteGenerator from "./RouteGenerator";
-import { ContentfulApi } from "./api";
+import { ContentfulApi } from "./ContentfulApi";
 
 const client = new ContentfulApi({
     space: process.env.CONTENTFUL_SPACE,
