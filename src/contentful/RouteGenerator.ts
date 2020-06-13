@@ -44,7 +44,7 @@ export type RouteDataType = {
 
 export type RouteGeneratorConfig = {
   cleanupConfig: CleanupConfig;
-  pages: Array<{ contentType: string; parentField?: string }>;
+  pages: Array<{ contentType: string; parentField?: string; parentPath?: string }>;
   defaultLocale: string;
 };
 

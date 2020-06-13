@@ -30,7 +30,11 @@ export const resolve = (node: ContentfulEntry): string | undefined => {
     return undefined;
   }
 
-  return _resolvePagePath(node, pageContentTypeConfig.parentField);
+  return _resolvePagePath(
+    node,
+    pageContentTypeConfig.parentField,
+    pageContentTypeConfig.parentPath
+  );
 };
 
 /**
@@ -103,7 +107,8 @@ export const getContentLocale = (node?: ContentfulEntry) => {
 
 const _resolvePagePath = (
   page: ContentfulEntry,
-  parentPageFieldName?: string
+  parentPageFieldName?: string,
+  parentPagePathName?: string
 ) => {
   const pages: string[] = [];
   const stack: ContentfulEntry[] = [];
@@ -126,6 +131,10 @@ const _resolvePagePath = (
   // DEFAULT_LOCALE is not undefined during build. From frontend, defaultLocale is essential
   if (locale && locale !== RouteConfig.defaultLocale) {
     pages.push(locale);
+  }
+
+  if (parentPagePathName) {
+    pages.push(parentPagePathName);
   }
 
   let result = '/' + pages.reverse().join('/');

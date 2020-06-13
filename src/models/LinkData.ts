@@ -12,12 +12,4 @@ export class LinkData {
     this.path = data.path;
     Object.assign(this, data);
   }
-
-  toLinkType(): LinkType {
-    return {
-      to: this.path,
-      title: this.title,
-      newTab: this.newTab,
-    };
-  }
 }
