@@ -1,3 +1,6 @@
+import { LinkData } from '../models/LinkData';
+// import { LinkType } from '../models/Link';
+
 export const makeClass: (
   classes: Array<string | boolean | undefined>
 ) => string = (classes: Array<string | boolean | undefined>) =>
@@ -26,11 +29,22 @@ export const setCSSVar = (obj: CSSVarType): CSSVarTypeReturn => {
   return obj as CSSVarTypeReturn;
 };
 
-export const cleanPath = function(result: string) {
-    return (result + "/").toString().replace(/[\/]+/g, "/");
+export const cleanPath = function (result: string) {
+  return (result + '/').toString().replace(/[\/]+/g, '/');
 };
 
-export const getPathBreaks = function() {
-    const pathname = WINDOW?.location?.pathname;
-    return WINDOW && pathname.split("/").filter(e => e.length);
+export const getPathBreaks = function (path?:string) {
+  const pathname = path || WINDOW?.location?.pathname;
+  return WINDOW && pathname.split('/').filter((e) => e.length);
+};
+
+export const toLinkType = (
+  linkData?: LinkData | null
+): any | undefined => {
+  if (!linkData) return undefined;
+  return {
+    to: linkData.path,
+    title: linkData.title,
+    newTab: linkData.newTab
+  };
 };

@@ -1,2 +1,3 @@
-export * from './Helpers';
 export * from './Device';
+export * from './Helpers';
+

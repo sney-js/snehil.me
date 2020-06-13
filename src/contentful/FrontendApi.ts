@@ -3,20 +3,29 @@ import { ContentfulApi } from './ContentfulApi';
 import { environment } from '../environments/environment';
 import { ContentfulEntry, getContentLocale } from './Resolver';
 import RouteGenerator from './RouteGenerator';
+import CachedResponses from './CachedResponses';
+
+type ContentfulApiState = { finished: boolean };
 
 const _useContentfulStateProvider = (
   query: object,
-  dataHandler: (data: any[]) => void
-): {
-  finished: boolean;
-  data?: any;
-} => {
+  dataHandler: (data: any[]) => any
+): ContentfulApiState & object => {
   const [page, setPageData] = useState({
     finished: false
   });
 
   useEffect(() => {
     if (query === undefined) return;
+
+    const cachedData = CachedResponses.getInstance().getResponse(JSON.stringify(query));
+    console.log(cachedData,"cachedData");
+    if (cachedData) {
+      let finalVal = Object.assign({ finished: true }, cachedData);
+      setPageData(finalVal);
+      console.log("Using cached");
+      return;
+    }
 
     const client = new ContentfulApi({
       space: environment.contentful.space,
@@ -28,7 +37,12 @@ const _useContentfulStateProvider = (
       .fetchQuery(query)
       .then((data) => {
         if (data.length) {
-          let finalVal = Object.assign({ finished: true }, dataHandler(data));
+          let finalData = dataHandler(data);
+
+          // caching in react memory
+          CachedResponses.getInstance().setResponse(JSON.stringify(query), finalData);
+
+          let finalVal = Object.assign({ finished: true }, finalData);
           setPageData(finalVal);
         } else {
           setPageData({ finished: true });
@@ -38,7 +52,7 @@ const _useContentfulStateProvider = (
         console.error(e);
         setPageData({ finished: false });
       });
-  }, [query]);
+  }, []);
 
   return page;
 };
@@ -51,51 +65,17 @@ const _useContentfulStateProvider = (
 export const useContentfulPage = (
   contentType: string,
   name: string
-): {
-  finished: boolean;
-  page?: ContentfulEntry;
-} => {
-  const [page, setPageData] = useState<{
-    finished: boolean;
-    page?: ContentfulEntry;
-  }>({
-    finished: false
-  });
-
-  useEffect(() => {
-    if (name === undefined) return;
-
-    const client = new ContentfulApi({
-      space: environment.contentful.space,
-      accessToken: environment.contentful.accessToken,
-      environment: environment.contentful.environment
-    });
-
-    client
-      .fetchQuery({ content_type: contentType, 'fields.name': name })
-      .then((data) => {
-        if (data.length) {
-          let pageData = RouteGenerator.generatePageData(
-            Object.assign({}, data[0]),
-            getContentLocale(data[0]) || 'null'
-          );
-
-          let finalVal = Object.assign(
-            { finished: true },
-            { page: pageData?.page }
-          );
-          setPageData(finalVal);
-        } else {
-          setPageData({ finished: true });
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        setPageData({ finished: false });
-      });
-  }, [contentType, name]);
-
-  return page;
+): ContentfulApiState & { page?: ContentfulEntry } => {
+  return _useContentfulStateProvider(
+    { content_type: contentType, 'fields.name': name },
+    (data) => {
+      let pageData = RouteGenerator.generatePageData(
+        Object.assign({}, data[0]),
+        getContentLocale(data[0]) || 'null'
+      );
+      return { page: pageData?.page };
+    }
+  );
 };
 
 /**
@@ -106,52 +86,17 @@ export const useContentfulPage = (
 export const useContentfulPages = (
   contentType: string,
   condition?: { [key: string]: string }
-): {
-  finished: boolean;
-  pages?: ContentfulEntry[];
-} => {
-  const [page, setPageData] = useState<{
-    finished: boolean;
-    pages?: ContentfulEntry[];
-  }>({
-    finished: false
-  });
-
-  useEffect(() => {
-    if (contentType === undefined) return;
-    if (!condition) condition = {};
-
-    const client = new ContentfulApi({
-      space: environment.contentful.space,
-      accessToken: environment.contentful.accessToken,
-      environment: environment.contentful.environment
-    });
-
-    client
-      .fetchQuery({ content_type: contentType, ...condition })
-      .then((data) => {
-        if (data.length) {
-          let pagesData = data.map((page) => {
-            return RouteGenerator.generatePageData(
-              Object.assign({}, page),
-              getContentLocale(page) || 'null'
-            )?.page;
-          });
-
-          let finalVal = Object.assign(
-            { finished: true },
-            { pages: pagesData }
-          );
-          setPageData(finalVal);
-        } else {
-          setPageData({ finished: true });
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        setPageData({ finished: false });
+): ContentfulApiState & { pages?: ContentfulEntry[] } => {
+  return _useContentfulStateProvider(
+    { content_type: contentType, ...condition },
+    (data) => {
+      let pagesData = data.map((page) => {
+        return RouteGenerator.generatePageData(
+          Object.assign({}, page),
+          getContentLocale(page) || 'null'
+        )?.page;
       });
-  }, [contentType, condition]);
-
-  return page;
+      return { pages: pagesData };
+    }
+  );
 };

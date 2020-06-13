@@ -3,6 +3,9 @@ import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import './styles/main.scss';
 import * as PAGES from 'pages';
+import CachedResponses from "./contentful/CachedResponses";
+
+CachedResponses.getInstance();
 
 const history = createBrowserHistory();
 

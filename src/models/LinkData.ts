@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { LinkType } from './Link';
 
 export class LinkData {
   path: string;

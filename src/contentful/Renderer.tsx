@@ -13,13 +13,13 @@ export const renderContentContainer = (item, key?) => {
   switch (item.type) {
     case 'rich-text':
       return (
-        <Container key={key} pad={'All'} layout={'maxWidth'} animateIn>
+        <Container key={key} pad={'Vertical'} layout={'maxWidthNarrow'} animateIn>
           <RichText document={item.fields.content} />
         </Container>
       );
     case 'image':
       return (
-        <Container key={key} layout={'maxWidth'} animateIn>
+        <Container key={key} pad={'Vertical'} layout={'maxWidth'} animateIn>
           <RespImage image={item.fields.image} />
         </Container>
       );

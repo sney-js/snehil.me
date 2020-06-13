@@ -3,28 +3,39 @@ import Container from 'components/Container';
 import Layout from '../containers/Layout';
 import { PageProps } from './PageType';
 import { useContentfulPages } from '../contentful/FrontendApi';
-import LinkElement from '../containers/LinkElement';
 import { resolveLinkInfo } from '../contentful/Resolver';
-import { LinkData } from '../models';
+import { LinkType } from '../models';
+import Grid from '../components/Grid';
+import Card from '../components/Card';
+import { IArticle } from '../contentful/@types/contentful';
+import RespImage from '../containers/RespImage';
+import RichText from '../containers/RichText';
+import { toLinkType } from '../utils';
 
-const ProjectPage: FunctionComponent<PageProps> = (props) => {
+const ProjectPage: FunctionComponent<PageProps> = () => {
   let pageData = useContentfulPages('article');
 
   return (
     <Layout>
       {pageData.finished && (
-        <Container pad={'All'} layout={'maxWidthNarrow'}>
-          {pageData.pages?.map((article) => {
-            let linkInfo = resolveLinkInfo(article);
-            if (linkInfo) {
+        <Container pad={'All'} layout={'maxWidth'}>
+          <Grid template={'repeat(auto-fill, minmax(300px, 1fr))'}>
+            {(pageData.pages as IArticle[])?.map((article) => {
+              let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
+              console.log(linkInfo, 'linkInfo');
               return (
-                <LinkElement {...linkInfo}>
-                  <h3>{article.fields?.title}</h3>
-                </LinkElement>
+                <Card
+                  title={article.fields.title}
+                  image={<RespImage image={article.fields.image} />}
+                  subTitle={article.fields.category?.fields.title}
+                  description={
+                    <RichText document={article.fields.description} />
+                  }
+                  link={linkInfo}
+                />
               );
-            }
-            return null;
-          }) || <small>Projects not found!</small>}
+            }) || <small>Projects not found!</small>}
+          </Grid>
         </Container>
       )}
     </Layout>
