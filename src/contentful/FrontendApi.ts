@@ -50,7 +50,7 @@ const _useContentfulStateProvider = (
       })
       .catch((e) => {
         console.error(e);
-        setPageData({ finished: false });
+        setPageData({ finished: true });
       });
   }, []);
 

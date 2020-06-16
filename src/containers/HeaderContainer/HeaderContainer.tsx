@@ -5,6 +5,7 @@ import {
   generateLang,
   LanguageSelectorProps
 } from 'components/Header/LanguageSelector/LanguageSelector';
+import { toLinkType } from '../../elements/Link/Link';
 
 type HeaderContainerProps = {
   /**
@@ -22,14 +23,14 @@ const HeaderContainer: FC<HeaderContainerProps> = (
   props: HeaderContainerProps
 ) => {
   const navLinks = [
-    { title: 'Home', to: '/' },
-    { title: 'Project', to: '/project/' },
-    { title: 'Donate', to: '/donate/' },
-    { title: 'Offer', to: '/' },
+    { title: 'Home', path: '/' },
+    { title: 'Project', path: '/project/' },
+    { title: 'Donate', path: '/donate/' },
+    { title: 'Offer', path: '/' },
   ];
   return (
     <Header
-      siteLinks={navLinks}
+      siteLinks={navLinks.map(toLinkType)}
       localeInfo={{
         languages: DEFAULT_LANGS.map(generateLang).filter(
           (e) => !!e

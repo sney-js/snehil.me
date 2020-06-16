@@ -58,7 +58,7 @@ const Navigation: FC<NavigationProps> = (props: NavigationProps) => {
           {siteLinks?.map((item: ItemType, i: number) => (
             <li key={item.to + i} className='d-nav__links-link'>
               <Link
-                to={item.to}
+                {...item}
                 className={makeClass(['d-link', active === i && 'active'])}
                 aria-label={item.title}
               >

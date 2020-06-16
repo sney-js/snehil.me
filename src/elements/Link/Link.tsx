@@ -3,6 +3,7 @@ import { makeClass } from 'utils/Helpers';
 import Button from '../Button';
 import { ButtonProps } from '../Button/Button';
 import { Link as RouterLink } from 'react-router-dom';
+import { LinkData } from '../../models';
 
 export type LinkTypeLocal = {
   /**
@@ -76,3 +77,13 @@ Link.defaultProps = {
   // provider: <RouterLink/>
 };
 export default Link;
+
+export const toLinkType = (linkData?: LinkData | null): any | undefined => {
+  if (!linkData) return undefined;
+  return {
+    to: linkData.path,
+    title: linkData.title,
+    newTab: linkData.newTab,
+    provider: <RouterLink />
+  };
+};

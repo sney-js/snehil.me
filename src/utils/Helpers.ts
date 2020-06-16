@@ -33,18 +33,7 @@ export const cleanPath = function (result: string) {
   return (result + '/').toString().replace(/[\/]+/g, '/');
 };
 
-export const getPathBreaks = function (path?:string) {
+export const getPathBreaks = function (path?: string) {
   const pathname = path || WINDOW?.location?.pathname;
   return WINDOW && pathname.split('/').filter((e) => e.length);
-};
-
-export const toLinkType = (
-  linkData?: LinkData | null
-): any | undefined => {
-  if (!linkData) return undefined;
-  return {
-    to: linkData.path,
-    title: linkData.title,
-    newTab: linkData.newTab
-  };
 };
