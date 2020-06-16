@@ -10,7 +10,7 @@ import Card from '../components/Card';
 import { IArticle } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
 import RichText from '../containers/RichText';
-import { toLinkType } from '../utils';
+import { toLinkType } from "../elements/Link/Link";
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   let pageData = useContentfulPages('article');
