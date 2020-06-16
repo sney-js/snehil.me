@@ -62,6 +62,23 @@ const _useContentfulStateProvider = (
  * @param name
  * @param contentType
  */
+export const useContentfulEntry = (
+  contentType: string,
+  name: string
+): ContentfulApiState & { entry?: ContentfulEntry } => {
+  return _useContentfulStateProvider(
+    { content_type: contentType, 'fields.name': name },
+    (data) => {
+      return { entry: data[0] };
+    }
+  );
+};
+
+/**
+ *
+ * @param name
+ * @param contentType
+ */
 export const useContentfulPage = (
   contentType: string,
   name: string

@@ -27,9 +27,14 @@ export type FormProps = {
    */
   onChange?: (e: HTMLInputElement) => void;
   /**
+   * Returns the input that has just been changed by the user.
+   * @param e: HTMLInputElement
+   */
+  onAllChange?: (json: object) => void;
+  /**
    * Used to change submit button's text
    */
-  submitButtonText?: string;
+  submitButtonText?: string | null;
   /**
    * Appears at the bottom of the form.
    */
@@ -69,6 +74,13 @@ class Form extends React.Component<FormProps, FormState> {
     submitButtonText: 'Submit'
   };
 
+  private formObj: React.RefObject<HTMLFormElement>;
+
+    constructor(props: any) {
+    super(props);
+    this.formObj = React.createRef();
+  }
+
   /**
    * When there are series of forms, this can be used to
    * @param name
@@ -102,6 +114,7 @@ class Form extends React.Component<FormProps, FormState> {
     return (
       <form
         {...rest}
+        ref={this.formObj}
         className={'form-component ' + (this.props.className || '')}
         onSubmit={(e: React.FormEvent<HTMLFormElement>): void => {
           e.preventDefault();
@@ -153,6 +166,8 @@ class Form extends React.Component<FormProps, FormState> {
         onChange={(e): void => {
           const input = e.target as HTMLInputElement;
           this.props.onChange && this.props.onChange(input);
+          this.props.onAllChange &&
+            this.props.onAllChange(this.getJsonData(this.formObj.current));
         }}
       >
         <FormValidationContext.Provider value={this.state}>
@@ -185,7 +200,7 @@ class Form extends React.Component<FormProps, FormState> {
     );
   }
 
-  private getJsonData(form: any): object {
+  public getJsonData(form: any): object {
     const formData = new window.FormData(form);
     const object = {};
     formData.forEach((value, key) => {

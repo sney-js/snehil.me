@@ -2,6 +2,9 @@ import React from 'react';
 import RichText from 'containers/RichText';
 import RespImage from 'containers/RespImage';
 import Container from 'components/Container';
+import { IProjectContentBlock } from './@types/contentful';
+import { getContentType } from './Resolver';
+import { Asset } from 'contentful';
 
 /**
  *
@@ -10,10 +13,15 @@ import Container from 'components/Container';
  * @param rest
  */
 export const renderContentContainer = (item, key?) => {
-  switch (item.type) {
+  switch (getContentType(item)) {
     case 'rich-text':
       return (
-        <Container key={key} pad={'Vertical'} layout={'maxWidthNarrow'} animateIn>
+        <Container
+          key={key}
+          pad={'Vertical'}
+          layout={'maxWidthNarrow'}
+          animateIn
+        >
           <RichText document={item.fields.content} />
         </Container>
       );
@@ -23,8 +31,13 @@ export const renderContentContainer = (item, key?) => {
           <RespImage image={item.fields.image} />
         </Container>
       );
-    case 'list':
-    // return <ListContainer key={key} item={item.fields} />;
+    case 'Asset': {
+      return (
+        <Container key={key} pad={'Vertical'} layout={'maxWidth'} animateIn>
+          <RespImage image={item} />
+        </Container>
+      );
+    }
     default:
       return null;
   }

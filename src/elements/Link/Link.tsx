@@ -55,7 +55,7 @@ const Link: FC<LinkProps> = (props: LinkProps) => {
         to,
         ...rest
       },
-      mainChildren
+      mainChildren || props.title
     );
   }
 
@@ -67,7 +67,7 @@ const Link: FC<LinkProps> = (props: LinkProps) => {
       target: newTab ? '_blank' : '_self',
       ...rest
     },
-    mainChildren
+    mainChildren || props.title
   );
 };
 

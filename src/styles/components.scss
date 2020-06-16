@@ -9,3 +9,15 @@
     display: block;
   }
 }
+
+.d-filter-project-block {
+  display: flex;
+
+  .d-FilterList {
+    min-width: 400px;
+  }
+
+  .d-project-block {
+    width: 100%;
+  }
+}

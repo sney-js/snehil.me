@@ -13,7 +13,7 @@ type HeaderProps = {
    * navigation={<navigation/>}
    * `
    */
-  siteLinks: LinkType[];
+  siteLinks?: LinkType[];
   localeInfo?: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -24,11 +24,11 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { siteLinks, className, localeInfo } = props;
   const classes = makeClass(['d-header', className]);
 
-  const currActiveLink = siteLinks.findIndex((e) => {
+  const currActiveLink = siteLinks?.findIndex((e) => {
     let current = getPathBreaks().filter((e) => e !== '/')[0];
     let target = getPathBreaks(e.to).filter((e) => e !== '/')[0];
     return target === current;
-  });
+  }) || -1;
 
   return (
     <div className={classes}>
@@ -37,14 +37,14 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
         layout={'maxWidth'}
         pad={'Horizontal'}
       >
-        <Navigation
+        {siteLinks && <Navigation
           mobileAnimationDirection={'top'}
           siteLinks={siteLinks}
           active={currActiveLink}
-        />
-        <Container breakpoint={'Desktop'}>
-          {localeInfo && <LanguageSelect {...localeInfo} />}
-        </Container>
+        />}
+        {localeInfo && <Container breakpoint={'Desktop'}>
+          <LanguageSelect {...localeInfo} />
+        </Container>}
       </Container>
     </div>
   );

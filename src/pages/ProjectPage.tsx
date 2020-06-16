@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import Container from 'components/Container';
-import Layout from '../containers/Layout';
 import { PageProps } from './PageType';
 import { useContentfulPages } from '../contentful/FrontendApi';
 import { resolveLinkInfo } from '../contentful/Resolver';
@@ -10,17 +9,34 @@ import Card from '../components/Card';
 import { IProject } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
 import { toLinkType } from '../elements/Link/Link';
+import RichText from '../containers/RichText';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
+  return <ProjectFilterList />;
+};
+
+type ProjectFilterProps = {
+  technologyFilters?: string[];
+};
+export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
+  props
+) => {
   let pageData = useContentfulPages('project');
 
-  console.log(pageData, 'pageData');
+  let filteredProjects = pageData.pages as IProject[];
+  if (props.technologyFilters?.length && filteredProjects) {
+    const selected = new Set(props.technologyFilters);
+    filteredProjects = filteredProjects.filter((p) => {
+      return p.fields.technologies?.some((t) => selected.has(t));
+    });
+  }
+
   return (
-    <Layout>
+    <div className={'d-project-block'}>
       {pageData.finished && (
         <Container pad={'All'} layout={'maxWidth'}>
           <Grid template={'repeat(auto-fill, minmax(300px, 1fr))'}>
-            {(pageData.pages as IProject[])?.map((article) => {
+            {filteredProjects?.map((article) => {
               if (!article) return null;
 
               let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
@@ -30,6 +46,9 @@ const ProjectPage: FunctionComponent<PageProps> = () => {
                   title={article.fields.title}
                   image={<RespImage image={article.fields.image} />}
                   subTitle={article.fields.technologies?.join(', ')}
+                  description={
+                    <RichText markdown={article.fields.description} />
+                  }
                   link={linkInfo}
                 />
               );
@@ -37,7 +56,7 @@ const ProjectPage: FunctionComponent<PageProps> = () => {
           </Grid>
         </Container>
       )}
-    </Layout>
+    </div>
   );
 };
 

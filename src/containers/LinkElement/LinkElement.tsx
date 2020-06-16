@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import Link from 'elements/Link';
 import { GenericProps, LinkData } from "../../models";
+import { toLinkType } from '../../elements/Link/Link';
 
 /**
  * The `LinkElement` component example.
@@ -13,10 +14,7 @@ const LinkElement: FC<LinkData & GenericProps> = (props) => {
   return (
     <Link
       className={classes}
-      to={props.path}
-      title={props.title}
-      newTab={props.newTab}
-      children={props.children}
+      {...toLinkType(props)}
     />
   );
 };
