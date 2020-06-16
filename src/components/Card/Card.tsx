@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
-import { GenericProps, LinkType } from "../../models";
+import { GenericProps, LinkType } from '../../models';
 import Grid from 'components/Grid';
 import Link from 'elements/Link';
 
@@ -58,7 +58,11 @@ const Card: FC<CardProps> = (props: CardProps) => {
   const template = footnote ? '1fr 1fr' : '2fr';
   return (
     <div className={classes}>
-      <div className='d-card__image'>{image}</div>
+      <div className='d-card__image'>
+        <Link to='' {...link}>
+          {image}
+        </Link>
+      </div>
       <div className='d-card__body'>
         <div className='d-card__header'>
           <h3 className='d-card__title'>{title}</h3>
@@ -68,9 +72,9 @@ const Card: FC<CardProps> = (props: CardProps) => {
         <div className='d-card__description'>{description}</div>
 
         <Grid template={template}>
-          <div>
+          {link && <div>
             <Link to='' {...link} appearance='primary' />
-          </div>
+          </div>}
 
           <small className='d-card__footnote'>
             <strong>{footnote}</strong>

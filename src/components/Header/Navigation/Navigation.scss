@@ -1,3 +1,5 @@
+$burger-breakpoint: $screen-mobile;
+
 .d-nav {
   position: relative;
   text-align: right;
@@ -16,7 +18,7 @@
     display: none;
     border: none;
 
-    @media #{$screen-tablet} {
+    @media #{$burger-breakpoint} {
       display: inline-block;
 
       &:focus {
@@ -61,7 +63,7 @@
 
   &__profile-link {
     display: none;
-    @media #{$screen-tablet} {
+    @media #{$burger-breakpoint} {
       display: block;
     }
   }
@@ -77,7 +79,7 @@
     font-weight: normal;
     border-top: 4px solid transparent;
 
-    @media #{$screen-tablet} {
+    @media #{$burger-breakpoint} {
       display: block;
       transition: var(--transition-ui);
 
@@ -126,6 +128,10 @@
         }
       }
     }
+
+    &-link{
+      padding-right: var(--spacing-gap-large);
+    }
   }
   // navigation links <a> styling
   .d-link {
@@ -133,7 +139,7 @@
     padding: 20px 0 10px;
     font-weight: 500;
     transition: var(--transition-ui);
-    @media #{$screen-tablet} {
+    @media #{$burger-breakpoint} {
       padding: var(--spacing-gap-mobile);
       font-size: 1rem;
       display: block;
@@ -149,7 +155,7 @@
       font-weight: bold;
       transition: var(--transition-ui);
 
-      @media #{$screen-tablet} {
+      @media #{$burger-breakpoint} {
         border-left: 4px solid var(--color-primary);
         border-top: none;
         background: linear-gradient(

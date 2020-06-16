@@ -22,7 +22,6 @@ const ProjectPage: FunctionComponent<PageProps> = () => {
           <Grid template={'repeat(auto-fill, minmax(300px, 1fr))'}>
             {(pageData.pages as IArticle[])?.map((article) => {
               let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
-              console.log(linkInfo, 'linkInfo');
               return (
                 <Card
                   title={article.fields.title}

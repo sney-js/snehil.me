@@ -26,8 +26,6 @@ const HeaderContainer: FC<HeaderContainerProps> = (
     { title: 'Project', to: '/project/' },
     { title: 'Donate', to: '/donate/' },
     { title: 'Offer', to: '/' },
-    { title: 'Help & Faq', to: '/' },
-    { title: 'Contact Us', to: '/' }
   ];
   return (
     <Header
