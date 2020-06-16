@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -s ./public -p 9001"
+    "storybook": "start-storybook -s ./public -p 9001",
+    "contentful:types": "contentful-typescript-codegen --output src/contentful/@types/contentful.d.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -17,6 +18,9 @@
     "@contentful/rich-text-types": "^14.1.0",
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/theming": "^5.3.19",
+    "contentful": "^7.14.4",
+    "contentful-management": "^5.27.1",
+    "contentful-typescript-codegen": "^3.2.1",
     "enzyme-adapter-react-16": "^1.15.2",
     "js-cookie": "^2.2.1",
     "react": "^16.13.1",
@@ -42,15 +46,19 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "2.23.0",
+    "@typescript-eslint/parser": "2.23.0",
+    "@typescript-eslint/typescript-estree": "2.23.0",
     "caller-callsite": "^4.1.0",
     "enzyme": "^3.11.0",
     "node-sass": "^4.14.0",
     "prettier": "^2.0.4",
+    "react-dev-utils": "10.1.0",
     "react-dom": "^16.13.1",
     "react-on-visible": "latest",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "react-transition-group": "latest",
-    "typescript": "~3.7.2"
+    "typescript": "3.8.3"
   },
   "browserslist": {
     "production": [

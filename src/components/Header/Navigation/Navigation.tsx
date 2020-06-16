@@ -22,13 +22,9 @@ type NavigationProps = {
    */
   mobileAnimationDirection?: 'top' | 'left' | 'right';
   /**
-   * Displays the active state of Links.
-   * e.g.
-   * `{
-   * true | false
-   * `}
+   * Displays the active state on given index in siteLink[]
    */
-  active?: boolean;
+  active?: number;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type ItemType = {
@@ -41,12 +37,7 @@ type ItemType = {
  * Use `Navigation` to highlight key info with a predefined status.
  */
 const Navigation: FC<NavigationProps> = (props: NavigationProps) => {
-  const {
-    siteLinks,
-    mobileAnimationDirection,
-    className,
-    active
-  } = props;
+  const { siteLinks, mobileAnimationDirection, className, active } = props;
   const [open, setOpen] = React.useState(false);
   const classes = makeClass(['d-nav', className]);
 
@@ -68,7 +59,7 @@ const Navigation: FC<NavigationProps> = (props: NavigationProps) => {
             <li key={item.to + i} className='d-nav__links-link'>
               <Link
                 to={item.to}
-                className={active && i === 0 ? 'd-link active' : 'd-link'}
+                className={makeClass(['d-link', active === i && 'active'])}
                 aria-label={item.title}
               >
                 {item.title}

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
+import { getPathBreaks, makeClass, WINDOW } from 'utils/Helpers';
 import { LinkType } from 'models/Link';
 import Navigation from './Navigation';
-import LanguageSelect from "./LanguageSelector/LanguageSelector";
+import LanguageSelect from './LanguageSelector/LanguageSelector';
 import Container from 'components/Container';
 
 type HeaderProps = {
@@ -24,6 +24,12 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { siteLinks, className, localeInfo } = props;
   const classes = makeClass(['d-header', className]);
 
+  const currActiveLink = siteLinks.findIndex((e) => {
+    let current = getPathBreaks().filter((e) => e !== '/')[0];
+    let target = getPathBreaks(e.to).filter((e) => e !== '/')[0];
+    return target === current;
+  });
+
   return (
     <div className={classes}>
       <Container
@@ -34,7 +40,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
         <Navigation
           mobileAnimationDirection={'top'}
           siteLinks={siteLinks}
-          active={true}
+          active={currActiveLink}
         />
         <Container breakpoint={'Desktop'}>
           {localeInfo && <LanguageSelect {...localeInfo} />}

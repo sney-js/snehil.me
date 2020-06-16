@@ -1,45 +1,42 @@
-import React, { FunctionComponent } from "react";
-import Container from "components/Container";
-import Layout from "../containers/Layout";
-import Link from "../elements/Link";
-import { PageProps } from "./PageType";
+import React, { FunctionComponent } from 'react';
+import Container from 'components/Container';
+import Layout from '../containers/Layout';
+import { PageProps } from './PageType';
+import { useContentfulPages } from '../contentful/FrontendApi';
+import { resolveLinkInfo } from '../contentful/Resolver';
+import { LinkType } from '../models';
+import Grid from '../components/Grid';
+import Card from '../components/Card';
+import { IArticle } from '../contentful/@types/contentful';
+import RespImage from '../containers/RespImage';
+import RichText from '../containers/RichText';
+import { toLinkType } from '../utils';
 
-const ProjectPage: FunctionComponent<PageProps> = (props) => {
-  const { projectId } = props.match.params;
-  if (!projectId) {
-    return (
-      <Layout>
-        <Container pad={'All'} layout={'maxWidthNarrow'}>
-          <Link to={'/project/example'}>Example Project</Link>
-        </Container>
-      </Layout>
-    );
-  }
+const ProjectPage: FunctionComponent<PageProps> = () => {
+  let pageData = useContentfulPages('article');
+
   return (
     <Layout>
-      <Container pad={'All'} layout={'maxWidthNarrow'}>
-        <h1>Quam temeres</h1>
-        <h4>{projectId}</h4>
-        <p>
-          Cum ceteris in veneratione tui montes, nascetur mus. Quo usque tandem
-          abutere, Catilina, patientia nostra? Nihilne te nocturnum praesidium
-          Palati, nihil urbis vigiliae. Excepteur sint obcaecat cupiditat non
-          proident culpa.
-        </p>
-        <p>
-          Pellentesque habitant morbi tristique senectus et netus. Curabitur
-          blandit tempus ardua ridiculus sed magna. Nihil hic munitissimus
-          habendi senatus locus, nihil horum? Etiam habebis sem dicantur magna
-          mollis euismod. At nos hinc posthac, sitientis piros Afros.
-        </p>
-        <p>
-          Ambitioni dedisse scripsisse iudicaretur. Hi omnes lingua, institutis,
-          legibus inter se differunt. Morbi fringilla convallis sapien, id
-          pulvinar odio volutpat. Contra legem facit qui id facit quod lex
-          prohibet. Quis aute iure reprehenderit in voluptate velit esse. Quam
-          diu etiam furor iste tuus nos eludet?
-        </p>
-      </Container>
+      {pageData.finished && (
+        <Container pad={'All'} layout={'maxWidth'}>
+          <Grid template={'repeat(auto-fill, minmax(300px, 1fr))'}>
+            {(pageData.pages as IArticle[])?.map((article) => {
+              let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
+              return (
+                <Card
+                  title={article.fields.title}
+                  image={<RespImage image={article.fields.image} />}
+                  subTitle={article.fields.category?.fields.title}
+                  description={
+                    <RichText document={article.fields.description} />
+                  }
+                  link={linkInfo}
+                />
+              );
+            }) || <small>Projects not found!</small>}
+          </Grid>
+        </Container>
+      )}
     </Layout>
   );
 };
