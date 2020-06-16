@@ -7,29 +7,29 @@ import { resolveLinkInfo } from '../contentful/Resolver';
 import { LinkType } from '../models';
 import Grid from '../components/Grid';
 import Card from '../components/Card';
-import { IArticle } from '../contentful/@types/contentful';
+import { IProject } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
-import RichText from '../containers/RichText';
-import { toLinkType } from '../utils';
+import { toLinkType } from '../elements/Link/Link';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
-  let pageData = useContentfulPages('article');
+  let pageData = useContentfulPages('project');
 
+  console.log(pageData, 'pageData');
   return (
     <Layout>
       {pageData.finished && (
         <Container pad={'All'} layout={'maxWidth'}>
           <Grid template={'repeat(auto-fill, minmax(300px, 1fr))'}>
-            {(pageData.pages as IArticle[])?.map((article) => {
+            {(pageData.pages as IProject[])?.map((article) => {
+              if (!article) return null;
+
               let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
+
               return (
                 <Card
                   title={article.fields.title}
                   image={<RespImage image={article.fields.image} />}
-                  subTitle={article.fields.category?.fields.title}
-                  description={
-                    <RichText document={article.fields.description} />
-                  }
+                  subTitle={article.fields.technologies?.join(', ')}
                   link={linkInfo}
                 />
               );

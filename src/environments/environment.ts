@@ -2,8 +2,8 @@ export const environment = {
   production: false,
   localStorageKey: null,
   contentful: {
-    space: 'xyyr4mk4uku2',
-    environment: 'snehil-react',
-    accessToken: '0UYIUDEai2pMj0Nfre0R00WWUC2nt37uU3vTiLCuUDM'
+    space: 'qcuupeqhrpk9',
+    environment: 'master',
+    accessToken: 'b0iXPf_iWkiuUzybCCEBjXppv3EQ9Wji23UDjSJUs-c'
   }
 };

@@ -4,14 +4,14 @@ import Layout from '../containers/Layout';
 import { PageProps } from './PageType';
 import { renderContentContainer } from '../contentful/Renderer';
 import { useContentfulPage } from '../contentful/FrontendApi';
-import { IArticle, IArticleFields } from "../contentful/@types/contentful";
+import { IProject } from '../contentful/@types/contentful';
 
 const ProjectPage: FunctionComponent<PageProps> = (props) => {
   const { projectId } = props.match.params;
 
-  let pageData = useContentfulPage('article', projectId);
+  let pageData = useContentfulPage('project', projectId);
 
-  let article = pageData.page as IArticle;
+  let article = pageData.page as IProject;
   return (
     <Layout>
       {pageData.finished && (
@@ -19,7 +19,7 @@ const ProjectPage: FunctionComponent<PageProps> = (props) => {
           {article ? (
             <>
               <Container layout={"maxWidthNarrow"}>
-                <h4>{article.fields.category?.fields.title}</h4>
+                <h4>{article.fields.technologies?.join(", ")}</h4>
                 <h1>{article.fields?.title}</h1>
               </Container>
               {article.fields?.content?.map(renderContentContainer)}

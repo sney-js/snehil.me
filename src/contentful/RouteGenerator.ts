@@ -1,27 +1,23 @@
 import { ContentfulApi } from './ContentfulApi';
-import { ContentfulEntry, resolve, resolveLinkInfo } from './Resolver';
+import { ContentfulEntry, resolve } from './Resolver';
 import { CleanupConfig, cleanupData } from './EntryCleaner';
-import {
-  IArticle,
-  IFooterFields,
-  IHeaderFields,
-  IPage
-} from './@types/contentful';
 import * as Flatted from 'flatted';
 import RouteConfig from './RouteConfig';
 
 interface Route {
-  path: string
-  template?: string
-  redirect?: URL | string
-  children?: Route[]
-  getData?(): Promise<object> | object
-  replace?: boolean
+  path: string;
+  template?: string;
+  redirect?: URL | string;
+  children?: Route[];
+
+  getData?(): Promise<object> | object;
+
+  replace?: boolean;
 }
 
 export type SiteData = {
-  footer: IFooterFields;
-  header: IHeaderFields;
+  footer: any;
+  header: any;
   locale: String;
 };
 
@@ -44,7 +40,11 @@ export type RouteDataType = {
 
 export type RouteGeneratorConfig = {
   cleanupConfig: CleanupConfig;
-  pages: Array<{ contentType: string; parentField?: string; parentPath?: string }>;
+  pages: Array<{
+    contentType: string;
+    parentField?: string;
+    parentPath?: string;
+  }>;
   defaultLocale: string;
 };
 
@@ -93,7 +93,7 @@ class RouteGenerator {
   }
 
   public static generatePageData(
-    page: IPage,
+    page: any,
     lang: string
   ): PageRouteData | undefined {
     cleanupData(page, lang);
@@ -131,18 +131,6 @@ class RouteGenerator {
             let extraData = {};
 
             switch (contentType) {
-              case 'category':
-                extraData = categoriesGrouped
-                  .find((e) => e.key === info.name)
-                  .values.map((ar) => ar.page);
-                break;
-              case 'article':
-                const page = info.page as IArticle;
-                let articleCategory = page.fields.category?.fields.name;
-                extraData = categoriesGrouped
-                  .find((e) => e.key === articleCategory)
-                  ?.values.map((ar) => resolveLinkInfo(ar.page));
-                break;
             }
 
             const reactStaticRouteData: ReactStaticRoute = {

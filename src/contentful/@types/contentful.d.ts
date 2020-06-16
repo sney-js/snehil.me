@@ -3,400 +3,70 @@
 import { Asset, Entry } from 'contentful';
 import { Document } from '@contentful/rich-text-types';
 
-export interface IArticleFields {
+export interface IFiltersFields {
+  /** Name */
+  name: string;
+
+  /** Filters List */
+  filtersList: string[];
+}
+
+export interface IFilters extends Entry<IFiltersFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'filters';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface IProjectFields {
   /** Title */
   title: string;
 
-  /** Category */
-  category: ICategory;
+  /** Title Full */
+  titleFull?: string | undefined;
 
-  /** Description */
-  description?: Document | undefined;
-
-  /** Image */
-  image?: Asset | undefined;
-
-  /** Content */
-  content?: (IImage | IList | IRichText)[] | undefined;
-
-  /** Published Date */
-  publishedDate: string;
-
-  /** Keywords */
-  keywords?: string[] | undefined;
-
-  /** Slug */
-  name: string;
-}
-
-/** Articles; such as news, blog posts, press releases */
-
-export interface IArticle extends Entry<IArticleFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'article';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface ICategoryFields {
-  /** Title */
-  title: string;
-
-  /** Slug */
-  name: string;
-}
-
-/** Used to assign Articles categories. */
-
-export interface ICategory extends Entry<ICategoryFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'category';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IFooterFields {
-  /** Content name */
-  name: string;
-
-  /** Links */
-  links?: ILink[] | undefined;
-
-  /** Copyright message */
-  copyright?: string | undefined;
-
-  /** Slug */
-  slug: string;
-}
-
-/** A grouping of content which sits at the bottom of a page. */
-
-export interface IFooter extends Entry<IFooterFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'footer';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IFormFields {
-  /** Title */
-  title?: string | undefined;
-
-  /** Description */
-  description?: Document | undefined;
-}
-
-export interface IForm extends Entry<IFormFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'form';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IHeaderFields {
-  /** Content name */
-  name: string;
+  /** Technologies */
+  technologies?: string[] | undefined;
 
   /** Logo */
   logo?: Asset | undefined;
 
-  /** Links */
-  links?: ILink[] | undefined;
-
-  /** Logo Link */
-  logoLink: ILink;
-
-  /** Slug */
-  slug: string;
-}
-
-/** A component that contains content that will appear in a header section */
-
-export interface IHeader extends Entry<IHeaderFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'header';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IImageFields {
-  /** Content name */
-  name: string;
-
-  /** image */
-  image: Asset;
-}
-
-/** A content wrapper for Images */
-
-export interface IImage extends Entry<IImageFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'image';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface ILinkFields {
-  /** Name */
-  name?: string | undefined;
-
-  /** Title */
-  title?: string | undefined;
-
-  /** Internal Link */
-  internalLink?: IArticle | IPage | undefined;
-
-  /** Direct Link */
-  externalLink?: string | undefined;
-
-  /** Is New Tab */
-  isNewTab?: boolean | undefined;
-}
-
-/** Link for external or internal resources for our app */
-
-export interface ILink extends Entry<ILinkFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'link';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IListFields {
-  /** Content name */
-  name: string;
-
-  /** Content items */
-  consys?: (IArticle | IPage)[] | undefined;
-
-  /** Search query */
-  queryJSON?: Record<string, any> | undefined;
-
-  /** Identifier */
-  identifier: string;
-}
-
-/** A wrapper component for listing content.  e.g Articles.
-Has functionality to query and display content based on a search query. e.g. Latest 10 Articles */
-
-export interface IList extends Entry<IListFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'list';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IMetaDataFields {
-  /** Title */
-  title?: string | undefined;
-
-  /** Description */
-  description?: string | undefined;
-
-  /** Keywords */
-  keywords?: string[] | undefined;
-
   /** Image */
   image?: Asset | undefined;
-}
-
-/** Add custom page meta data values. */
-
-export interface IMetaData extends Entry<IMetaDataFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'metaData';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IPageFields {
-  /** Page name */
-  title: string;
-
-  /** Content */
-  content?: (IForm | IImage | IList | IRichText | IVideo)[] | undefined;
-
-  /** Parent page */
-  parentPage?: IArticle | IPage | undefined;
-
-  /** Page image */
-  image?: Asset | undefined;
-
-  /** Link to external page */
-  url?: string | undefined;
-
-  /** Page meta data */
-  metaData?: IMetaData | undefined;
-
-  /** Page slug */
-  name: string;
-}
-
-/** A page identifier.  Use this to build a webpage of content that can appear in site navigations. */
-
-export interface IPage extends Entry<IPageFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'page';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IRichTextFields {
-  /** Content name */
-  name?: string | undefined;
-
-  /** Content */
-  content?: Document | undefined;
-}
-
-/** A Rich text component with Markdown Editor */
-
-export interface IRichText extends Entry<IRichTextFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'rich-text';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
-export interface IVideoFields {
-  /** Video title */
-  title: string;
-
-  /** Video asset */
-  video?: Asset | undefined;
-
-  /** Video image */
-  poster?: Asset | undefined;
-
-  /** Autoplay */
-  autoplay?: boolean | undefined;
-
-  /** Loop */
-  loop?: boolean | undefined;
-
-  /** Display video controls */
-  controls?: boolean | undefined;
 
   /** Description */
   description?: string | undefined;
 
-  /** Display titles and descriptions */
-  displayTitles?: 'yes'[] | undefined;
+  /** Link */
+  link?: string | undefined;
+
+  /** Link Text */
+  linkText?: string | undefined;
+
+  /** Date End */
+  dateEnd?: string | undefined;
+
+  /** Date From */
+  dateFrom?: string | undefined;
+
+  /** Content */
+  content?: IProjectContentBlock[] | undefined;
+
+  /** Name */
+  name: string;
 }
 
-/** A component that displays a video. Can have optional elements like strapline, heading, description. Optional viewport transition. */
-
-export interface IVideo extends Entry<IVideoFields> {
+export interface IProject extends Entry<IProjectFields> {
   sys: {
     id: string;
     type: string;
@@ -405,7 +75,7 @@ export interface IVideo extends Entry<IVideoFields> {
     locale: string;
     contentType: {
       sys: {
-        id: 'video';
+        id: 'project';
         linkType: 'ContentType';
         type: 'Link';
       };
@@ -413,20 +83,43 @@ export interface IVideo extends Entry<IVideoFields> {
   };
 }
 
-export type CONTENT_TYPE =
-  | 'article'
-  | 'category'
-  | 'footer'
-  | 'form'
-  | 'header'
-  | 'image'
-  | 'link'
-  | 'list'
-  | 'metaData'
-  | 'page'
-  | 'rich-text'
-  | 'video';
+export interface IProjectContentBlockFields {
+  /** Title */
+  title: string;
 
-export type LOCALE_CODE = 'en-US' | 'fr';
+  /** Images */
+  images?: Asset[] | undefined;
+
+  /** Text Block 1 */
+  textBlock1?: string | undefined;
+
+  /** Text Block 2 */
+  textBlock2?: string | undefined;
+
+  /** iFrame */
+  iFrame?: string | undefined;
+}
+
+export interface IProjectContentBlock
+  extends Entry<IProjectContentBlockFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'projectContentBlock';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE = 'filters' | 'project' | 'projectContentBlock';
+
+export type LOCALE_CODE = 'en-US';
 
 export type CONTENTFUL_DEFAULT_LOCALE_CODE = 'en-US';
