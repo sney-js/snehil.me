@@ -14,8 +14,9 @@ $burger-breakpoint: $screen-mobile;
   width: 100%;
   top: 0;
   left: 0;
-  min-height: 90px;
-  box-shadow: 0px 5px 10px var(--color-highlight-lighter);
+  min-height: var(--height-nav);
+  position: fixed;
+  //box-shadow: 0px 5px 10px var(--color-highlight-lighter);
 
   @media #{$burger-breakpoint} {
     margin: 0;

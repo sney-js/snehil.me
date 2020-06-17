@@ -15,11 +15,6 @@
     flex: 1 0 auto;
     position: relative;
 
-    main {
-      > *:last-child {
-        padding-bottom: var(--gap-layout);
-      }
-    }
   }
 
   .d-footer {

@@ -17,6 +17,7 @@ export enum InputType {
   password = 'password',
   splitText = 'splitText',
   checkbox = 'checkbox',
+  checkboxInvisible = 'checkbox-invisible',
   toggle = 'toggle'
 }
 
@@ -192,6 +193,7 @@ class Input extends React.Component<InputProps, InputStateType> {
     }
     this.setInvalid(errorItem);
     this.setState({ value });
+    this.props.onChange && this.props.onChange(e);
   }
 
   onIconClick(): void {
@@ -245,7 +247,18 @@ class Input extends React.Component<InputProps, InputStateType> {
           />
         </InputFieldGroup>
       );
-    } else if (this.props.type === InputType.checkbox) {
+    } else if (
+      this.props.type === InputType.checkbox ||
+      this.props.type === InputType.toggle ||
+      this.props.type === InputType.checkboxInvisible
+    ) {
+      const className = makeClass([
+        this.props.type === InputType.checkbox && 'switch-checkbox-root',
+        this.props.type === InputType.toggle && 'switch-toggle-root',
+        this.props.type === InputType.checkboxInvisible &&
+          'switch-invisible-root'
+      ]);
+
       return (
         <InputFieldGroup
           {...this.props}
@@ -253,31 +266,7 @@ class Input extends React.Component<InputProps, InputStateType> {
           onIconClick={this.onIconClick.bind(this)}
           label=''
         >
-          <div className='switch-checkbox-root'>
-            <label className='switch'>
-              {this.props.label}
-              <input
-                {...rest}
-                type='checkbox'
-                id={this.props.name}
-                name={this.props.name}
-                onChange={this.onChange.bind(this)}
-                onInvalid={this.onInvalid.bind(this)}
-              />
-              <span className='slider round' />
-            </label>
-          </div>
-        </InputFieldGroup>
-      );
-    } else if (this.props.type === InputType.toggle) {
-      return (
-        <InputFieldGroup
-          {...this.props}
-          error={this.state.error}
-          onIconClick={this.onIconClick.bind(this)}
-          label=''
-        >
-          <div className='switch-toggle-root'>
+          <div className={className}>
             <label className='switch'>
               {this.props.label}
               <input

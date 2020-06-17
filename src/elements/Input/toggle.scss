@@ -195,3 +195,65 @@
     color: inherit;
   }
 }
+//--------------------invisible--------------------
+.input-checkbox-invisible.input-checkbox-invisible {
+  margin-bottom: 0;
+}
+.switch-invisible-root {
+  margin-bottom: 0;
+  $switch-width: 0px;
+  $switch-height: 0px;
+  $switch-ball-padding: 0px;
+  $switch-ball-size: 0px;
+  $switch-ball-distance: 0px;
+
+  $color-on: $color-primary;
+  $color-border: $color--border-dark;
+  $color-backgroud: $color-highlight;
+
+  label {
+    font-size: inherit;
+  }
+
+  .switch {
+    position: relative;
+    display: block;
+    margin: 0;
+    text-align: left;
+    color: inherit;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    position: absolute; //required error tooltip position
+  }
+
+  /* The slider */
+  .slider {
+    margin-left: 0px;
+    background-color: transparent;
+    border: none;
+    height: 0px;
+    width: 0px;
+    left: 0;
+    position: absolute;
+  }
+
+  .slider:after {
+    position: absolute;
+    content: '';
+  }
+
+  input:checked + .slider {
+    //&:after {
+    //  border: solid $color-on;
+    //  border-width: 0 2px 2px 0;
+    //  height: 9px;
+    //  left: 0px;
+    //  top: 3px;
+    //  transform: rotate(43deg);
+    //  width: 4px;
+    //}
+  }
+}

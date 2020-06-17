@@ -41,7 +41,7 @@ function Layout(props: LayoutProps) {
           <CookieBannerContainer />
         </div>
 
-        <FooterContainer />
+        {/*<FooterContainer />*/}
       </GlobalContext.Provider>
     </div>
   );

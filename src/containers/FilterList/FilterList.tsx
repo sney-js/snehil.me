@@ -1,11 +1,18 @@
-import React, { FC } from 'react';
-import { makeClass } from 'utils/Helpers';
+import React, { FC, useState } from 'react';
+import { makeClass, setCSSVar } from 'utils/Helpers';
 import Form from '../../components/Form';
 import Input from '../../elements/Input';
 import { InputType } from '../../elements/Input/Input';
 
+type FilterItem = {
+  name: string;
+  title: string;
+  size?: number;
+  align?: 'left' | 'center' | 'right';
+  alignVal?: string;
+};
 export type FilterListProps = {
-  filterList: { name: string; title: string; size?: number }[];
+  filterList: FilterItem[];
   selected?: (list: string[]) => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -18,7 +25,7 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
   const classes = makeClass(['d-FilterList', props.className]);
   return (
     <div className={classes}>
-      <div>
+      <div className={'d-filter-stick'}>
         <Form
           submitButtonText={null}
           onAllChange={(data) => {
@@ -26,12 +33,34 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
           }}
         >
           {props.filterList.map((f) => (
-            <div>
-              <Input type={InputType.toggle} name={f.name} label={f.title} />
-            </div>
+            <FilterSelector {...f} />
           ))}
         </Form>
       </div>
+    </div>
+  );
+};
+
+let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
+  const [isSelected, setSelected] = useState(props.selected || false);
+  return (
+    <div
+      className={makeClass([isSelected && 'filter-selected'])}
+      style={setCSSVar({
+        '--filter-size': props.size,
+        '--filter-align': props.align,
+        '--filter-alignVal': props.alignVal,
+      })}
+    >
+      <Input
+        type={InputType.checkboxInvisible}
+        name={props.name}
+        label={props.title}
+        onChange={(e) => {
+          const val = e.target.checked;
+          setSelected(val);
+        }}
+      />
     </div>
   );
 };

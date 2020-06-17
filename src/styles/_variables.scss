@@ -31,6 +31,9 @@
   --color-link: #979797;
 
   //------------NUMBERS---------------
+  --height-nav: 64px;
+  --height-footer: 94px;
+  --height-area-content: calc( 100vh - var(--height-nav) - var(--height-footer) );
   --transition-ui: 0.25s ease-out;
   --transition: 0.5s ease-out;
   --border-style: solid;
@@ -38,6 +41,7 @@
   --border-radius-medium: 8px;
   --border-radius-button: 2px;
 
+  //------------SPACING---------------
   --val-max-width: 1440px;
   --val-max-width-narrow: 700px;
   --spacing-gap: 16px;

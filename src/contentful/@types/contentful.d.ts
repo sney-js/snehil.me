@@ -9,6 +9,9 @@ export interface IFiltersFields {
 
   /** Filters List */
   filtersList: string[];
+
+  /** Filter Data */
+  filterData?: Record<string, any> | undefined;
 }
 
 export interface IFilters extends Entry<IFiltersFields> {

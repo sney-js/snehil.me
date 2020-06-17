@@ -1,7 +1,41 @@
-.d-FilterList{
+.d-FilterList {
+  min-width: 45vh;
+  margin: 3vh 8vw 0 4vw;
 
-  // tablet and mobile styles
-  @media #{$screen-tablet} {
+  --opacity-default: 0.3;
+  --opacity-selected: 1;
+  --filter-size: 1;
+  --filter-size-default: 4.28vh;
+  --filter-align: left;
+  --filter-alignVal: 0;
 
+  .input-checkbox-invisible {
+    font-size: calc(var(--filter-size-default) * var(--filter-size));
+    .switch {
+      line-height: 1.1;
+      transition: all var(--transition-ui);
+      transform-origin: left;
+      opacity: var(--opacity-default);
+      font-family: var(--font-secondary);
+      text-align: var(--filter-align);
+      left: var(--filter-alignVal);
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .filter-selected {
+    .input-checkbox-invisible .switch {
+      opacity: var(--opacity-selected);
+      transform-origin: left;
+      //font-size: 1.1em;
+    }
+  }
+  position: relative;
+  .d-filter-stick {
+    position: fixed;
+    max-width: 45vh;
+    top: 3vh;
   }
 }

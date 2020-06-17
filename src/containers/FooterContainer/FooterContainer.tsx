@@ -30,7 +30,7 @@ const FooterContainer: FC<FooterContainerProps> = (
     { title: 'twitter', to: 'http://twitter.com' },
     { title: 'youtube', to: 'http://youtube.com' }
   ];
-  return <Footer socialLinks={socialLinks} siteLinks={siteLinks} theme={"dark"} copyright={"All Ltd. Copyright@ 2020"}/>;
+  return <Footer theme={"light"} copyright={"All Ltd. Copyright@ 2020"}/>;
 };
 
 export default FooterContainer;

@@ -89,15 +89,11 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
       )}
       <div className='d-footer__last-block'>
         <Container layout='maxWidth' pad='Horizontal'>
-          <Grid
-            template='3fr 1fr'
-            templateTablet='2fr 1fr'
-            templateMobile='2fr 1fr'
-          >
+          <div  className='d-footer__copyright'>
             {copyright && (
-              <small className='d-footer__copyright'>{copyright}</small>
+              <small>{copyright}</small>
             )}
-          </Grid>
+          </div>
         </Container>
       </div>
     </div>

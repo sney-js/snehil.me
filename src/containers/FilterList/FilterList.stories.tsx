@@ -7,5 +7,5 @@ export default {
 };
 
 export const basic = (): any => {
-  return <FilterList />;
+  return <FilterList filterList={[]}/>;
 };
