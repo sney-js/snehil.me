@@ -1,8 +1,9 @@
 :root {
-  // --------------CONSTANTS---------------
+  // --------------FONTS---------------
   --font-primary: 'UniverseBP';
-  --font-secondary: 'Helvetica';
-
+  --font-secondary: 'Futura';
+  --font-headings: 'Helvetica';
+  // --------------COLORS---------------
   --color-primary: #6f3ed5;
 
   --color-primary-darker: #5d33b2;
@@ -88,5 +89,5 @@ body {
 }
 
 h1,h2,h3,h4,h5{
-  font-family: var(--font-secondary) inherit;
+  font-family: var(--font-headings) inherit;
 }

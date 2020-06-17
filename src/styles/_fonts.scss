@@ -1,4 +1,5 @@
 $font-primary: 'UniverseBP';
+$font-secondary: 'Futura';
 
 /**
   e.g.: public/assets/fonts/UniverseBP-Bold/UniverseBP-Bold.woff2
@@ -6,12 +7,22 @@ $font-primary: 'UniverseBP';
 $font-loc: '/assets/fonts/';
 
 @mixin get-font-all($name, $weight) {
-  font-family: $font-primary;
+  font-family: $name;
   src: url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff')
       format('woff'),
     url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.ttf')
       format('truetype'),
     url('#{$font-loc}#{$name}-#{$weight}/#{$name}-#{$weight}.woff2')
+      format('woff2'); /* Modern Browsers */
+}
+
+@mixin get-font-all-file($name, $weight) {
+  font-family: $name;
+  src: url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff')
+      format('woff'),
+    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.ttf')
+      format('truetype'),
+    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff2')
       format('woff2'); /* Modern Browsers */
 }
 
@@ -29,6 +40,18 @@ $font-loc: '/assets/fonts/';
 
 @font-face {
   @include get-font-all($font-primary, 'Bold');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  @include get-font-all($font-secondary, 'Medium');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  @include get-font-all($font-secondary, 'Bold');
   font-weight: bold;
   font-style: normal;
 }
