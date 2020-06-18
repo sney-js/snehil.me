@@ -41,7 +41,6 @@ export const basic = (): any => {
             </div>
           }
           title={title}
-          subTitle={subTitle}
           description={
             <p>
               Use <strong>Love2Shop</strong> digital reward codes to shop with

@@ -35,7 +35,7 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
     <div className={'d-project-block'}>
       {pageData.finished && (
         <Container pad={'Horizontal'} layout={'maxWidth'}>
-          <Grid template={'repeat(auto-fill, minmax(300px, 400px))'} gap={"5vw"}>
+          <div className={'d-project-grid'}>
             {filteredProjects?.map((article) => {
               if (!article) return null;
 
@@ -46,14 +46,11 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
                   title={article.fields.title}
                   image={<RespImage image={article.fields.image} />}
                   subTitle={article.fields.technologies?.join(', ')}
-                  description={
-                    <RichText markdown={article.fields.description} />
-                  }
                   link={linkInfo}
                 />
               );
             }) || <small>Projects not found!</small>}
-          </Grid>
+          </div>
         </Container>
       )}
     </div>

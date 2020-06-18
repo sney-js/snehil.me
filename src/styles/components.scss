@@ -18,5 +18,29 @@
 
   .d-project-block {
     width: 100%;
+
+    .d-project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+      grid-gap: 10vh;
+      align-items: flex-start;
+      scroll-snap-type: y mandatory;
+
+      .d-card {
+        scroll-snap-align: center;
+        height: calc(50vh - 5vh);
+        overflow: hidden;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        //min-width: 400px;
+
+        &:nth-of-type(even) {
+          margin-left: 8vw;
+          margin-right: -8vw;
+          justify-content: flex-end;
+        }
+      }
+    }
   }
 }

@@ -13,32 +13,36 @@
 .d-card {
   position: relative;
 
-   &__body {
-     //padding: 0 var(--spacing-gap-tablet) var(--spacing-gap-tablet);
+  &__body {
+    background-color: var(--color-highlight-lighter);
+    padding: var(--spacing-gap) var(--spacing-gap-m) var(--spacing-gap);
 
-     @media #{$screen-mobile} {
-       padding: 0 var(--spacing-gap) var(--spacing-gap);
-     }
-   }
+    @media #{$screen-mobile} {
+      padding: 0 var(--spacing-gap) var(--spacing-gap);
+    }
+  }
 
-   &__header {
-   }
+  &__image {
+    line-height: 0;
+  }
+  &__header {
+  }
 
-   &__title {
-     display: block;
-     margin: var(--spacing-gap) 0;
-   }
+  &__title {
+    display: block;
+    margin: 0 0 var(--spacing-gap) 0;
+  }
 
-   &__subtitle {
-     display: block;
-     position: relative;
-   }
+  &__subtitle {
+    display: block;
+    position: relative;
+  }
 
-   &__description {
-     margin-bottom: var(--spacing-gap-tablet);
+  &__description {
+    margin-bottom: var(--spacing-gap-tablet);
 
-     @media #{$screen-mobile} {
-       margin-bottom: var(--spacing-gap);
-     }
-   }
+    @media #{$screen-mobile} {
+      margin-bottom: var(--spacing-gap);
+    }
+  }
 }

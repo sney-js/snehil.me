@@ -65,17 +65,19 @@ const Card: FC<CardProps> = (props: CardProps) => {
       </div>
       <div className='d-card__body'>
         <div className='d-card__header'>
-          <h3 className='d-card__title'>{title}</h3>
+          <Link to='' {...link}>
+            <h3 className='d-card__title'>{title}</h3>
+          </Link>
           <h5 className='d-card__subtitle'>{subTitle && subTitle}</h5>
         </div>
 
-        <div className='d-card__description'>{description}</div>
+        {description && (
+          <div className='d-card__description'>
+            <small>{description}</small>
+          </div>
+        )}
 
         <Grid template={template}>
-          {link && <div>
-            <Link to='' {...link} appearance='primary' />
-          </div>}
-
           <small className='d-card__footnote'>
             <strong>{footnote}</strong>
           </small>
