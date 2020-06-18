@@ -1,13 +1,29 @@
 .d-FilterList {
-  min-width: 45vh;
-  margin: 3vh 8vw 0 4vw;
+  margin: 5vh 8vw 5vh 4vw;
+  position: relative;
 
   --opacity-default: 0.2;
   --opacity-selected: 1;
   --filter-size: 1;
-  --filter-size-default: 4.28vh;
+  --filter-size-default: 3.5vh;
   --filter-align: left;
   --filter-alignVal: 0;
+
+  @media #{$screen-tablet} {
+    --filter-size-default: 3vh;
+  }
+  @media #{$screen-mobile} {
+    --filter-size-default: 4vw;
+  }
+
+  .d-filter-stick {
+    @media #{$screen-mobile-up} {
+      position: fixed;
+      max-width: 45vh;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 
   .input-checkbox-invisible {
     font-size: calc(var(--filter-size-default) * var(--filter-size));
@@ -31,11 +47,5 @@
       transform-origin: left;
       //font-size: 1.1em;
     }
-  }
-  position: relative;
-  .d-filter-stick {
-    position: fixed;
-    max-width: 45vh;
-    top: 3vh;
   }
 }

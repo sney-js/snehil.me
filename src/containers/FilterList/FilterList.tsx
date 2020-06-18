@@ -45,7 +45,7 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
   const [isSelected, setSelected] = useState(props.selected || false);
   return (
     <div
-      className={makeClass([isSelected && 'filter-selected'])}
+      className={makeClass(['d-filter-item', isSelected && 'filter-selected'])}
       style={setCSSVar({
         '--filter-size': props.size,
         '--filter-align': props.align,

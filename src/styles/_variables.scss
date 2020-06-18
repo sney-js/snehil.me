@@ -1,7 +1,7 @@
 :root {
   // --------------FONTS---------------
   --font-primary: 'UniverseBP';
-  --font-secondary: 'Futura';
+  --font-secondary: "Futura";
   --font-headings: 'Helvetica';
   // --------------COLORS---------------
   --color-primary: #6f3ed5;
@@ -18,7 +18,7 @@
   --color-secondary-darker: #e5e5e5;
 
   --color-light: #fff;
-  --color-dark: #222222;
+  --color-dark: #4b4b4b;
 
   --color-highlight-text: rgba(0, 0, 0, 0.2);
   --color-highlight: rgba(0, 0, 0, 0.1);
@@ -45,6 +45,7 @@
   --val-max-width: 1440px;
   --val-max-width-narrow: 700px;
   --spacing-gap: 16px;
+  --spacing-gap-sm: 24px;
   --spacing-gap-xxs: 4px;
   --spacing-gap-xs: 8px;
   --spacing-gap-m: 32px;
@@ -73,9 +74,11 @@
   --color-bg: var(--color-dark);
   color: var(--color-body);
 
-  --color-highlight: rgba(255, 255, 255, 0.2);
-  --color-highlight-text: rgba(255, 255, 255, 0.3);
-  --color-highlight-darker: rgba(0, 0, 0, 0.2);
+  --color-highlight-text: rgba(0255, 255, 255, 0.2);
+  --color-highlight: rgba(0255, 255, 255, 0.1);
+  --color-highlight-secondary: rgba(0255, 255, 255, 0.4);
+  --color-highlight-lighter: rgba(0255, 255, 255, 0.05);
+  --color-highlight-darker: rgba(0255, 255, 255, 0.1);
   --color-error: #ff7979;
 }
 
@@ -93,5 +96,8 @@ body {
 }
 
 h1,h2,h3,h4,h5{
-  font-family: var(--font-headings) inherit;
+  font-family: var(--font-secondary);
+  font-weight: normal;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
 }

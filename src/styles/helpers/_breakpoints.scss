@@ -1,6 +1,6 @@
 // ------------- BREAKPOINTS ---------------------
 $phone: 600;
-$tablet: 902;
+$tablet: 1023;
 $desktop: 1024;
 $widescreen: 1440;
 $hd: 1920;
@@ -15,9 +15,20 @@ $screen-mobile: screen and
   (
     max-width: #{$phone}px
   );
+$screen-mobile-up: screen and
+  (
+    min-width: #{$phone + 1}px
+  );
 $screen-desktop: screen and
   (
     min-width: #{$tablet + 1}px
+  );
+$screen-desktop-widescreen: screen and
+  (min-width: #{$tablet + 1}px) and (max-width: #{$widescreen - 1}px);
+
+$screen-widescreen: screen and
+  (
+    min-width: #{$widescreen}px
   );
 
 $screen-tablet-only: screen and

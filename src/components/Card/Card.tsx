@@ -3,6 +3,7 @@ import { makeClass } from 'utils/Helpers';
 import { GenericProps, LinkType } from '../../models';
 import Grid from 'components/Grid';
 import Link from 'elements/Link';
+import Tag from '../../elements/Tag';
 
 export type CardType = {
   /**
@@ -13,6 +14,10 @@ export type CardType = {
    * Determines the secondary title if provided
    */
   subTitle?: string;
+  /**
+   * List of tags
+   */
+  tags?: string[];
   /**
    * useful if you want to use markup in the description like bold, italics, etc.
    * e.g.
@@ -49,6 +54,7 @@ const Card: FC<CardProps> = (props: CardProps) => {
     subTitle,
     description,
     link,
+    tags,
     footnote,
     image,
     className
@@ -68,7 +74,14 @@ const Card: FC<CardProps> = (props: CardProps) => {
           <Link to='' {...link}>
             <h3 className='d-card__title'>{title}</h3>
           </Link>
-          <h5 className='d-card__subtitle'>{subTitle && subTitle}</h5>
+          {subTitle && <h5 className='d-card__subtitle'>{subTitle}</h5>}
+          {tags && (
+            <div className={'d-card-tags d-Tag-container'}>
+              {tags.map((tag) => (
+                <Tag title={tag} appearance={'raised'}/>
+              ))}
+            </div>
+          )}
         </div>
 
         {description && (

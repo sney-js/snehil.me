@@ -15,11 +15,7 @@
 
   &__body {
     background-color: var(--color-highlight-lighter);
-    padding: var(--spacing-gap) var(--spacing-gap-m) var(--spacing-gap);
-
-    @media #{$screen-mobile} {
-      padding: 0 var(--spacing-gap) var(--spacing-gap);
-    }
+    padding: var(--spacing-gap) var(--spacing-gap-sm);
   }
 
   &__image {

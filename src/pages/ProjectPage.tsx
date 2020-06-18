@@ -4,12 +4,10 @@ import { PageProps } from './PageType';
 import { useContentfulPages } from '../contentful/FrontendApi';
 import { resolveLinkInfo } from '../contentful/Resolver';
 import { LinkType } from '../models';
-import Grid from '../components/Grid';
 import Card from '../components/Card';
 import { IProject } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
 import { toLinkType } from '../elements/Link/Link';
-import RichText from '../containers/RichText';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   return <ProjectFilterList />;
@@ -45,12 +43,13 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
                 <Card
                   title={article.fields.title}
                   image={<RespImage image={article.fields.image} />}
-                  subTitle={article.fields.technologies?.join(', ')}
+                  tags={article.fields.technologies}
                   link={linkInfo}
                 />
               );
             }) || <small>Projects not found!</small>}
           </div>
+          <div className={'d-project-number'}>{filteredProjects.length}</div>
         </Container>
       )}
     </div>

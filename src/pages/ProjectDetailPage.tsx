@@ -25,7 +25,7 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
               <Container layout={'maxWidthNarrow'}>
                 <LinkElement path={'/'} title={'< Back to Projects'} />
                 <h1>{article.fields?.title}</h1>
-                <h4>{article.fields.technologies?.join(', ')}</h4>
+                <div>{article.fields.technologies?.join(', ')}</div>
                 <RichText markdown={article.fields.description} />
               </Container>
               {article.fields?.content?.map(renderProjectContent)}
