@@ -34,7 +34,7 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
   return (
     <div className={'d-project-block'}>
       {pageData.finished && (
-        <Container pad={'Horizontal'} layout={'maxWidth'}>
+        <Container layout={'maxWidth'}>
           <div className={'d-project-grid'}>
             {filteredProjects?.map((article) => {
               if (!article) return null;
