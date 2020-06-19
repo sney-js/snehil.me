@@ -35,8 +35,10 @@
       font-family: var(--font-secondary);
       text-align: var(--filter-align);
       left: var(--filter-alignVal);
+      text-decoration: line-through;
       &:hover {
         opacity: 0.5;
+        text-decoration: none;
       }
     }
   }
@@ -45,6 +47,11 @@
     .input-checkbox-invisible .switch {
       opacity: var(--opacity-selected);
       transform-origin: left;
+      text-decoration: none;
+
+      &:hover{
+        text-decoration: line-through;
+      }
       //font-size: 1.1em;
     }
   }
