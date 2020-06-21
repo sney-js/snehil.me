@@ -1,105 +1,12 @@
 @import './../elements/elements';
 @import './../components/components';
 @import './../containers/containers';
+@import './pages/pages';
 
 // Until we start on the Image Compoinent
 .d-image {
   img {
     object-fit: cover;
     display: block;
-  }
-}
-
-.d-filter-project-block {
-  display: flex;
-
-  --max-card-width: 356px;
-  --max-filter-width: 356px;
-  --project-padding: 8vw;
-  --project-card-gap: 90px;
-  --card-height: calc(50vh - var(--project-card-gap) / 2);
-
-  @media #{$screen-tablet} {
-  --max-filter-width: 294px;
-    --max-card-width: 320px;
-    --project-padding: 0;
-  }
-  @media #{$screen-mobile} {
-    flex-direction: column;
-    --max-filter-width: 38vw;
-    --max-card-width: 92vw;
-    --card-height: auto;
-    --project-card-gap: 16vw;
-  }
-
-  .d-FilterList {
-    min-width: var(--max-filter-width);
-    @media #{$screen-mobile} {
-      //display: none;
-      .d-filter-item {
-        --filter-alignVal: 0px !important;
-        display: inline-block;
-        div {
-          display: inline-block;
-        }
-      }
-    }
-  }
-
-  .d-project-block {
-    width: 100%;
-    padding-left: var(--project-padding);
-
-    .d-project-grid {
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(300px, var(--max-card-width))
-      );
-      grid-gap: var(--project-card-gap);
-      align-items: flex-start;
-      scroll-snap-type: y mandatory;
-      overflow: scroll;
-      height: 100vh;
-      @media #{$screen-mobile} {
-        height: auto;
-      }
-
-      .d-card {
-        height: var(--card-height);
-        overflow: hidden;
-        display: flex;
-        justify-content: start;
-        flex-direction: column;
-
-        &:nth-of-type(even) {
-          scroll-snap-align: end;
-          margin-left: 8vw;
-          margin-right: -8vw;
-          justify-content: flex-end;
-          @media #{$screen-widescreen} {
-            margin-left: 0;
-            margin-right: 0;
-          }
-        }
-
-        &:last-of-type {
-          scroll-snap-align: end;
-        }
-      }
-    }
-    .d-project-number {
-      font-size: 10vh;
-      top: 64px;
-      right: 32px;
-      position: absolute;
-      font-family: var(--font-secondary);
-      opacity: 0.1;
-      @media #{$screen-mobile} {
-        font-size: 4vh;
-        top: 12px;
-        right: 12px;
-      }
-    }
   }
 }

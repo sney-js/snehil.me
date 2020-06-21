@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
 import Link from 'elements/Link';
-import { GenericProps, LinkData } from "../../models";
+import { GenericProps, LinkData } from '../../models';
 import { toLinkType } from '../../elements/Link/Link';
 
 /**
@@ -12,10 +12,9 @@ import { toLinkType } from '../../elements/Link/Link';
 const LinkElement: FC<LinkData & GenericProps> = (props) => {
   const classes = makeClass(['d-LinkElement']);
   return (
-    <Link
-      className={classes}
-      {...toLinkType(props)}
-    />
+    <Link className={classes} {...toLinkType(props)}>
+      {props.children}
+    </Link>
   );
 };
 

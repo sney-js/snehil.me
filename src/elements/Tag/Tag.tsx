@@ -25,7 +25,7 @@ const Tag: FC<TagProps> = (props: TagProps) => {
   ]);
   return (
     <span className={classes} title={props.title}>
-      {props.title}
+      {props.title || props.children}
     </span>
   );
 };

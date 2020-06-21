@@ -1,0 +1,16 @@
+.d-project-page{
+
+  .d-project-close {
+      font-size: 10vh;
+      top: var(--gap-layout);
+      right: var(--gap-layout);
+      position: absolute;
+      font-family: var(--font-secondary);
+      @media #{$screen-mobile} {
+        font-size: 4vh;
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+}

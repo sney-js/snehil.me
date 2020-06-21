@@ -3,14 +3,8 @@ import { makeClass, setCSSVar } from 'utils/Helpers';
 import Form from '../../components/Form';
 import Input from '../../elements/Input';
 import { InputType } from '../../elements/Input/Input';
+import { FilterItem, getNameList } from './FilterListUtils';
 
-type FilterItem = {
-  name: string;
-  title: string;
-  size?: number;
-  align?: 'left' | 'center' | 'right';
-  alignVal?: string;
-};
 export type FilterListProps = {
   filterList: FilterItem[];
   selected?: (list: string[]) => void;
@@ -29,7 +23,11 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
         <Form
           submitButtonText={null}
           onAllChange={(data) => {
-            props.selected && props.selected(Object.keys(data));
+            let selectedFilterNames: string[] = [];
+            Object.keys(data).map((n) => {
+              selectedFilterNames = selectedFilterNames.concat(getNameList(n));
+            });
+            props.selected && props.selected(selectedFilterNames);
           }}
         >
           {props.filterList.map((f) => (
@@ -49,12 +47,12 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
       style={setCSSVar({
         '--filter-size': props.size,
         '--filter-align': props.align,
-        '--filter-alignVal': props.alignVal,
+        '--filter-alignVal': props.alignVal
       })}
     >
       <Input
         type={InputType.checkboxInvisible}
-        name={props.name}
+        name={props.name.join('|')}
         label={props.title}
         onChange={(e) => {
           const val = e.target.checked;

@@ -7,6 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "svgr": "svgr --config-file svgrrc.config.js --ext tsx -d src/elements/SvgElements public/assets/svg-elements",
     "storybook": "start-storybook -s ./public -p 9001",
     "contentful:types": "contentful-typescript-codegen --output src/contentful/@types/contentful.d.ts"
   },
@@ -25,7 +26,6 @@
   "devDependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
-    "storybook-addon-themes": "^5.4.1",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
@@ -46,11 +46,11 @@
     "@typescript-eslint/eslint-plugin": "2.23.0",
     "@typescript-eslint/parser": "2.23.0",
     "@typescript-eslint/typescript-estree": "2.23.0",
+    "caller-callsite": "^4.1.0",
     "contentful-management": "^5.27.1",
     "contentful-typescript-codegen": "^3.2.1",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "caller-callsite": "^4.1.0",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "node-sass": "^4.14.0",
     "prettier": "^2.0.4",
     "react-dev-utils": "10.1.0",
@@ -58,6 +58,7 @@
     "react-on-visible": "latest",
     "react-scripts": "^3.4.1",
     "react-transition-group": "latest",
+    "storybook-addon-themes": "^5.4.1",
     "typescript": "3.8.3"
   },
   "browserslist": {

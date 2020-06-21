@@ -3,12 +3,12 @@ import Container from 'components/Container';
 import { PageProps } from './PageType';
 import { renderContentContainer } from '../contentful/Renderer';
 import { useContentfulPage } from '../contentful/FrontendApi';
-import {
-  IProject,
-  IProjectContentBlock
-} from '../contentful/@types/contentful';
+import { IProject, IProjectContentBlock } from '../contentful/@types/contentful';
 import RichText from '../containers/RichText/RichText';
 import LinkElement from '../containers/LinkElement';
+import Tag from '../elements/Tag';
+import Button from '../elements/Button';
+import { IcClose } from '../elements/SvgElements';
 
 const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
   const { projectId } = props.match.params;
@@ -19,14 +19,22 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
   return (
     <div>
       {pageData.finished && (
-        <Container pad={'All'} layout={'maxWidth'}>
+        <Container pad={'All'} layout={'maxWidth'} className={'d-project-page'}>
+          <div className={'d-project-close'}>
+            <LinkElement path={'/'}>
+              <Button icon={<IcClose/>} appearance={'secondary'}/>
+            </LinkElement>
+          </div>
           {article ? (
             <>
-              <Container layout={'maxWidthNarrow'}>
-                <LinkElement path={'/'} title={'< Back to Projects'} />
+              <Container layout={'maxWidthNarrow'} pad={'Top'}>
                 <h1>{article.fields?.title}</h1>
-                <div>{article.fields.technologies?.join(', ')}</div>
-                <RichText markdown={article.fields.description} />
+                <div>
+                  {article.fields.technologies?.map((a) => (
+                    <Tag appearance={'block'} title={a}/>
+                  ))}
+                </div>
+                <RichText markdown={article.fields.description}/>
               </Container>
               {article.fields?.content?.map(renderProjectContent)}
             </>
