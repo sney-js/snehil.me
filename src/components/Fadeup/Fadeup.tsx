@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OnVisible, { setDefaultProps } from 'react-on-visible';
 import { CSSTransition } from 'react-transition-group';
+import { GenericProps } from '../../models';
 
 setDefaultProps({
   bounce: false,
@@ -16,7 +17,7 @@ type FadeOnScrollType = {
   onVisible?: (hasEntered: boolean) => void;
   transitionProps?: any;
   animationClass?: string;
-};
+} & GenericProps;
 
 const FadeOnScroll = (props: FadeOnScrollType) => {
   const [isVisible, setVisible] = useState(false);

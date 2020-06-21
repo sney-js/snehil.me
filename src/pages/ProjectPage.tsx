@@ -8,6 +8,10 @@ import Card from '../components/Card';
 import { IProject } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
 import { toLinkType } from '../elements/Link/Link';
+import {
+  CSSTransition,
+  SwitchTransition
+} from 'react-transition-group';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   return <ProjectFilterList />;
@@ -21,9 +25,9 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
 ) => {
   let pageData = useContentfulPages('project');
 
+  const selected = new Set(props.technologyFilters);
   let filteredProjects = pageData.pages as IProject[];
   if (props.technologyFilters?.length && filteredProjects) {
-    const selected = new Set(props.technologyFilters);
     filteredProjects = filteredProjects.filter((p) => {
       return p.fields.technologies?.some((t) => selected.has(t));
     });
@@ -33,22 +37,40 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
     <div className={'d-project-block'}>
       {pageData.finished && (
         <Container layout={'maxWidth'}>
-          <div className={'d-project-grid'}>
-            {filteredProjects?.map((article) => {
-              if (!article) return null;
+          <SwitchTransition mode={'out-in'}>
+            <CSSTransition
+              classNames='filter'
+              key={props.technologyFilters?.join(',')}
+              addEndListener={(node, done) => {
+                node.addEventListener('transitionend', done, false);
+              }}
+            >
+              <div className={'d-project-grid'}>
+                {filteredProjects?.map((article, i) => {
+                  if (!article) return null;
 
-              let linkInfo = toLinkType(resolveLinkInfo(article)) as LinkType;
+                  let linkInfo = toLinkType(
+                    resolveLinkInfo(article)
+                  ) as LinkType;
 
-              return (
-                <Card
-                  title={article.fields.title}
-                  image={<RespImage image={article.fields.image} />}
-                  tags={article.fields.technologies}
-                  link={linkInfo}
-                />
-              );
-            }) || <small>Projects not found!</small>}
-          </div>
+                  return (
+                    <div className={'d-card-container'}>
+                      <Card
+                        title={article.fields.title}
+                        image={<RespImage image={article.fields.image} />}
+                        tags={article.fields.technologies}
+                        link={linkInfo}
+                      />
+                    </div>
+                  );
+                }) || <small>Projects not found!</small>}
+                {filteredProjects.length &&
+                  filteredProjects.length % 2 == 1 && (
+                    <div className={'d-card-container'} />
+                  )}
+              </div>
+            </CSSTransition>
+          </SwitchTransition>
           <div className={'d-project-number'}>{filteredProjects.length}</div>
         </Container>
       )}
