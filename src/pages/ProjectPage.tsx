@@ -8,10 +8,7 @@ import Card from '../components/Card';
 import { IProject } from '../contentful/@types/contentful';
 import RespImage from '../containers/RespImage';
 import { toLinkType } from '../elements/Link/Link';
-import {
-  CSSTransition,
-  SwitchTransition
-} from 'react-transition-group';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   return <ProjectFilterList />;
@@ -28,9 +25,11 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
   const selected = new Set(props.technologyFilters);
   let filteredProjects = pageData.pages as IProject[];
   if (props.technologyFilters?.length && filteredProjects) {
-    filteredProjects = filteredProjects.filter((p) => {
-      return p.fields.technologies?.some((t) => selected.has(t));
-    });
+    filteredProjects = filteredProjects
+      .filter((p) => {
+        return p.fields.technologies?.some((t) => selected.has(t));
+      })
+      .sort(() => Math.random() - 0.5);
   }
 
   return (

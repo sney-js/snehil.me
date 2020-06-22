@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { makeClass, setCSSVar } from 'utils/Helpers';
 import Form from '../../components/Form';
 import Input from '../../elements/Input';
@@ -41,14 +41,25 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
 
 let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
   const [isSelected, setSelected] = useState(props.selected || false);
+  const [isMouseOver, setMouseOver] = useState(false);
+
+  useEffect(() => {
+    setMouseOver(true);
+  }, [isSelected]);
+
   return (
     <div
-      className={makeClass(['d-filter-item', isSelected && 'filter-selected'])}
+      className={makeClass([
+        'd-filter-item',
+        isSelected && 'filter-selected',
+        isMouseOver && 'filter-over'
+      ])}
       style={setCSSVar({
         '--filter-size': props.size,
         '--filter-align': props.align,
         '--filter-alignVal': props.alignVal
       })}
+      onMouseLeave={() => setMouseOver(false)}
     >
       <Input
         type={InputType.checkboxInvisible}

@@ -18,7 +18,7 @@
   --color-secondary-darker: #e5e5e5;
 
   --color-light: #fff;
-  --color-dark: #4b4b4b;
+  --color-dark: #1d1d1d;
 
   --color-highlight-text: rgba(0, 0, 0, 0.2);
   --color-highlight: rgba(0, 0, 0, 0.1);
@@ -74,7 +74,7 @@
   --color-bg: var(--color-dark);
   color: var(--color-body);
 
-  --color-highlight-text: rgba(0255, 255, 255, 0.2);
+  --color-highlight-text: rgb(0, 0, 0);
   --color-highlight: rgba(0255, 255, 255, 0.1);
   --color-highlight-secondary: rgba(0255, 255, 255, 0.4);
   --color-highlight-lighter: rgba(0255, 255, 255, 0.05);

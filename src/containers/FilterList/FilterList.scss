@@ -43,16 +43,27 @@
     }
   }
 
+  .filter-selected.filter-over {
+    .input-checkbox-invisible .switch:hover {
+      opacity: 1 !important;
+    }
+  }
+  .filter-selected:not(.filter-over) {
+    .input-checkbox-invisible .switch:hover {
+      text-decoration: line-through;
+      opacity: 1;
+    }
+  }
+  .d-filter-item.filter-over:not(.filter-selected) {
+    .input-checkbox-invisible .switch:hover {
+      text-decoration: line-through;
+    }
+  }
   .filter-selected {
     .input-checkbox-invisible .switch {
       opacity: var(--opacity-selected);
       transform-origin: left;
       text-decoration: none;
-
-      &:hover{
-        text-decoration: line-through;
-      }
-      //font-size: 1.1em;
     }
   }
 }

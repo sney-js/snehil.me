@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeClass, setCSSVar } from 'utils/Helpers';
+import React, { useEffect } from 'react';
+import { makeClass, setCSSVar, WINDOW } from 'utils/Helpers';
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
 import Container from 'components/Container';
@@ -16,8 +16,28 @@ const globalInitialVals = {};
 
 export const GlobalContext = React.createContext(globalInitialVals);
 
+const toggleTheme = function(selected: string) {
+    document.body["dataset"].theme = selected;
+};
+
 function Layout(props: LayoutProps) {
   const globalState = {};
+
+  useEffect(() => {
+        if (WINDOW) {
+            WINDOW.scrollTo({ top: 0 });
+
+            if (
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+                // dark mode
+                toggleTheme("dark");
+            } else {
+                toggleTheme(props.theme || "light");
+            }
+        }
+    }, [WINDOW.location.pathname, props.theme]);
 
   return (
     <div className={makeClass(['d-layout'])}>

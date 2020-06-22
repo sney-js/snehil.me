@@ -106,7 +106,7 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
 .d-project-grid {
   &.filter-exit {
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.25s;
 
     &-active {
       opacity: 0;
@@ -133,7 +133,8 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
     }
   }
 
-  .d-card-container {
+  &.filter-enter .d-card-container {
+
     &:nth-of-type(even) .d-card {
       transform: translateY(100%);
     }
@@ -146,6 +147,8 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
   &.filter-enter-active,
   &.filter-enter-done {
     .d-card-container {
+      opacity: 1;
+      overflow: unset !important;
       &:nth-of-type(even) .d-card {
         transform: translateY(0px);
       }
@@ -153,6 +156,7 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
       &:nth-of-type(odd) .d-card {
         transform: translateY(0px);
       }
+
     }
   }
 }
