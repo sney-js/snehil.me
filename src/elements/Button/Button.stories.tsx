@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 import {
   boolean,
   radios,
@@ -7,6 +6,7 @@ import {
   text,
   withKnobs
 } from '@storybook/addon-knobs';
+import Button from './Button';
 import { IcMenu } from '../SvgElements';
 
 export default {

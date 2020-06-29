@@ -24,7 +24,7 @@ export const DummyImage = ({
   const myDiv = (
     <div
       className='story-dummy-box'
-      style={{ width: sizeSplit[0] + 'px', height: sizeSplit[1] + 'px' }}
+      style={{ width: `${sizeSplit[0]}px`, height: `${sizeSplit[1]}px` }}
     >
       <span>{text}</span>
     </div>
@@ -53,7 +53,7 @@ export const StoryThemeContainer = ({
 };
 
 export const StoryDivideContainer = (props: GenericProps) => {
-  return <div {...props} className={'story-grid ' + props.className} />;
+  return <div {...props} className={`story-grid ${props.className}`} />;
 };
 
 type StoryVarDisplayType = {

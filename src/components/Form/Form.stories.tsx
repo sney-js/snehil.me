@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Form from './Form';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { StoryTableBox, StoryTableItem } from 'stories/components/Dummies';
 import Input, { InputType } from 'elements/Input/Input';
 import { delay } from 'stories/utils';
 import { ErrorGroup } from 'elements/Input/InputModels';
+import Form from './Form';
 
 export default {
   title: 'Components/Form',

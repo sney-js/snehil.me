@@ -1,3 +1,3 @@
-import { LinkTypeLocal } from "../elements/Link/LinkType";
+import { LinkTypeLocal } from '../elements/Link/LinkType';
 
 export type LinkType = LinkTypeLocal;

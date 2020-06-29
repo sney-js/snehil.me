@@ -1,6 +1,6 @@
 import React from 'react';
-import Spinner from './Loaders';
 import { withKnobs } from '@storybook/addon-knobs';
+import Spinner from './Loaders';
 
 export default {
   title: 'Elements/Loaders',

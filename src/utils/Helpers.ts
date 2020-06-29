@@ -30,7 +30,7 @@ export const setCSSVar = (obj: CSSVarType): CSSVarTypeReturn => {
 };
 
 export const cleanPath = function (result: string) {
-  return (result + '/').toString().replace(/[\/]+/g, '/');
+  return `${result}/`.toString().replace(/[/]+/g, '/');
 };
 
 export const getPathBreaks = function (path?: string) {

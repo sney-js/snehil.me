@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from './Link';
 import { text, withKnobs } from '@storybook/addon-knobs';
+import Link from './Link';
 
 export default {
   title: 'Elements/Link',

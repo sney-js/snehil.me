@@ -2,20 +2,23 @@ import * as contentful from 'contentful';
 
 export class ContentfulApi {
   client: any = null;
-  private defaultLocale: String;
-  private locales: Array<String>;
-  private currentLocale: String;
+
+  private defaultLocale: string;
+
+  private locales: Array<string>;
+
+  private currentLocale: string;
 
   constructor({ space, accessToken, environment }, host?) {
     this.client = contentful.createClient({
-      space: space,
-      accessToken: accessToken,
-      environment: environment,
-      host: host
+      space,
+      accessToken,
+      environment,
+      host
     });
   }
 
-  setLocale(locale: String) {
+  setLocale(locale: string) {
     this.currentLocale = locale;
     return this;
   }

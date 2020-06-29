@@ -19,7 +19,7 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
   const classes = makeClass(['d-FilterList', props.className]);
   return (
     <div className={classes}>
-      <div className={'d-filter-stick'}>
+      <div className='d-filter-stick'>
         <Form
           submitButtonText={null}
           onAllChange={(data) => {
@@ -30,8 +30,8 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
             props.selected && props.selected(selectedFilterNames);
           }}
         >
-          {props.filterList.map((f) => (
-            <FilterSelector {...f} />
+          {props.filterList.map((f, i) => (
+            <FilterSelector key={i} {...f} />
           ))}
         </Form>
       </div>
@@ -59,7 +59,10 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
         '--filter-align': props.align,
         '--filter-alignVal': props.alignVal
       })}
-      onMouseLeave={() => setMouseOver(false)}
+      // onMouseEnter={()}
+      onMouseLeave={() => {
+        setMouseOver(false);
+      }}
     >
       <Input
         type={InputType.checkboxInvisible}
@@ -69,6 +72,7 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
           const val = e.target.checked;
           setSelected(val);
         }}
+        defaultChecked
       />
     </div>
   );

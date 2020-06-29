@@ -11,7 +11,7 @@ const GLOBAL_OPTIONS = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
-        <figure className={'d-image'}>
+        <figure className='d-image'>
           <RespImage image={node.data.target} />
         </figure>
       );
@@ -48,14 +48,14 @@ export default (props: RichTextType) => {
     if (data.length && !data[data.length - 1].props.children[0]) {
       data.pop();
     }
-    return <section className={'d-rich-text'}>{data}</section>;
-  } else if (props.markdown) {
+    return <section className='d-rich-text'>{data}</section>;
+  }
+  if (props.markdown) {
     return (
-      <section className={'d-rich-text'}>
+      <section className='d-rich-text'>
         <Markdown source={props.markdown} escapeHtml />
       </section>
     );
-  } else {
-    return null;
   }
+  return null;
 };

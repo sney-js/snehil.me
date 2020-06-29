@@ -5,7 +5,7 @@
   --max-card-width: 356px;
   --max-filter-width: 356px;
   --project-padding: 8vw;
-  --project-card-gap: 90px;
+  --project-card-gap: 10vh;
   --card-height: calc(50vh - var(--project-card-gap) / 2);
 
   @media #{$screen-tablet} {

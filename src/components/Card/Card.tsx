@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
-import { GenericProps, LinkType } from '../../models';
 import Grid from 'components/Grid';
 import Link from 'elements/Link';
+import { GenericProps, LinkType } from '../../models';
 import Tag from '../../elements/Tag';
 
 export type CardType = {
   /**
    * Determines the title if provided
    */
-  title: string;
+  title?: string;
   /**
    * Determines the secondary title if provided
    */
@@ -71,14 +71,16 @@ const Card: FC<CardProps> = (props: CardProps) => {
       </div>
       <div className='d-card__body'>
         <div className='d-card__header'>
-          <Link to='' {...link}>
-            <h3 className='d-card__title'>{title}</h3>
-          </Link>
+          {title && (
+            <Link to='' {...link}>
+              <h3 className='d-card__title'>{title}</h3>
+            </Link>
+          )}
           {subTitle && <h5 className='d-card__subtitle'>{subTitle}</h5>}
           {tags && (
-            <div className={'d-card-tags d-Tag-container'}>
-              {tags.map((tag) => (
-                <Tag title={tag} appearance={'raised'}/>
+            <div className='d-card-tags d-Tag-container'>
+              {tags.map((tag, i) => (
+                <Tag key={i} title={tag} appearance='raised' />
               ))}
             </div>
           )}

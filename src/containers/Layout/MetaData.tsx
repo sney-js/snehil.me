@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 type MetaDataStructure = {
@@ -13,12 +13,12 @@ const MetaData = (props: MetaDataStructure) => {
     <Helmet>
       <title>{props?.title}</title>
       {props?.description ? (
-        <meta name='description' content={props.description}/>
+        <meta name='description' content={props.description} />
       ) : null}
       {props?.keywords ? (
-        <meta name='keywords' content={props.keywords?.join(",")}/>
+        <meta name='keywords' content={props.keywords?.join(',')} />
       ) : null}
-      {props?.image ? <meta property='og:image' content={props.image}/> : null}
+      {props?.image ? <meta property='og:image' content={props.image} /> : null}
     </Helmet>
   );
 };

@@ -22,7 +22,7 @@ export const SVG = () => {
           }}
         >
           {e.value()}
-          <code>{'<' + e.name + ' />'}</code>
+          <code>{`<${e.name} />`}</code>
         </div>
       ))}
     </StoryDivideContainer>

@@ -89,10 +89,8 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
       )}
       <div className='d-footer__last-block'>
         <Container layout='maxWidth' pad='Horizontal'>
-          <div  className='d-footer__copyright'>
-            {copyright && (
-              <small>{copyright}</small>
-            )}
+          <div className='d-footer__copyright'>
+            {copyright && <small>{copyright}</small>}
           </div>
         </Container>
       </div>
@@ -102,7 +100,7 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
 
 Footer.displayName = 'Footer';
 Footer.defaultProps = {
-  theme: "dark"
+  theme: 'dark'
 };
 
 export default Footer;

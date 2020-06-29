@@ -4,8 +4,10 @@ import { ProjectFilterList } from './ProjectPage';
 import Container from '../components/Container';
 import { useContentfulEntry } from '../contentful/FrontendApi';
 import { IFiltersFields } from '../contentful/@types/contentful';
-import FilterList, { getFilteredList, getMockFilterList } from '../containers/FilterList';
-
+import FilterList, {
+  getFilteredList,
+  getMockFilterList
+} from '../containers/FilterList';
 
 const TEST_DEV = true;
 
@@ -17,10 +19,10 @@ const HomePage: FunctionComponent<PageProps> = (props) => {
 
   let filtersList = TEST_DEV
     ? getMockFilterList()
-    : (filterEntry?.entry?.fields as IFiltersFields)?.filterData as string[];
+    : ((filterEntry?.entry?.fields as IFiltersFields)?.filterData as string[]);
   return (
     <div>
-      <Container className={'d-filter-project-block'}>
+      <Container className='d-filter-project-block'>
         <FilterList
           filterList={getFilteredList(filtersList)}
           selected={(list) => {

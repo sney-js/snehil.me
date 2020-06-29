@@ -12,9 +12,9 @@ export const basic = (): any => {
   return (
     <div>
       <div>
-      {tags.map((t) => (
-        <Tag appearance={'raised'} title={t} />
-      ))}
+        {tags.map((t, i) => (
+          <Tag appearance='raised' title={t} key={i} />
+        ))}
       </div>
     </div>
   );
@@ -25,9 +25,9 @@ export const block = (): any => {
   return (
     <div>
       <div>
-      {tags.map((t) => (
-        <Tag appearance={'block'} title={t} />
-      ))}
+        {tags.map((t, i) => (
+          <Tag appearance='block' title={t} key={i} />
+        ))}
       </div>
     </div>
   );
@@ -38,9 +38,9 @@ export const none = (): any => {
   return (
     <div>
       <div>
-      {tags.map((t) => (
-        <Tag title={t} />
-      ))}
+        {tags.map((t, i) => (
+          <Tag title={t} key={i} />
+        ))}
       </div>
     </div>
   );

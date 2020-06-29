@@ -33,7 +33,7 @@ const RespImage = ({
   });
   return (
     <img
-      className={'d-image'}
+      className='d-image'
       src={url}
       srcSet={srcsets.join(', ')}
       sizes={`(max-width: ${widthMax}px) ${widthVw}vw, ${widthMax}px`}

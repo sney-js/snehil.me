@@ -76,7 +76,7 @@ class Form extends React.Component<FormProps, FormState> {
 
   private formObj: React.RefObject<HTMLFormElement>;
 
-    constructor(props: any) {
+  constructor(props: any) {
     super(props);
     this.formObj = React.createRef();
   }
@@ -108,14 +108,14 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   render(): React.ReactNode {
-    const errorText: string | undefined = this.state.errorText;
+    const { errorText } = this.state;
     const { footnote, submitButtonText, ...rest } = this.props;
 
     return (
       <form
         {...rest}
         ref={this.formObj}
-        className={'form-component ' + (this.props.className || '')}
+        className={`form-component ${this.props.className || ''}`}
         onSubmit={(e: React.FormEvent<HTMLFormElement>): void => {
           e.preventDefault();
           // check if inputs are all valid first

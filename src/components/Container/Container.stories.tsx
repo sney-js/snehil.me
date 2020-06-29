@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Container, { ContainerProps } from './Container';
 import { DummyImage, StoryDivideContainer } from 'stories/components/Dummies';
+import { withKnobs } from '@storybook/addon-knobs';
+import Container, { ContainerProps } from './Container';
 import {
   IcAdd,
   IcArrowLeft,
@@ -10,7 +11,6 @@ import {
   IcMenu
 } from '../../elements/SvgElements';
 import { getPropsUnionArray } from '../../stories/utils';
-import { withKnobs } from '@storybook/addon-knobs';
 
 const Paragraph = () => (
   <div>

@@ -44,7 +44,7 @@ const Navigation: FC<NavigationProps> = (props: NavigationProps) => {
   return (
     <nav className={classes}>
       <Button
-        className={'d-nav__nav-toggle'}
+        className='d-nav__nav-toggle'
         data-open={open}
         onClick={() => setOpen(!open)}
         aria-label='Menu'

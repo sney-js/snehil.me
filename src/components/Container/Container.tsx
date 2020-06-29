@@ -86,7 +86,7 @@ const Container: FC<ContainerProps> = (props: ContainerProps) => {
   return (
     <FadeOnScroll
       animate={animateIn}
-      uniqueKey={classNames + '-' + props.id}
+      uniqueKey={`${classNames}-${props.id}`}
       onVisible={onVisible}
       enter={animateNow}
     >

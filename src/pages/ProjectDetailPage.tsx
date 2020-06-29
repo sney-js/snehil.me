@@ -3,7 +3,10 @@ import Container from 'components/Container';
 import { PageProps } from './PageType';
 import { renderContentContainer } from '../contentful/Renderer';
 import { useContentfulPage } from '../contentful/FrontendApi';
-import { IProject, IProjectContentBlock } from '../contentful/@types/contentful';
+import {
+  IProject,
+  IProjectContentBlock
+} from '../contentful/@types/contentful';
 import RichText from '../containers/RichText/RichText';
 import LinkElement from '../containers/LinkElement';
 import Tag from '../elements/Tag';
@@ -19,22 +22,22 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
   return (
     <div>
       {pageData.finished && (
-        <Container pad={'All'} layout={'maxWidth'} className={'d-project-page'}>
-          <div className={'d-project-close'}>
-            <LinkElement path={'/'}>
-              <Button icon={<IcClose/>} appearance={'secondary'}/>
+        <Container pad='All' layout='maxWidth' className='d-project-page'>
+          <div className='d-project-close'>
+            <LinkElement path='/'>
+              <Button icon={<IcClose />} appearance='secondary' />
             </LinkElement>
           </div>
           {article ? (
             <>
-              <Container layout={'maxWidthNarrow'} pad={'Top'}>
+              <Container layout='maxWidthNarrow' pad='Top'>
                 <h1>{article.fields?.title}</h1>
                 <div>
-                  {article.fields.technologies?.map((a) => (
-                    <Tag appearance={'block'} title={a}/>
+                  {article.fields.technologies?.map((a, i) => (
+                    <Tag appearance='block' title={a} key={i} />
                   ))}
                 </div>
-                <RichText markdown={article.fields.description}/>
+                <RichText markdown={article.fields.description} />
               </Container>
               {article.fields?.content?.map(renderProjectContent)}
             </>
@@ -50,17 +53,17 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
 const renderProjectContent = (item, key) => {
   const contentItem = item as IProjectContentBlock;
   return (
-    <Container key={key} layout={'maxWidth'}>
+    <Container key={key} layout='maxWidth'>
       {contentItem.fields.images?.map((asset, i) =>
         renderContentContainer({ type: 'Asset', ...asset }, key + i)
       )}
       {contentItem.fields.textBlock1 && (
-        <Container pad='Vertical' layout={'maxWidthNarrow'}>
+        <Container pad='Vertical' layout='maxWidthNarrow'>
           <RichText markdown={contentItem.fields.textBlock1} />
         </Container>
       )}
       {contentItem.fields.textBlock2 && (
-        <Container pad='Vertical' layout={'maxWidthNarrow'}>
+        <Container pad='Vertical' layout='maxWidthNarrow'>
           <RichText markdown={contentItem.fields.textBlock2} />
         </Container>
       )}

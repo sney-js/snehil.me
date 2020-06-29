@@ -1,8 +1,8 @@
 import { ContentfulApi } from './ContentfulApi';
 import { ContentfulEntry, resolve } from './Resolver';
 import { CleanupConfig, cleanupData } from './EntryCleaner';
-import * as Flatted from 'flatted';
 import RouteConfig from './RouteConfig';
+import * as Flatted from 'flatted';
 
 interface Route {
   path: string;
@@ -18,7 +18,7 @@ interface Route {
 export type SiteData = {
   footer: any;
   header: any;
-  locale: String;
+  locale: string;
 };
 
 export type ReactStaticRoute = Route & {
@@ -52,8 +52,11 @@ const TEMPLATES_FOLDER = `src/app/pages/Page_`;
 
 class RouteGenerator {
   client;
+
   config: RouteGeneratorConfig;
+
   defaultLocale: string;
+
   locales: string[];
 
   constructor(client: ContentfulApi) {
@@ -130,16 +133,13 @@ class RouteGenerator {
           .map((info: PageRouteData) => {
             let extraData = {};
 
-            switch (contentType) {
-            }
-
             const reactStaticRouteData: ReactStaticRoute = {
               path: info.path,
               template: `${TEMPLATES_FOLDER}${contentType}`,
               getData: (): {
                 extraData: string;
                 page: string;
-                locale: String;
+                locale: string;
               } => ({
                 page: Flatted.stringify(info.page),
                 extraData: Flatted.stringify(extraData),
@@ -163,7 +163,7 @@ class RouteGenerator {
 
   async getSiteData() {
     // -------------------------------Navigation---------------------------
-    const defaultLocale = RouteConfig.defaultLocale;
+    const { defaultLocale } = RouteConfig;
     const locales = await this.client.getLocales();
 
     const localeSiteData: SiteData[] = await Promise.all(
@@ -198,20 +198,19 @@ class RouteGenerator {
     return {
       localeData: {
         allLocales: locales,
-        defaultLocale: defaultLocale,
+        defaultLocale,
         hasMultipleLocales: locales.length > 1
       },
-      siteData: localeSiteData.reduce((a, b) => {
-        return Object.assign({
-          [a.locale.toString()]: a,
-          [b.locale.toString()]: b
-        });
+      // @ts-ignore
+      siteData: localeSiteData.reduce((a: SiteData, b: SiteData) => {
+        return { [a.locale.toString()]: a, [b.locale.toString()]: b };
       })
     };
   }
 }
 
 const flatten = (arr) => {
+  // eslint-disable-next-line prefer-spread
   return [].concat.apply([], arr);
 };
 

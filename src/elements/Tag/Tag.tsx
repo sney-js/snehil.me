@@ -21,7 +21,7 @@ const Tag: FC<TagProps> = (props: TagProps) => {
   const classes = makeClass([
     'd-Tag',
     props.className,
-    'appearance-' + props.appearance
+    `appearance-${props.appearance}`
   ]);
   return (
     <span className={classes} title={props.title}>

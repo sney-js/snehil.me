@@ -1,6 +1,6 @@
-import { LinkData } from '../models/LinkData';
-import RouteConfig from '../contentful/RouteConfig';
 import { Asset, Sys } from 'contentful';
+import { LinkData } from '../models/LinkData';
+import RouteConfig from './RouteConfig';
 import { WINDOW } from '../utils/Helpers';
 
 export type ContentfulEntry = {
@@ -49,14 +49,14 @@ export const resolveLinkInfo = (node: ContentfulEntry): LinkData | null => {
   const contentType = getContentType(node);
 
   // pages can be directly resolved too
-  if (!!getPageType(contentType)) {
+  if (getPageType(contentType)) {
     internalLinkNode = node;
   } else {
     internalLinkNode = node.fields.internalLink;
   }
 
   let externalLinkNode = node.fields.externalLink;
-  let anchorId = node.fields.anchorId;
+  let { anchorId } = node.fields;
 
   const linkData = {
     title: node.fields.title,
@@ -68,10 +68,10 @@ export const resolveLinkInfo = (node: ContentfulEntry): LinkData | null => {
 
   if (internalLinkNode) {
     linkData.path =
-      resolve(internalLinkNode) + ((anchorId && '#' + anchorId) || '');
+      resolve(internalLinkNode) + ((anchorId && `#${anchorId}`) || '');
   } else if (externalLinkNode || anchorId) {
     linkData.path =
-      (externalLinkNode || '') + ((anchorId && '#' + anchorId) || '');
+      (externalLinkNode || '') + ((anchorId && `#${anchorId}`) || '');
   }
   return linkData;
 };
@@ -81,7 +81,7 @@ export const resolveAssetLink = (node: Asset) => {
 };
 
 export const cleanPath = function (result: string) {
-  return (result + '/').toString().replace(/[\/]+/g, '/');
+  return `${result}/`.toString().replace(/[/]+/g, '/');
 };
 
 export const getPathBreaks = function () {
@@ -137,7 +137,7 @@ const _resolvePagePath = (
     pages.push(parentPagePathName);
   }
 
-  let result = '/' + pages.reverse().join('/');
+  let result = `/${pages.reverse().join('/')}`;
   result = cleanPath(result);
 
   return result;

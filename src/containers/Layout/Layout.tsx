@@ -16,28 +16,28 @@ const globalInitialVals = {};
 
 export const GlobalContext = React.createContext(globalInitialVals);
 
-const toggleTheme = function(selected: string) {
-    document.body["dataset"].theme = selected;
+const toggleTheme = function (selected: string) {
+  document.body.dataset.theme = selected;
 };
 
 function Layout(props: LayoutProps) {
   const globalState = {};
 
   useEffect(() => {
-        if (WINDOW) {
-            WINDOW.scrollTo({ top: 0 });
+    if (WINDOW) {
+      WINDOW.scrollTo({ top: 0 });
 
-            if (
-                window.matchMedia &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-            ) {
-                // dark mode
-                toggleTheme("dark");
-            } else {
-                toggleTheme(props.theme || "light");
-            }
-        }
-    }, [WINDOW.location.pathname, props.theme]);
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        // dark mode
+        toggleTheme('dark');
+      } else {
+        toggleTheme(props.theme || 'light');
+      }
+    }
+  }, [props.theme]);
 
   return (
     <div className={makeClass(['d-layout'])}>
@@ -49,7 +49,7 @@ function Layout(props: LayoutProps) {
             <main>{props.children}</main>
           ) : (
             <Container
-              layout={'centered'}
+              layout='centered'
               style={setCSSVar({ '--val-spinner-size': '3' })}
             >
               <i className='gg-spinner' />
@@ -57,11 +57,11 @@ function Layout(props: LayoutProps) {
           )}
         </div>
 
-        <div className={'d-cookieBanner'}>
+        <div className='d-cookieBanner'>
           <CookieBannerContainer />
         </div>
 
-        {/*<FooterContainer />*/}
+        {/* <FooterContainer /> */}
       </GlobalContext.Provider>
     </div>
   );

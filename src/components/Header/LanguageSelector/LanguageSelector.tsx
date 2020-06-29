@@ -25,7 +25,7 @@ const LanguageSelect = (props: LanguageSelectorProps) => {
   const [isClosed, setClosed] = useState(true);
 
   return (
-    <div className={'d-LanguageSelector'} defaultValue={activeLanguage.code}>
+    <div className='d-LanguageSelector' defaultValue={activeLanguage.code}>
       <img
         src={activeLanguage.icon}
         onClick={() => setClosed(!isClosed)}
@@ -56,27 +56,27 @@ export const generateLang = (code: string): LanguageType | undefined => {
     case 'en':
       return {
         code: 'en',
-        icon: aPath + 'united-kingdom.png',
+        icon: `${aPath}united-kingdom.png`,
         name: 'English'
       };
     case 'en-US':
       return {
         code: 'en-US',
-        icon: aPath + 'united-states.png',
+        icon: `${aPath}united-states.png`,
         name: 'English (US)'
       };
     case 'en-GB':
       return {
         code: 'en-GB',
-        icon: aPath + 'united-kingdom.png',
+        icon: `${aPath}united-kingdom.png`,
         name: 'English (GB)'
       };
     case 'fr':
-      return { code: 'fr', icon: aPath + 'france.png', name: 'Français' };
+      return { code: 'fr', icon: `${aPath}france.png`, name: 'Français' };
     case 'de':
-      return { code: 'de', icon: aPath + 'germany.png', name: 'German' };
+      return { code: 'de', icon: `${aPath}germany.png`, name: 'German' };
     case 'es':
-      return { code: 'es', icon: aPath + 'spain.png', name: 'Español' };
+      return { code: 'es', icon: `${aPath}spain.png`, name: 'Español' };
     default:
       return undefined;
   }

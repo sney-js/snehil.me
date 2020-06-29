@@ -25,7 +25,6 @@ export const getNameList = (name: string) => name.split('|');
 
 let parseFilterData = (filterString: string): FilterItem => {
   let split = filterString.split(filterDataSeparator);
-  console.log(split);
   return {
     name: getNameList(split[0]),
     title: (split[1] || getNameList(split[0])[0]).toUpperCase(),

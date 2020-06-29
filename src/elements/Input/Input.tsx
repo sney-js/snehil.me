@@ -159,7 +159,7 @@ class Input extends React.Component<InputProps, InputStateType> {
    */
   onInvalid(e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     e.preventDefault();
-    const value = this.state.value;
+    const { value } = this.state;
     this.setInvalid({
       error: true,
       errorText:
@@ -171,8 +171,8 @@ class Input extends React.Component<InputProps, InputStateType> {
   }
 
   onChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    const target = e.target;
-    const value = target.value;
+    const { target } = e;
+    const { value } = target;
     const errorItem: ErrorGroup = { error: false, errorText: undefined };
 
     // backspace to nothing should show error again
@@ -247,7 +247,8 @@ class Input extends React.Component<InputProps, InputStateType> {
           />
         </InputFieldGroup>
       );
-    } else if (
+    }
+    if (
       this.props.type === InputType.checkbox ||
       this.props.type === InputType.toggle ||
       this.props.type === InputType.checkboxInvisible
@@ -282,7 +283,8 @@ class Input extends React.Component<InputProps, InputStateType> {
           </div>
         </InputFieldGroup>
       );
-    } else if (this.props.type === InputType.textarea) {
+    }
+    if (this.props.type === InputType.textarea) {
       return (
         <InputFieldGroup
           {...this.props}
@@ -298,26 +300,25 @@ class Input extends React.Component<InputProps, InputStateType> {
           />
         </InputFieldGroup>
       );
-    } else {
-      return (
-        <InputFieldGroup
-          {...this.props}
-          error={this.state.error}
-          onIconClick={this.onIconClick.bind(this)}
-        >
-          <input
-            ref={this.inputObj}
-            placeholder={this.props.placeholder || ' '}
-            onChange={this.onChange.bind(this)}
-            value={this.state.value}
-            id={this.props.name}
-            name={this.props.name}
-            {...rest}
-            onInvalid={this.onInvalid.bind(this)}
-          />
-        </InputFieldGroup>
-      );
     }
+    return (
+      <InputFieldGroup
+        {...this.props}
+        error={this.state.error}
+        onIconClick={this.onIconClick.bind(this)}
+      >
+        <input
+          ref={this.inputObj}
+          placeholder={this.props.placeholder || ' '}
+          onChange={this.onChange.bind(this)}
+          value={this.state.value}
+          id={this.props.name}
+          name={this.props.name}
+          {...rest}
+          onInvalid={this.onInvalid.bind(this)}
+        />
+      </InputFieldGroup>
+    );
   }
 
   private checkEmptyValidity(value?: string): boolean {
@@ -367,7 +368,7 @@ function InputFieldGroup(props: InputProps): JSX.Element {
           {props.icon}
         </span>
       ) : null}
-      <div className={'field-description ' + props.type}>
+      <div className={`field-description ${props.type}`}>
         <div className='tiny'>{props.description}</div>
 
         {hasError && (

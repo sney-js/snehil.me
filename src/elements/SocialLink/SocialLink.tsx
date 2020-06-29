@@ -33,7 +33,7 @@ const SocialIcon = (props: SocialIconProps) => {
   return (
     <React.Fragment>
       {socialIconList
-        .filter((item) => item.name === 'Ic' + socialName)
+        .filter((item) => item.name === `Ic${socialName}`)
         .map((e) => e.value())}
     </React.Fragment>
   );
@@ -45,11 +45,7 @@ const SocialLink: FC<SocialProps> = (props: SocialProps) => {
 
   return (
     <span className={classes}>
-      <Link
-        to={url}
-        newTab
-        aria-label={platform}
-      >
+      <Link to={url} newTab aria-label={platform}>
         <SocialIcon name={platform} />
       </Link>
     </span>

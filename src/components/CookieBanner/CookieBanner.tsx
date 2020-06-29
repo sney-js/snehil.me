@@ -29,7 +29,7 @@ class CookieBanner extends React.Component<CookieBannerProps> {
 
   componentDidUpdate(_prevProps: Readonly<CookieBannerProps>, prevState): void {
     if (prevState.visible !== this.state.visible) {
-      WINDOW.dispatchEvent(new Event('resize'));
+      WINDOW.dispatchEvent(new window.Event('resize'));
     }
   }
 
@@ -46,14 +46,13 @@ class CookieBanner extends React.Component<CookieBannerProps> {
     if (!this.state.visible) return null;
     let { caption, buttonText, description } = this.props;
     return (
-      <Container
-        className={makeClass(['d-CookieBanner'])}
-        layout={'maxWidth'}
-      >
-        <div className={'d-CookieBanner__container'}>
-          <div className={'d-CookieBanner__caption'}>{caption}</div>
+      <Container className={makeClass(['d-CookieBanner'])} layout='maxWidth'>
+        <div className='d-CookieBanner__container'>
+          <div className='d-CookieBanner__caption'>{caption}</div>
           <small>{description}</small>
-          <Button appearance={"secondary"} onClick={() => this.setCookies()}>{buttonText}</Button>
+          <Button appearance='secondary' onClick={() => this.setCookies()}>
+            {buttonText}
+          </Button>
         </div>
       </Container>
     );

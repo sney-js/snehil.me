@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Button from './Button';
 import { shallow } from 'enzyme';
+import Button from './Button';
 
 describe('<Button />', () => {
   test('Basic', () => {
@@ -22,9 +22,7 @@ describe('<Button />', () => {
   });
 
   test('Appearance', () => {
-    const result = shallow(
-      <Button appearance='secondary' title='Secondary' />
-    );
+    const result = shallow(<Button appearance='secondary' title='Secondary' />);
 
     const instance = result.find('button');
     expect(instance.props().className).toContain('secondary');

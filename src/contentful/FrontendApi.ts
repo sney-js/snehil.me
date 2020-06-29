@@ -18,12 +18,14 @@ const _useContentfulStateProvider = (
   useEffect(() => {
     if (query === undefined) return;
 
-    const cachedData = CachedResponses.getInstance().getResponse(JSON.stringify(query));
-    console.log(cachedData,"cachedData");
+    const cachedData = CachedResponses.getInstance().getResponse(
+      JSON.stringify(query)
+    );
+    console.log(cachedData, 'cachedData');
     if (cachedData) {
       let finalVal = Object.assign({ finished: true }, cachedData);
       setPageData(finalVal);
-      console.log("Using cached");
+      console.log('Using cached');
       return;
     }
 
@@ -40,7 +42,10 @@ const _useContentfulStateProvider = (
           let finalData = dataHandler(data);
 
           // caching in react memory
-          CachedResponses.getInstance().setResponse(JSON.stringify(query), finalData);
+          CachedResponses.getInstance().setResponse(
+            JSON.stringify(query),
+            finalData
+          );
 
           let finalVal = Object.assign({ finished: true }, finalData);
           setPageData(finalVal);

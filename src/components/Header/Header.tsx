@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { getPathBreaks, makeClass, WINDOW } from 'utils/Helpers';
 import { LinkType } from 'models/Link';
+import Container from 'components/Container';
 import Navigation from './Navigation';
 import LanguageSelect from './LanguageSelector/LanguageSelector';
-import Container from 'components/Container';
 
 type HeaderProps = {
   /**
@@ -24,27 +24,28 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { siteLinks, className, localeInfo } = props;
   const classes = makeClass(['d-header', className]);
 
-  const currActiveLink = siteLinks?.findIndex((e) => {
-    let current = getPathBreaks().filter((e) => e !== '/')[0];
-    let target = getPathBreaks(e.to).filter((e) => e !== '/')[0];
-    return target === current;
-  }) || -1;
+  const currActiveLink =
+    siteLinks?.findIndex((e) => {
+      let current = getPathBreaks().filter((e) => e !== '/')[0];
+      let target = getPathBreaks(e.to).filter((e) => e !== '/')[0];
+      return target === current;
+    }) || -1;
 
   return (
     <div className={classes}>
-      <Container
-        className='d-header__nav'
-        layout={'maxWidth'}
-        pad={'Horizontal'}
-      >
-        {siteLinks && <Navigation
-          mobileAnimationDirection={'top'}
-          siteLinks={siteLinks}
-          active={currActiveLink}
-        />}
-        {localeInfo && <Container breakpoint={'Desktop'}>
-          <LanguageSelect {...localeInfo} />
-        </Container>}
+      <Container className='d-header__nav' layout='maxWidth' pad='Horizontal'>
+        {siteLinks && (
+          <Navigation
+            mobileAnimationDirection='top'
+            siteLinks={siteLinks}
+            active={currActiveLink}
+          />
+        )}
+        {localeInfo && (
+          <Container breakpoint='Desktop'>
+            <LanguageSelect {...localeInfo} />
+          </Container>
+        )}
       </Container>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
 import { radios, withKnobs } from '@storybook/addon-knobs';
 import Container from 'components/Container';
+import Header from './Header';
 import {
   DEFAULT_LANGS,
   generateLang,
