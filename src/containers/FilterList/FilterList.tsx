@@ -61,7 +61,7 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
       })}
       // onMouseEnter={()}
       onMouseLeave={() => {
-        setMouseOver(false);
+        // setMouseOver(false);
       }}
     >
       <Input
@@ -72,7 +72,6 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
           const val = e.target.checked;
           setSelected(val);
         }}
-        defaultChecked
       />
     </div>
   );

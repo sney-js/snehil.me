@@ -1,4 +1,4 @@
-:root {
+body {
   // --------------FONTS---------------
   --font-primary: 'Helvetica';
   --font-secondary: "Futura";
@@ -44,14 +44,16 @@
   //------------SPACING---------------
   --val-max-width: 1440px;
   --val-max-width-narrow: 700px;
-  --spacing-gap: 16px;
-  --spacing-gap-sm: 24px;
-  --spacing-gap-xxs: 4px;
-  --spacing-gap-xs: 8px;
-  --spacing-gap-m: 32px;
-  --spacing-gap-mobile: 24px;
-  --spacing-gap-tablet: 48px;
-  --spacing-gap-large: 64px;
+  --spacing-gap: 1rem;
+  --spacing-gap-sm: 1.5rem;
+  --spacing-gap-xxs: 0.25rem;
+  --spacing-gap-xs: 0.5rem;
+  --spacing-gap-m: 2rem;
+  --spacing-gap-ml: 3rem;
+  --spacing-gap-l: 4rem;
+  --spacing-gap-mobile: var(--spacing-gap-sm);
+  --spacing-gap-tablet: var(--spacing-gap-ml);
+  --spacing-gap-large: var(--spacing-gap-l);
 
   //---------------DEFAULT VALUES------------
   --color-body: var(--color-dark);

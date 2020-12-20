@@ -9,7 +9,7 @@
   --card-height: calc(50vh - var(--project-card-gap) / 2);
 
   @media #{$screen-tablet} {
-  --max-filter-width: 294px;
+    --max-filter-width: 294px;
     --max-card-width: 320px;
     --project-padding: 0;
   }
@@ -28,6 +28,7 @@
       .d-filter-item {
         --filter-alignVal: 0px !important;
         display: inline-block;
+
         div {
           display: inline-block;
         }
@@ -43,9 +44,10 @@
       display: grid;
       grid-template-columns: repeat(
         auto-fill,
-        minmax(300px, var(--max-card-width))
+          minmax(300px, var(--max-card-width))
       );
       grid-gap: var(--project-card-gap);
+      column-gap: 10vw;
       align-items: flex-start;
       scroll-snap-type: y mandatory;
       overflow: scroll;
@@ -60,6 +62,7 @@
         display: flex;
         justify-content: start;
         flex-direction: column;
+        //justify-content: flex-end;
 
         &:nth-of-type(even) {
           scroll-snap-align: end;

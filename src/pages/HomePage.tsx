@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { PageProps } from './PageType';
-import { ProjectFilterList } from './ProjectPage';
+import { ProjectFilterList } from './ProjectList';
 import Container from '../components/Container';
 import { useContentfulEntry } from '../contentful/FrontendApi';
 import { IFiltersFields } from '../contentful/@types/contentful';

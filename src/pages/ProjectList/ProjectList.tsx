@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import Container from 'components/Container';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { PageProps } from './PageType';
-import { useContentfulPages } from '../contentful/FrontendApi';
-import { resolveLinkInfo } from '../contentful/Resolver';
-import { LinkType } from '../models';
-import Card from '../components/Card';
-import RespImage from '../containers/RespImage';
-import { toLinkType } from '../elements/Link/Link';
-import { IProject } from '../contentful/@types/contentful';
+import { PageProps } from '../PageType';
+import { useContentfulPages } from 'contentful/FrontendApi';
+import { resolveLinkInfo } from 'contentful/Resolver';
+import { LinkType } from 'models';
+import Card from 'components/Card';
+import RespImage from 'containers/RespImage';
+import { toLinkType } from 'elements/Link/Link';
+import { IProject } from 'contentful/@types/contentful';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   return <ProjectFilterList />;
@@ -17,6 +17,7 @@ const ProjectPage: FunctionComponent<PageProps> = () => {
 type ProjectFilterProps = {
   technologyFilters?: string[];
 };
+
 export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
   props
 ) => {

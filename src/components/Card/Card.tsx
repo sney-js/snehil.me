@@ -64,11 +64,13 @@ const Card: FC<CardProps> = (props: CardProps) => {
   const template = footnote ? '1fr 1fr' : '2fr';
   return (
     <div className={classes}>
-      <div className='d-card__image'>
-        <Link to='' {...link}>
-          {image}
-        </Link>
-      </div>
+      {image && (
+        <div className='d-card__image'>
+          <Link to='' {...link}>
+            {image}
+          </Link>
+        </div>
+      )}
       <div className='d-card__body'>
         <div className='d-card__header'>
           {title && (
