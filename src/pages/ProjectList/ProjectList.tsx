@@ -1,4 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, {
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 import Container from 'components/Container';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { PageProps } from '../PageType';
@@ -9,6 +14,7 @@ import Card from 'components/Card';
 import RespImage from 'containers/RespImage';
 import { toLinkType } from 'elements/Link/Link';
 import { IProject } from 'contentful/@types/contentful';
+import { GlobalContext } from '../../containers/Layout/Layout';
 
 const ProjectPage: FunctionComponent<PageProps> = () => {
   return <ProjectFilterList />;
@@ -22,16 +28,27 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
   props
 ) => {
   const pageData = useContentfulPages('project');
+  const globalContext = useContext(GlobalContext);
 
   const selected = new Set(props.technologyFilters);
-  let filteredProjects = pageData.pages as IProject[];
-  if (props.technologyFilters?.length && filteredProjects) {
-    filteredProjects = filteredProjects
-      .filter((p) => {
-        return p.fields.technologies?.some((t) => selected.has(t));
-      })
-      .sort(() => Math.random() - 0.5);
-  }
+  let [filteredProjects, setFilteredProjects] = useState<IProject[]>();
+
+  useEffect(() => {
+    const filteredProjects = pageData.pages as IProject[];
+    if (filteredProjects) {
+      if (props.technologyFilters?.length) {
+        setFilteredProjects(
+          filteredProjects
+            .filter((p) => {
+              return p.fields.technologies?.some((t) => selected.has(t));
+            })
+            .sort(() => Math.random() - 0.5)
+        );
+      } else {
+        setFilteredProjects(filteredProjects);
+      }
+    }
+  }, [props.technologyFilters, pageData]);
 
   return (
     <div className='d-project-block'>
@@ -54,8 +71,18 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
                   ) as LinkType;
 
                   return (
-                    <div className='d-card-container' key={i}>
+                    <div
+                      className='d-card-container'
+                      key={i}
+                      // onMouseLeave={() => globalContext.hideModal()}
+                    >
                       <Card
+                        onClick={() =>
+                          globalContext.showModal({
+                            title: 'Test',
+                            children: <div>no way</div>
+                          })
+                        }
                         title={article.fields.title}
                         image={
                           <RespImage
@@ -65,19 +92,19 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
                           />
                         }
                         tags={article.fields.technologies}
-                        link={linkInfo}
+                        // link={linkInfo}
                       />
                     </div>
                   );
                 }) || <small>Projects not found!</small>}
-                {filteredProjects.length &&
+                {filteredProjects?.length &&
                   filteredProjects.length % 2 === 1 && (
                     <div className='d-card-container' />
                   )}
               </div>
             </CSSTransition>
           </SwitchTransition>
-          <div className='d-project-number'>{filteredProjects.length}</div>
+          <div className='d-project-number'>{filteredProjects?.length}</div>
         </Container>
       )}
     </div>

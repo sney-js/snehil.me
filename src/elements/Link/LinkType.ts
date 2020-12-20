@@ -1,3 +1,5 @@
+import { ButtonProps } from '../Button/Button';
+
 export type LinkTypeLocal = {
   /**
    * Determines the title if provided
@@ -21,4 +23,4 @@ export type LinkTypeLocal = {
    * ```
    */
   provider?: JSX.Element;
-};
+} & ButtonProps;

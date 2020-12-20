@@ -14,7 +14,8 @@ export type CookieBannerProps = {
   setTrackingCookie?: boolean;
 };
 
-class CookieBanner extends React.Component<CookieBannerProps> {
+class 
+CookieBanner extends React.Component<CookieBannerProps> {
   state = {
     visible: false
   };

@@ -95,4 +95,9 @@
       }
     }
   }
+
+  .d-card {
+    position: relative;
+    @extend .border-anim-draw;
+  }
 }

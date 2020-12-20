@@ -1,0 +1,87 @@
+.d-modal {
+  background: var(--color-highlight-4);
+  bottom: 0;
+  display: none;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-top: var(--nav-height);
+  z-index: var(--z-index-xs);
+  animation: modal-fade-animation-out var(--transition);
+
+  &.active {
+    display: block;
+    animation: modal-fade-animation var(--transition);
+    background-color: var(--color-highlight);
+  }
+
+  &__close {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    display: inline-block;
+    right: var(--spacing-gap);
+    top: var(--spacing-gap);
+    border: 2px var(--border-style) var(--color-primary-dynamic);
+    color: var(--color-primary-dynamic);
+    border-radius: 50%;
+    background: none;
+    padding: 6px;
+    cursor: pointer;
+  }
+
+  &__dialog {
+    background: var(--color-bg);
+    color: var(--color-body);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: var(--gap-layout-tablet) var(--spacing-gap);
+    width: auto;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    max-height: calc(100vh - var(--nav-height) - var(--spacing-gap-m));
+
+    @media #{$screen-mobile} {
+      width: calc(100vw - var(--spacing-gap) * 2);
+    }
+  }
+
+  &__title {
+    margin-top: var(--spacing-gap-xs);
+    margin-bottom: var(--spacing-gap-xs);
+    color: var(--color-body);
+    padding-right: var(--spacing-gap-m);
+  }
+
+  &__body {
+    overflow-y: auto;
+    max-height: 80vh;
+    padding: 0 var(--spacing-gap);
+  }
+
+  &__buttonGroup {
+    margin-top: var(--spacing-gap);
+    float: right;
+    @media #{$screen-mobile} {
+      float: none;
+      margin-top: var(--spacing-gap-m);
+    }
+  }
+
+  &__underlay {
+    width: 100%;
+    height: 100%;
+  }
+  
+  &.active {
+    &__underlay {
+      background-color: var(--color-highlight);
+    }
+  }
+}

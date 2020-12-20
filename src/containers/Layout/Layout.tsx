@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeClass, setCSSVar, WINDOW } from 'utils/Helpers';
 import HeaderContainer from 'containers/HeaderContainer';
-import FooterContainer from 'containers/FooterContainer';
 import Container from 'components/Container';
 import CookieBannerContainer from 'containers/CookieBannerContainer';
+import Modal from '../../components/Modal';
+import { ModalProps } from '../../components/Modal/Modal';
 
 type LayoutProps = {
   locale?: string;
@@ -12,8 +13,15 @@ type LayoutProps = {
   theme?: 'dark' | 'light';
 };
 
-const globalInitialVals = {};
+export type GlobalContextType = {
+  showModal(modalData: ModalProps): void;
+  hideModal(): void;
+};
 
+const globalInitialVals: GlobalContextType = {
+  showModal: () => {},
+  hideModal: () => {}
+};
 export const GlobalContext = React.createContext(globalInitialVals);
 
 const toggleTheme = function (selected: string) {
@@ -21,7 +29,13 @@ const toggleTheme = function (selected: string) {
 };
 
 function Layout(props: LayoutProps) {
-  const globalState = {};
+  const [modalData, setModalData] = useState<ModalProps | undefined>(undefined);
+  const globalState: GlobalContextType = {
+    showModal: (data) => {
+      setModalData(data || {});
+    },
+    hideModal: () => setModalData(undefined)
+  };
 
   useEffect(() => {
     if (WINDOW) {
@@ -55,6 +69,16 @@ function Layout(props: LayoutProps) {
               <i className='gg-spinner' />
             </Container>
           )}
+        </div>
+
+        <div className='d-modalContainer'>
+          <Modal
+            {...modalData}
+            open={!!modalData}
+            onClickClose={() => {
+              globalState.hideModal();
+            }}
+          />
         </div>
 
         <div className='d-cookieBanner'>

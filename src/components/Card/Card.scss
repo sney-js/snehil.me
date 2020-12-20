@@ -1,5 +1,7 @@
 .d-card {
   position: relative;
+  transition: 0.75s;
+  z-index: 1;
 
   &__body {
     background-color: var(--color-highlight-lighter);
@@ -11,6 +13,7 @@
     padding-top: 56.25%;
     overflow: hidden;
     position: relative;
+    z-index: -1;
 
     img {
       position: absolute;
@@ -41,5 +44,9 @@
     @media #{$screen-mobile} {
       margin-bottom: var(--spacing-gap);
     }
+  }
+  
+  &:hover{
+    //transform: scale(0.95);
   }
 }

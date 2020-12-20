@@ -39,7 +39,7 @@ export type CardType = {
    * ```
    */
   image?: JSX.Element;
-} & GenericProps;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 type CardProps = CardType;
 
@@ -57,27 +57,18 @@ const Card: FC<CardProps> = (props: CardProps) => {
     tags,
     footnote,
     image,
-    className
+    className,
+    ...rest
   } = props;
 
   const classes = makeClass(['d-card', className]);
   const template = footnote ? '1fr 1fr' : '2fr';
   return (
-    <div className={classes}>
-      {image && (
-        <div className='d-card__image'>
-          <Link to='' {...link}>
-            {image}
-          </Link>
-        </div>
-      )}
+    <div className={classes} {...rest}>
+      {image && <div className='d-card__image'>{image}</div>}
       <div className='d-card__body'>
         <div className='d-card__header'>
-          {title && (
-            <Link to='' {...link}>
-              <h3 className='d-card__title'>{title}</h3>
-            </Link>
-          )}
+          {title && <h3 className='d-card__title'>{title}</h3>}
           {subTitle && <h5 className='d-card__subtitle'>{subTitle}</h5>}
           {tags && (
             <div className='d-card-tags d-Tag-container'>
@@ -92,6 +83,12 @@ const Card: FC<CardProps> = (props: CardProps) => {
           <div className='d-card__description'>
             <small>{description}</small>
           </div>
+        )}
+
+        {link && (
+          <Link to='' {...link}>
+            <h3 className='d-card__title'>{title}</h3>
+          </Link>
         )}
 
         <Grid template={template}>
