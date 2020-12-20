@@ -84,4 +84,10 @@
       background-color: var(--color-highlight);
     }
   }
+  
+  &-custom-position{
+   .d-modal__dialog{
+     transform: none;
+   } 
+  }
 }

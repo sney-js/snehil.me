@@ -1,0 +1,15 @@
+.d-Tooltip {
+
+  width: 360px;
+  background: var(--color-bg);
+  overflow: hidden;
+  position: fixed;
+  margin-top: var(--nav-height);
+  z-index: var(--z-index-xs);
+  animation: modal-fade-animation-out var(--transition);
+
+  &.active {
+    display: block;
+    animation: modal-fade-animation var(--transition);
+  }
+}

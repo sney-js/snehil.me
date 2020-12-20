@@ -74,15 +74,34 @@ export const ProjectFilterList: FunctionComponent<ProjectFilterProps> = (
                     <div
                       className='d-card-container'
                       key={i}
-                      // onMouseLeave={() => globalContext.hideModal()}
                     >
                       <Card
-                        onClick={() =>
-                          globalContext.showModal({
+                        onMouseLeave={() => globalContext.hideTooltip()}
+                        onMouseEnter={(e) => {
+                          let target = e.currentTarget.getBoundingClientRect();
+                          console.log(target, 'target');
+                          globalContext.showTooltip({
                             title: 'Test',
-                            children: <div>no way</div>
-                          })
-                        }
+                            children: (
+                              <div>
+                                <h1>asdasdas</h1>
+                                <h1>asdasdas</h1>
+                                <h1>asdasdas</h1>
+                                <h1>asdasdas</h1>
+                                <h1>asdasdas</h1>
+                                <h1>asdasdas</h1>
+                                no way
+                              </div>
+                            ),
+                            atPosition: [
+                              target.x - target.width / 2,
+                              target.y + target.height / 2
+                            ],
+                            style: {
+                              width: '360px'
+                            }
+                          });
+                        }}
                         title={article.fields.title}
                         image={
                           <RespImage

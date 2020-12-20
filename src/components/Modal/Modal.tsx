@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useLayoutEffect, useRef } from 'react';
 import { makeClass } from 'utils/Helpers';
 import Button from 'elements/Button/';
 import { IcClose } from 'elements/SvgElements';
@@ -47,13 +47,15 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     onClickClose,
     title,
     primaryLink,
-    secondaryLink
+    secondaryLink,
+    ...rest
   } = props;
   const classes = makeClass(['d-modal', open && 'active', className]);
+  const ref = useRef<any>();
 
   return (
     <div className={classes}>
-      <div className='d-modal__dialog'>
+      <div className={makeClass(['d-modal__dialog'])} ref={ref} {...rest}>
         <Button
           className='d-modal__close'
           onClick={() => onClickClose && onClickClose()}

@@ -5,6 +5,7 @@ import Container from 'components/Container';
 import CookieBannerContainer from 'containers/CookieBannerContainer';
 import Modal from '../../components/Modal';
 import { ModalProps } from '../../components/Modal/Modal';
+import Tooltip, { TooltipProps } from '../../components/Tooltip/Tooltip';
 
 type LayoutProps = {
   locale?: string;
@@ -16,9 +17,13 @@ type LayoutProps = {
 export type GlobalContextType = {
   showModal(modalData: ModalProps): void;
   hideModal(): void;
+  showTooltip(data: TooltipProps): void;
+  hideTooltip(): void;
 };
 
 const globalInitialVals: GlobalContextType = {
+  hideTooltip(): void {},
+  showTooltip(data: TooltipProps): void {},
   showModal: () => {},
   hideModal: () => {}
 };
@@ -30,7 +35,16 @@ const toggleTheme = function (selected: string) {
 
 function Layout(props: LayoutProps) {
   const [modalData, setModalData] = useState<ModalProps | undefined>(undefined);
+  const [tooltipData, setTooltipData] = useState<TooltipProps | undefined>(
+    undefined
+  );
   const globalState: GlobalContextType = {
+    hideTooltip(): void {
+      setTooltipData((d) => Object.assign({}, d, { show: false }));
+    },
+    showTooltip(data: TooltipProps): void {
+      setTooltipData(Object.assign(data, { show: true }));
+    },
     showModal: (data) => {
       setModalData(data || {});
     },
@@ -71,14 +85,20 @@ function Layout(props: LayoutProps) {
           )}
         </div>
 
-        <div className='d-modalContainer'>
-          <Modal
-            {...modalData}
-            open={!!modalData}
-            onClickClose={() => {
-              globalState.hideModal();
-            }}
-          />
+        <div className='d-modalContainer' style={{ zIndex: 100 }}>
+          {!!modalData && (
+            <Modal
+              {...modalData}
+              open={!!modalData}
+              onClickClose={() => {
+                globalState.hideModal();
+              }}
+            />
+          )}
+        </div>
+
+        <div className='d-tooltipContainer' style={{ zIndex: 110 }}>
+          <Tooltip {...tooltipData} />
         </div>
 
         <div className='d-cookieBanner'>
