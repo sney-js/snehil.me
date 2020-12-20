@@ -61,7 +61,7 @@ let FilterSelector = (props: FilterItem & { selected?: boolean }) => {
       })}
       // onMouseEnter={()}
       onMouseLeave={() => {
-        // setMouseOver(false);
+        setMouseOver(false);
       }}
     >
       <Input
