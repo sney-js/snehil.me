@@ -1,15 +1,28 @@
 .d-Tooltip {
 
+  left: 0;
+  top: 0;
   width: 360px;
-  background: var(--color-bg);
+  padding: var(--spacing-gap);
+  background: var(--color-highlight-lighter);
   overflow: hidden;
   position: fixed;
-  margin-top: var(--nav-height);
+  //border-bottom: 4px solid var(--color-highlight);
+  //border-top: 4px solid var(--color-highlight);
   z-index: var(--z-index-xs);
   animation: modal-fade-animation-out var(--transition);
+  //box-shadow: -10px 10px 20px var(--color-highlight-darker);
+  opacity: 0;
+  transition: var(--transition-ui);
 
   &.active {
     display: block;
     animation: modal-fade-animation var(--transition);
   }
+  
+  //@extend .border-anim-meet;
+}
+
+.tooltip-enter-done{
+  opacity: 1;
 }

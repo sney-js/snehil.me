@@ -23,7 +23,7 @@ body {
   --color-highlight-text: rgba(0, 0, 0, 0.2);
   --color-highlight: rgba(0, 0, 0, 0.1);
   --color-highlight-secondary: rgba(0, 0, 0, 0.3);
-  --color-highlight-lighter: rgba(0, 0, 0, 0.05);
+  --color-highlight-lighter: rgba(243, 243, 243, 1);
   --color-highlight-darker: rgba(0, 0, 0, 0.1);
 
   --color-disabled: rgb(242, 242, 242);
@@ -79,7 +79,7 @@ body {
   --color-highlight-text: rgb(0, 0, 0);
   --color-highlight: rgba(0255, 255, 255, 0.1);
   --color-highlight-secondary: rgba(0255, 255, 255, 0.4);
-  --color-highlight-lighter: rgba(0255, 255, 255, 0.05);
+  --color-highlight-lighter: rgba(50, 50, 50, 1);
   --color-highlight-darker: rgba(0255, 255, 255, 0.1);
   --color-error: #ff7979;
 }

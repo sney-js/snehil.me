@@ -1,5 +1,6 @@
 import React, { FC, useLayoutEffect, useRef, useState } from 'react';
 import { makeClass } from 'utils/Helpers';
+import { CSSTransition } from 'react-transition-group';
 
 export type TooltipProps = {
   /**
@@ -22,7 +23,7 @@ export type TooltipProps = {
  * @constructor
  */
 const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
-  const { atPosition, className, show, ...rest } = props;
+  const { atPosition, className, children, show, ...rest } = props;
   const classes = makeClass(['d-Tooltip', className]);
   const ref = useRef<any>();
   const [hasHover, setHasHover] = useState<boolean>();
@@ -31,15 +32,24 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
     adjustPosition(atPosition, ref.current);
   }, [ref.current, atPosition]);
 
-  if (!show && !hasHover) return null;
+  // if (!show && !hasHover) return null;
   return (
-    <div
-      className={classes}
-      {...rest}
-      ref={ref}
-      onMouseEnter={() => setHasHover(true)}
-      onMouseLeave={() => setHasHover(false)}
-    />
+    <CSSTransition
+      unmountOnExit
+      in={show || hasHover}
+      timeout={{ enter: 0, exit: 500 }}
+      classNames='tooltip'
+    >
+      <div
+        className={classes}
+        {...rest}
+        ref={ref}
+        onMouseEnter={() => setHasHover(true)}
+        onMouseLeave={() => setHasHover(false)}
+      >
+        {children}
+      </div>
+    </CSSTransition>
   );
 };
 
