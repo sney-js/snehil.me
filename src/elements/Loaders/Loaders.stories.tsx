@@ -1,5 +1,4 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import Spinner from './Loaders';
 
 export default {
@@ -7,8 +6,7 @@ export default {
   parameters: {
     componentSubtitle: 'Atom'
   },
-  component: Spinner,
-  decorators: [withKnobs]
+  component: Spinner
 };
 
 export const spinner = ({ size = 1 }: { size: number }) => {

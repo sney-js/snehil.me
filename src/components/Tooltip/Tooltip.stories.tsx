@@ -7,5 +7,9 @@ export default {
 };
 
 export const basic = (): any => {
-  return <Tooltip />;
+  return (
+    <Tooltip show={true}>
+      <h1>Title</h1>
+    </Tooltip>
+  );
 };

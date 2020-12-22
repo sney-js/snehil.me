@@ -1,5 +1,4 @@
 import React from 'react';
-import { radios, withKnobs } from '@storybook/addon-knobs';
 import Container from 'components/Container';
 import Header from './Header';
 import {
@@ -13,8 +12,7 @@ export default {
   parameters: {
     componentSubtitle: 'Container'
   },
-  component: Header,
-  decorators: [withKnobs]
+  component: Header
 };
 
 export const basic = () => {
@@ -31,13 +29,8 @@ export const basic = () => {
     { title: 'Contact Us', to: '/home.html' }
   ];
 
-  const theme = radios('Theme', { Dark: 'dark', Light: 'light' }, 'none');
   return (
-    <Container
-      layout='columns'
-      theme={theme}
-      className={theme === 'dark' ? 'background-Primary' : ''}
-    >
+    <Container layout='columns'>
       <Header
         siteLinks={navLinks}
         localeInfo={{

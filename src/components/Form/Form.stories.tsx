@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { text, withKnobs } from '@storybook/addon-knobs';
 import { StoryTableBox, StoryTableItem } from 'stories/components/Dummies';
 import Input, { InputType } from 'elements/Input/Input';
 import { delay } from 'stories/utils';
@@ -12,8 +11,7 @@ export default {
   parameters: {
     componentSubtitle: 'Container'
   },
-  component: Form,
-  decorators: [withKnobs]
+  component: Form
 };
 
 export const basic = () => {
@@ -21,9 +19,7 @@ export const basic = () => {
     <StoryTableBox>
       <StoryTableItem title='Simple' description='Try adding invalid emails.'>
         <Form
-          footnote={
-            <span>{text('Form:Footnote', 'This is my form footnote.')}</span>
-          }
+          footnote={<span>This is my form footnote.</span>}
           onSubmit={(json: object): Promise<void> => {
             console.log(json);
             return delay();
@@ -40,11 +36,7 @@ export const basic = () => {
             label='Your email'
             type={InputType.email}
             name='email'
-            emptyError={text('Email: Empty', 'Email cannot be empty')}
-            invalidError={text(
-              'Email: Invalid',
-              'Email is not correctly formatted'
-            )}
+            emptyError='Email cannot be empty'
             required
           />
         </Form>

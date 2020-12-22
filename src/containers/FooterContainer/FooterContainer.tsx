@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Footer from '../../components/Footer';
 
 type FooterContainerProps = {
   /**
@@ -16,7 +15,7 @@ type FooterContainerProps = {
 const FooterContainer: FC<FooterContainerProps> = (
   props: FooterContainerProps
 ) => {
-  return <Footer theme='light' copyright='All Ltd. Copyright@ 2020' />;
+  return <footer />;
 };
 
 export default FooterContainer;

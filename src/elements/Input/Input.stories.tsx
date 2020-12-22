@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import Form from 'components/Form';
 import { IcLock, IcDanger } from 'elements/SvgElements';
 import { action } from '@storybook/addon-actions';
@@ -16,7 +15,6 @@ export default {
     componentSubtitle: 'Form'
   },
   component: Input,
-  decorators: [withKnobs]
 };
 
 const defValues = {

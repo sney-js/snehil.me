@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Grid from 'components/Grid';
-import { text, withKnobs, radios } from '@storybook/addon-knobs';
 import Container from 'components/Container';
 import Card from './Card';
 
@@ -9,8 +8,7 @@ export default {
   parameters: {
     componentSubtitle: 'Atom'
   },
-  component: Card,
-  decorators: [withKnobs]
+  component: Card
 };
 
 const link = {
@@ -19,20 +17,12 @@ const link = {
 };
 
 export const basic = (): any => {
-  const title = text('Title', 'Gift');
-  const subTitle = text('Sub Title', 'vouchers');
-  const footnote = text('Footnote', 'Access 40+ UK retailers');
-  const theme = radios(
-    'Theme',
-    {
-      Dark: 'dark',
-      Light: 'light'
-    },
-    'none'
-  );
+  const title = 'Title';
+  const subTitle = 'Sub Title';
+  const footnote = 'Footnote';
 
   return (
-    <Container theme={theme}>
+    <Container>
       <Grid template='1fr 1fr' templateMobile='1fr'>
         <Card
           image={
@@ -48,7 +38,6 @@ export const basic = (): any => {
             </p>
           }
           footnote={footnote}
-          className={theme === 'dark' ? 'background-Primary' : ''}
           link={link}
         />
       </Grid>

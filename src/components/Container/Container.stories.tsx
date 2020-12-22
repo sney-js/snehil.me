@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DummyImage, StoryDivideContainer } from 'stories/components/Dummies';
-import { withKnobs } from '@storybook/addon-knobs';
 import Container, { ContainerProps } from './Container';
 import {
   IcAdd,
@@ -28,8 +27,7 @@ export default {
   parameters: {
     componentSubtitle: 'Container'
   },
-  component: Container,
-  decorators: [withKnobs]
+  component: Container
 };
 
 export const Simple = () => {
