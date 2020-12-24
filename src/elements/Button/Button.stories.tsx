@@ -9,10 +9,10 @@ export default {
   component: Button
 };
 
-export const basic = () => {
+export const basic = (args) => {
   return (
     <div>
-      <Button title='Button' />
+      <Button title='Button' {...args} />
     </div>
   );
 };

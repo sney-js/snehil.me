@@ -2,6 +2,8 @@ import { Asset, Sys } from 'contentful';
 import { LinkData } from '../models/LinkData';
 import RouteConfig from './RouteConfig';
 import { WINDOW } from '../utils/Helpers';
+import { ILink, ILinkFields, IProject } from './@types/contentful';
+import { LinkType } from '../models';
 
 export type ContentfulEntry = {
   sys?: Sys;
@@ -41,8 +43,10 @@ export const resolve = (node: ContentfulEntry): string | undefined => {
  * Given ILink or a contentType defined in RouteConfig, determines its LinkData
  * @param node
  */
-export const resolveLinkInfo = (node: ContentfulEntry): LinkData | null => {
-  if (node && node.fields.path) return null;
+export const resolveLinkInfo = (node: ILink | any): LinkData | null => {
+  if (node && node.path) {
+    return node;
+  }
 
   let internalLinkNode;
 
@@ -51,27 +55,22 @@ export const resolveLinkInfo = (node: ContentfulEntry): LinkData | null => {
   // pages can be directly resolved too
   if (getPageType(contentType)) {
     internalLinkNode = node;
-  } else {
-    internalLinkNode = node.fields.internalLink;
   }
 
   let externalLinkNode = node.fields.externalLink;
-  let { anchorId } = node.fields;
 
   const linkData = {
     title: node.fields.title,
-    newTab: node.fields.isNewTab,
+    newTab: node.fields.newTab,
     path: '',
-    isExternal: !!externalLinkNode || (!internalLinkNode && !!anchorId),
-    associatedIcon: node.fields.associatedIcon
+    isExternal: !!externalLinkNode || !internalLinkNode
+    // associatedIcon: node.fields.associatedIcon
   } as LinkData;
 
   if (internalLinkNode) {
-    linkData.path =
-      resolve(internalLinkNode) + ((anchorId && `#${anchorId}`) || '');
-  } else if (externalLinkNode || anchorId) {
-    linkData.path =
-      (externalLinkNode || '') + ((anchorId && `#${anchorId}`) || '');
+    linkData.path = resolve(internalLinkNode) || '';
+  } else if (externalLinkNode) {
+    linkData.path = externalLinkNode || '';
   }
   return linkData;
 };

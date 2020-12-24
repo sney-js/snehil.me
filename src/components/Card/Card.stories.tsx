@@ -5,18 +5,15 @@ import Card from './Card';
 
 export default {
   title: 'components/Card',
-  parameters: {
-    componentSubtitle: 'Atom'
-  },
   component: Card
 };
 
 const link = {
   to: '/some/url',
-  title: 'View vouchers'
+  title: 'View More'
 };
 
-export const basic = (): any => {
+export const basic = (args): any => {
   const title = 'Title';
   const subTitle = 'Sub Title';
   const footnote = 'Footnote';
@@ -27,18 +24,18 @@ export const basic = (): any => {
         <Card
           image={
             <div className='container-image'>
-              <img src='/assets/images/example.jpg' alt='Alt Text' />
+              <img src='/images/example.jpg' alt='Alt Text' />
             </div>
           }
           title={title}
           description={
             <p>
-              Use <strong>Love2Shop</strong> digital reward codes to shop with
-              some of the UK’s leading brands.
+              Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor gravida, placerat libero vel, euismod.
             </p>
           }
           footnote={footnote}
           link={link}
+          {...args}
         />
       </Grid>
     </Container>

@@ -12,6 +12,7 @@ import LinkElement from '../containers/LinkElement';
 import Tag from '../elements/Tag';
 import Button from '../elements/Button';
 import { IcClose } from '../elements/SvgElements';
+import Link from '../elements/Link';
 
 const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
   const { projectId } = props.match.params;
@@ -24,9 +25,9 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
       {pageData.finished && (
         <Container pad='All' layout='maxWidth' className='d-project-page'>
           <div className='d-project-close'>
-            <LinkElement path='/'>
+            <Link to='/'>
               <Button icon={<IcClose />} appearance='secondary' />
-            </LinkElement>
+            </Link>
           </div>
           {article ? (
             <>
@@ -39,7 +40,6 @@ const ProjectDetailPage: FunctionComponent<PageProps> = (props) => {
                 </div>
                 <RichText markdown={article.fields.description} />
               </Container>
-              {article.fields?.content?.map(renderProjectContent)}
             </>
           ) : (
             <small>Project not found!</small>

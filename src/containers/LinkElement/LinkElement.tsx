@@ -1,21 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { makeClass } from 'utils/Helpers';
 import Link from 'elements/Link';
-import { GenericProps, LinkData } from '../../models';
 import { toLinkType } from '../../elements/Link/Link';
+import { ILink } from '../../contentful/@types/contentful';
 
 /**
  * The `LinkElement` component example.
  * @param props
  * @constructor
  */
-const LinkElement: FC<LinkData & GenericProps> = (props) => {
+const LinkElement: (link: ILink) => JSX.Element = (link) => {
   const classes = makeClass(['d-LinkElement']);
-  return (
-    <Link className={classes} {...toLinkType(props)}>
-      {props.children}
-    </Link>
-  );
+  return <Link className={classes} {...toLinkType(link)} />;
 };
 
 export default LinkElement;

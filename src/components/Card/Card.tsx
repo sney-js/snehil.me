@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { makeClass } from 'utils/Helpers';
-import Grid from 'components/Grid';
 import Link from 'elements/Link';
-import { GenericProps, LinkType } from '../../models';
+import { LinkType } from '../../models';
 import Tag from '../../elements/Tag';
 
 export type CardType = {
@@ -26,10 +25,6 @@ export type CardType = {
    * ```
    */
   description?: JSX.Element | string;
-  /**
-   * Determines the footnote if provided
-   */
-  footnote?: string;
   link?: LinkType;
   /**
    * Image that will be provided with markup from contentful.
@@ -55,14 +50,12 @@ const Card: FC<CardProps> = (props: CardProps) => {
     description,
     link,
     tags,
-    footnote,
     image,
     className,
     ...rest
   } = props;
 
   const classes = makeClass(['d-card', className]);
-  const template = footnote ? '1fr 1fr' : '2fr';
   return (
     <div className={classes} {...rest}>
       {image && <div className='d-card__image'>{image}</div>}
@@ -85,17 +78,7 @@ const Card: FC<CardProps> = (props: CardProps) => {
           </div>
         )}
 
-        {link && (
-          <Link to='' {...link}>
-            <h3 className='d-card__title'>{title}</h3>
-          </Link>
-        )}
-
-        <Grid template={template}>
-          <small className='d-card__footnote'>
-            <strong>{footnote}</strong>
-          </small>
-        </Grid>
+        {link && <Link to='' {...link} appearance='primary' />}
       </div>
     </div>
   );

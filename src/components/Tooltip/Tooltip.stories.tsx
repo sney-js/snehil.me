@@ -8,8 +8,10 @@ export default {
 
 export const basic = (): any => {
   return (
-    <Tooltip show={true}>
-      <h1>Title</h1>
-    </Tooltip>
+    <div>
+      <Tooltip show>
+        <h1>Title</h1>
+      </Tooltip>
+    </div>
   );
 };

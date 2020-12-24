@@ -1,0 +1,57 @@
+.d-ProjectTooltip {
+  font-size: 0.9em;
+
+  .pad {
+    padding: var(--spacing-gap);
+  }
+
+  .pad-y {
+    padding-top: var(--spacing-gap);
+    padding-bottom: var(--spacing-gap);
+  }
+
+  .pad-x {
+    padding-left: var(--spacing-gap);
+    padding-right: var(--spacing-gap);
+  }
+
+  &__links {
+    hr {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__text {
+    padding-top: var(--spacing-gap-sm);
+    padding-bottom: var(--spacing-gap-sm);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__metric {
+    --progress: 0%;
+    padding: var(--spacing-gap-xs) var(--spacing-gap);
+
+
+    span {
+      @include setTypeStylesAll('button');
+    }
+
+    &-progress {
+      height: 1em;
+      width: 100%;
+      position: relative;
+      background-color: var(--color-highlight);
+
+      &:after {
+        content: '';
+        @extend %absolute-fill;
+        background-color: var(--color-highlight);
+        width: var(--progress);
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import LinkElement from 'elements/Link';
@@ -39,7 +39,7 @@ export type RichTextType = {
   document?: any;
 };
 
-export default (props: RichTextType) => {
+export default (props: RichTextType): ReactElement | null => {
   if (props.document) {
     const data = documentToReactComponents(
       props.document,

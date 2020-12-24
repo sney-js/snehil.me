@@ -31,6 +31,36 @@ export interface IFilters extends Entry<IFiltersFields> {
   };
 }
 
+export interface ILinkFields {
+  /** Title */
+  title?: string | undefined;
+
+  /** External Link */
+  externalLink: string;
+
+  /** New Tab */
+  newTab?: boolean | undefined;
+}
+
+/** External/Internal Links */
+
+export interface ILink extends Entry<ILinkFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'link';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IProjectFields {
   /** Title */
   title: string;
@@ -47,23 +77,23 @@ export interface IProjectFields {
   /** Image */
   image?: Asset | undefined;
 
+  /** Date */
+  date?: string | undefined;
+
   /** Description */
   description?: string | undefined;
 
-  /** Link */
-  link?: string | undefined;
+  /** Images */
+  images?: Asset[] | undefined;
 
-  /** Link Text */
-  linkText?: string | undefined;
+  /** Links */
+  links?: ILink[] | undefined;
 
-  /** Date End */
-  dateEnd?: string | undefined;
+  /** Performance Metrics */
+  performanceMetrics?: string[] | undefined;
 
   /** Date From */
   dateFrom?: string | undefined;
-
-  /** Content */
-  content?: IProjectContentBlock[] | undefined;
 
   /** Name */
   name: string;
@@ -121,7 +151,11 @@ export interface IProjectContentBlock
   };
 }
 
-export type CONTENT_TYPE = 'filters' | 'project' | 'projectContentBlock';
+export type CONTENT_TYPE =
+  | 'filters'
+  | 'link'
+  | 'project'
+  | 'projectContentBlock';
 
 export type LOCALE_CODE = 'en-US';
 

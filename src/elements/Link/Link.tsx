@@ -3,7 +3,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { makeClass } from 'utils/Helpers';
 import Button from '../Button';
 import { ButtonProps } from '../Button/Button';
-import { LinkData } from '../../models';
+import { LinkData, LinkType } from '../../models';
+import { ILink } from '../../contentful/@types/contentful';
+import { resolveLinkInfo } from '../../contentful/Resolver';
 
 export type LinkTypeLocal = {
   /**
@@ -79,12 +81,12 @@ Link.defaultProps = {
 };
 export default Link;
 
-export const toLinkType = (linkData?: LinkData | null): any | undefined => {
-  if (!linkData) return undefined;
+export const toLinkType = (node: ILink): LinkType => {
+  const linkData = resolveLinkInfo(node);
   return {
-    to: linkData.path,
-    title: linkData.title,
-    newTab: linkData.newTab,
+    to: linkData?.path || '',
+    title: linkData?.title,
+    newTab: linkData?.newTab,
     provider: <RouterLink />
   };
 };
