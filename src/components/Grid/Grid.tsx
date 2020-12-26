@@ -23,6 +23,10 @@ type GridProps = {
    * Any set of React's CSS Properties
    */
   gridStyles?: CSSProperties;
+  /**
+   * `align-items`'s css property value
+   */
+  align?: 'center' | 'start' | 'end' | 'stretch' | string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const Grid: FC<GridProps> = (props: GridProps) => {
@@ -32,6 +36,7 @@ const Grid: FC<GridProps> = (props: GridProps) => {
     templateMobile,
     gap,
     gridStyles,
+    align,
     ...rest
   } = props;
 
@@ -41,7 +46,8 @@ const Grid: FC<GridProps> = (props: GridProps) => {
     '--grid-template': template,
     '--grid-template-tablet': templateTablet,
     '--grid-template-mobile': templateMobile || templateTablet,
-    '--grid-gap': gap
+    '--grid-gap': gap,
+    'align-items': align
   });
 
   const modifiedStyles = Object.assign(

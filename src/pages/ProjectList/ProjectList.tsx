@@ -124,6 +124,15 @@ const ProjectItem: FunctionComponent<{
                       ) : undefined
                     }
                     links={fields.links?.map(toLinkType)}
+                    images={fields.images?.map((im, i) => (
+                      <RespImage
+                        image={im}
+                        widthVw={30}
+                        widthMax={500}
+                        key={i}
+                        id={article.fields.name + '-img-' + i}
+                      />
+                    ))}
                     metrics={metrics}
                   />
                 ),
@@ -131,9 +140,6 @@ const ProjectItem: FunctionComponent<{
                   target.x - target.width / 2 - 16,
                   target.y + target.height / 2
                 ],
-                style: {
-                  width: '360px'
-                }
               });
               return hov;
             });

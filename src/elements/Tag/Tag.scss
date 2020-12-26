@@ -19,8 +19,8 @@
 
   &.appearance-raised {
     padding: 1.2em 0.75em 1.1em;
-    box-shadow: 0px 1px 0px var(--color-highlight-text);
-    border-radius: 2px;
+    box-shadow: 0px 1px 0px var(--color-highlight-secondary);
+    border-radius: 0px;
     background-color: var(--color-bg);
   }
 }

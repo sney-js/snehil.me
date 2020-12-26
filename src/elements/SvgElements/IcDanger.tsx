@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 const SvgIcDanger = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox='0 0 24 24' fill='currentColor' {...props}>
+  <svg
+    viewBox='0 0 24 24'
+    fill='currentColor'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
     <path
       d='M12 6a1 1 0 011 1v6a1 1 0 11-2 0V7a1 1 0 011-1zM12 16a1 1 0 100 2 1 1 0 000-2z'
       fill='currentColor'

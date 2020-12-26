@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 const SvgIcEye = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox='0 0 24 24' fill='currentColor' {...props}>
+  <svg
+    viewBox='0 0 24 24'
+    fill='currentColor'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
     <path
       fillRule='evenodd'
       clipRule='evenodd'

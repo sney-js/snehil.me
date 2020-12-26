@@ -6,8 +6,8 @@
   }
 
   .pad-y {
-    padding-top: var(--spacing-gap);
-    padding-bottom: var(--spacing-gap);
+    padding-top: var(--spacing-gap-s);
+    padding-bottom: var(--spacing-gap-s);
   }
 
   .pad-x {
@@ -15,7 +15,84 @@
     padding-right: var(--spacing-gap);
   }
 
+  &__metric {
+    padding: var(--spacing-gap-s) var(--spacing-gap);
+    --progress: 0%;
+
+    &-item {
+      padding: var(--spacing-gap-s) 0;
+
+    }
+
+    span {
+      @include setTypeStylesAll('button');
+      line-height: 0;
+    }
+
+    &-progress {
+      height: 10px;
+      width: 100%;
+      position: relative;
+      background-color: var(--color-highlight);
+
+      &:after {
+        content: '';
+        @extend %absolute-fill;
+        background-color: var(--color-body);
+        width: var(--progress);
+      }
+    }
+  }
+
+  &__images {
+    position: relative;
+    padding-top: 56.25%;
+
+    &-list {
+      display: flex;
+      line-height: 0;
+      position: absolute;
+      overflow: auto;
+      flex-direction: row;
+      top: 0;
+      align-items: start;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+
+      &::-webkit-scrollbar {
+        width: 13px;
+        height: 5px;
+
+        &-track {
+          background-color: var(--color-highlight);
+        }
+
+        &-thumb {
+          background-color: var(--color-highlight);
+          width: 30%;
+          height: 30%;
+        }
+
+        &:vertical {
+          display: none;
+        }
+      }
+
+      > * {
+        scroll-snap-align: center;
+      }
+    }
+
+    &-conttrol {
+      
+    }
+  }
+
   &__links {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+
     hr {
       margin-top: 0;
       margin-bottom: 0;
@@ -31,27 +108,4 @@
     }
   }
 
-  &__metric {
-    --progress: 0%;
-    padding: var(--spacing-gap-xs) var(--spacing-gap);
-
-
-    span {
-      @include setTypeStylesAll('button');
-    }
-
-    &-progress {
-      height: 1em;
-      width: 100%;
-      position: relative;
-      background-color: var(--color-highlight);
-
-      &:after {
-        content: '';
-        @extend %absolute-fill;
-        background-color: var(--color-highlight);
-        width: var(--progress);
-      }
-    }
-  }
 }

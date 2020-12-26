@@ -3,7 +3,7 @@ import { makeClass, setCSSVar } from 'utils/Helpers';
 import { LinkType } from '../../models';
 import Grid from '../../components/Grid';
 import Link from '../../elements/Link';
-import { IcArrowTopright } from '../../elements/SvgElements';
+import { IcArrowTopright, IcExternal } from '../../elements/SvgElements';
 
 export type MetricsType = { involvement?: number; influence?: number };
 export type ProjectTooltipProps = {
@@ -30,11 +30,12 @@ const ProjectTooltip: FC<ProjectTooltipProps> = (
   return (
     <div className={classes}>
       {metrics && (
-        <div className='pad-y'>
+        <div className='d-ProjectTooltip__metric'>
           {Object.keys(metrics).map((m, i) => (
             <Grid
               template='1fr 2fr'
-              className='d-ProjectTooltip__metric'
+              className='d-ProjectTooltip__metric-item'
+              align='center'
               key={i}
             >
               <span>{m.toUpperCase()}</span>
@@ -46,7 +47,11 @@ const ProjectTooltip: FC<ProjectTooltipProps> = (
           ))}
         </div>
       )}
-      {images && <div className=''>{images}</div>}
+      {images && (
+        <div className='d-ProjectTooltip__images'>
+          <div className='d-ProjectTooltip__images-list'>{images}</div>
+        </div>
+      )}
       {description && (
         <div className='d-ProjectTooltip__text pad-x'>{description}</div>
       )}
@@ -55,12 +60,13 @@ const ProjectTooltip: FC<ProjectTooltipProps> = (
           <hr />
           <Link {...link}>
             <Grid
-              template='1fr 36px'
+              template='1fr 1.2em'
               gridStyles={{ alignItems: 'center' }}
               className='pad'
+              align='center'
             >
               <span>{link.title}</span>
-              <IcArrowTopright />
+              <IcExternal />
             </Grid>
           </Link>
         </div>

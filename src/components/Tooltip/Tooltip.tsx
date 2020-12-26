@@ -32,12 +32,11 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
     adjustPosition(atPosition, ref.current);
   }, [ref.current, atPosition]);
 
-  console.log(props,"props");
   return (
     <CSSTransition
       unmountOnExit
       in={show || hasHover}
-      timeout={{ enter: 0, exit: 5000 }}
+      timeout={{ enter: 0, exit: 500 }}
       classNames='tooltip'
     >
       <div

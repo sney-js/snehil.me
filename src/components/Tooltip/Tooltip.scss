@@ -3,19 +3,25 @@
   left: 0;
   top: 0;
   width: 360px;
-  background: var(--color-highlight-lighter);
   overflow: hidden;
   position: fixed;
   z-index: var(--z-index-xs);
   animation: modal-fade-animation-out var(--transition);
   opacity: 0;
   transition: var(--transition-ui);
+  background: var(--color-bg);
+  border: 1px solid var(--color-body);
+  box-shadow: 0 4px 0 0 var(--color-body);
+
+  @media #{$screen-mobile} {
+    width: calc( 100vw - var(--spacing-gap) * 2 );
+  }
 
   &.active {
     display: block;
     animation: modal-fade-animation var(--transition);
   }
-  
+
   //@extend .border-anim-meet;
 }
 

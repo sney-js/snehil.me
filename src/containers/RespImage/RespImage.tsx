@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { FC, HTMLAttributes } from 'react';
+import { makeClass } from '../../utils';
 
 const createSrcSetEntry = (url, width, extraParams = '') =>
   `${url}?q=85&w=${width}${extraParams}`;
@@ -17,14 +18,18 @@ type RespImageType = {
    */
   widthMax?: number;
   widthVw?: number;
-};
+} & HTMLAttributes<HTMLImageElement>;
 
-const RespImage = ({
-  image = undefined,
-  imageUrl = undefined,
-  widthMax = 1440,
-  widthVw = 100
-}: RespImageType) => {
+const RespImage: FC<RespImageType> = (props) => {
+  const {
+    image = undefined,
+    imageUrl = undefined,
+    widthMax = 1440,
+    widthVw = 100,
+    className,
+    ...rest
+  } = props;
+
   if (!imageUrl && !image?.fields.file.url) return null;
 
   const url = imageUrl || image.fields.file.url;
@@ -33,13 +38,14 @@ const RespImage = ({
   });
   return (
     <img
-      className='d-image'
+      className={makeClass(['d-image', className])}
       src={url}
       srcSet={srcsets.join(', ')}
       sizes={`(max-width: ${widthMax}px) ${widthVw}vw, ${widthMax}px`}
       alt={
         (image && (image.fields.description || image.fields.title)) || imageUrl
       }
+      {...rest}
     />
   );
 };

@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 const SvgIcArrowTopright = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox='0 0 24 24' fill='currentColor' {...props}>
+  <svg
+    viewBox='0 0 24 24'
+    fill='currentColor'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
     <path
       d='M14 13.963h2v-6h-6v2h2.586l-5.33 5.33 1.414 1.414 5.33-5.33v2.586z'
       fill='currentColor'
