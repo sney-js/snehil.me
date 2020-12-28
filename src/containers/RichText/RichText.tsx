@@ -53,7 +53,7 @@ export default (props: RichTextType): ReactElement | null => {
   if (props.markdown) {
     return (
       <section className='d-rich-text'>
-        <Markdown source={props.markdown} escapeHtml />
+        <Markdown source={props.markdown} escapeHtml={false} />
       </section>
     );
   }
