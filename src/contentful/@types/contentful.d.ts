@@ -157,6 +157,8 @@ export type CONTENT_TYPE =
   | 'project'
   | 'projectContentBlock';
 
+export type IEntry = IFilters | ILink | IProject | IProjectContentBlock;
+
 export type LOCALE_CODE = 'en-US';
 
 export type CONTENTFUL_DEFAULT_LOCALE_CODE = 'en-US';

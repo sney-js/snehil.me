@@ -37,7 +37,7 @@ const Button: FC<ButtonProps> = (props: ButtonProps) => {
     appearance,
     props.disabled && 'disabled',
     icon && 'icon-primary',
-    icon && (props.children || props.title) && 'icon-primary-inline',
+    icon && (props.children || props.title) ? 'icon-primary-inline' : undefined,
     isLoading && !icon && !props.disabled && 'icon-secondary',
     !icon && isLoading && 'icon-secondary-show'
   ]);

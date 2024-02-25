@@ -78,7 +78,7 @@ const Card: FC<CardProps> = (props: CardProps) => {
           </div>
         )}
 
-        {link && <Link to='' {...link} appearance='primary' />}
+        {link && <Link {...link} appearance='primary' />}
       </div>
     </div>
   );
