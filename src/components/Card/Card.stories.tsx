@@ -30,7 +30,8 @@ export const basic = (args): any => {
           title={title}
           description={
             <p>
-              Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor gravida, placerat libero vel, euismod.
+              Nec dubitamus multa iter quae et nos invenerat. Quisque ut dolor
+              gravida, placerat libero vel, euismod.
             </p>
           }
           footnote={footnote}

@@ -24,7 +24,7 @@ const FilterList: FC<FilterListProps> = (props: FilterListProps) => {
           submitButtonText={null}
           onAllChange={(data) => {
             let selectedFilterNames: string[] = [];
-            Object.keys(data).map((n) => {
+            Object.keys(data).forEach((n) => {
               selectedFilterNames = selectedFilterNames.concat(getNameList(n));
             });
             props.selected && props.selected(selectedFilterNames);

@@ -1,5 +1,4 @@
 .d-Tooltip {
-
   left: 0;
   top: 0;
   width: 360px;
@@ -14,7 +13,7 @@
   box-shadow: 0 4px 0 0 var(--color-body);
 
   @media #{$screen-mobile} {
-    width: calc( 100vw - var(--spacing-gap) * 2 );
+    width: calc(100vw - var(--spacing-gap) * 2);
   }
 
   &.active {
@@ -25,6 +24,6 @@
   //@extend .border-anim-meet;
 }
 
-.tooltip-enter-done{
+.tooltip-enter-done {
   opacity: 1;
 }

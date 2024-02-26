@@ -127,14 +127,13 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
       transition: 1s ease-in;
     }
   }
-  &.filter-enter{
-    .d-card-container .d-card{
+  &.filter-enter {
+    .d-card-container .d-card {
       transition: 1s ease-out;
     }
   }
 
   &.filter-enter .d-card-container {
-
     &:nth-of-type(even) .d-card {
       transform: translateY(100%);
     }
@@ -156,7 +155,6 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
       &:nth-of-type(odd) .d-card {
         transform: translateY(0px);
       }
-
     }
   }
 }
@@ -167,7 +165,7 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
   --color-border-anim: var(--color-body);
   $timing: 0.25s;
   $timing-func: linear;
-  
+
   &::before,
   &::after {
     box-sizing: inherit;
@@ -199,15 +197,18 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
   }
 
   &::after {
-    transition: border-color $timing $timing-func $timing*2, // Wait for ::before to finish before showing border
-    width $timing $timing-func $timing*1, // And then exanding width
-    height $timing $timing-func $timing*0;
+    transition: border-color $timing $timing-func $timing * 2,
+      // Wait for ::before to finish before showing border
+      width $timing $timing-func $timing * 1,
+      // And then exanding width
+      height $timing $timing-func $timing * 0;
   }
 
   &::before {
-    transition: border-color $timing $timing-func $timing*3,
-    width $timing $timing-func $timing*3, // Width expands first
-    height $timing $timing-func $timing*2; // And then height
+    transition: border-color $timing $timing-func $timing * 3,
+      width $timing $timing-func $timing * 3,
+      // Width expands first
+      height $timing $timing-func $timing * 2; // And then height
   }
 
   // Hover styles
@@ -221,17 +222,20 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
   &:hover::before {
     border-top-color: var(--color-border-anim); // Make borders visible
     border-right-color: var(--color-border-anim);
-    transition: border-color $timing $timing-func $timing*0,
-    width $timing $timing-func, // Width expands first
-    height $timing $timing-func $timing; // And then height
+    transition: border-color $timing $timing-func $timing * 0,
+      width $timing $timing-func,
+      // Width expands first
+      height $timing $timing-func $timing; // And then height
   }
 
   &:hover::after {
     border-bottom-color: var(--color-border-anim); // Make borders visible
     border-left-color: var(--color-border-anim);
-    transition: border-color 0s $timing-func $timing*2, // Wait for ::before to finish before showing border
-    width $timing $timing-func $timing*2, // And then exanding width
-    height $timing $timing-func $timing*3; // And finally height
+    transition: border-color 0s $timing-func $timing * 2,
+      // Wait for ::before to finish before showing border
+      width $timing $timing-func $timing * 2,
+      // And then exanding width
+      height $timing $timing-func $timing * 3; // And finally height
   }
 }
 
@@ -258,15 +262,14 @@ $appearing-animation-speed: 750ms cubic-bezier(0.35, 1, 0.45, 1);
     border-right-color: var(--color-border-anim);
     transition: // Animate height first, then width
       height $timing $timing-func $timing,
-      width $timing $timing-func $timing*0;
+      width $timing $timing-func $timing * 0;
   }
 
   &:hover::after {
     border-bottom-color: var(--color-border-anim);
     border-left-color: var(--color-border-anim);
     transition: // Animate height first, then width
-      height $timing $timing-func $timing*0,
+      height $timing $timing-func $timing * 0,
       width $timing $timing-func $timing;
   }
-
 }

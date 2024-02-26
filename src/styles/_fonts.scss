@@ -18,12 +18,9 @@ $font-loc: '../../public/assets/fonts/';
 
 @mixin get-font-all-file($name, $weight) {
   font-family: $name;
-  src: url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff')
-      format('woff'),
-    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.ttf')
-      format('truetype'),
-    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff2')
-      format('woff2'); /* Modern Browsers */
+  src: url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff') format('woff'),
+    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.ttf') format('truetype'),
+    url('#{$font-loc}#{$name}/#{$name}-#{$weight}.woff2') format('woff2'); /* Modern Browsers */
 }
 
 @font-face {

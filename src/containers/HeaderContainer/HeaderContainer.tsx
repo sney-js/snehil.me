@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Header from '../../components/Header';
 
-type HeaderContainerProps = {} & React.HTMLAttributes<HTMLDivElement>;
+type HeaderContainerProps = React.HTMLAttributes<HTMLDivElement>;
 
 /**
  * The `HeaderContainer` component example.

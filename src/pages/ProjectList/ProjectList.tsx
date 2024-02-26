@@ -139,7 +139,7 @@ const ProjectItem: FunctionComponent<{
                 atPosition: [
                   target.x - target.width / 2 - 16,
                   target.y + target.height / 2
-                ],
+                ]
               });
               return hov;
             });

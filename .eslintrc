@@ -4,8 +4,7 @@
     "standard",
     "standard-react",
     "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react",
+    "prettier",
     "plugin:@typescript-eslint/recommended"
   ],
   "env": {
@@ -34,7 +33,11 @@
     "react/jsx-no-bind": 0,
     "prefer-const": 0,
     "prefer-promise-reject-errors": 0,
+    "no-use-before-define": 0,
     "no-prototype-builtins": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "camelcase": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/camelcase": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-explicit-any": 0,

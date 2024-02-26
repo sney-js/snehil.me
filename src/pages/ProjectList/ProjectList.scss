@@ -1,4 +1,3 @@
-
 .d-filter-project-block {
   display: flex;
 
@@ -44,7 +43,7 @@
       display: grid;
       grid-template-columns: repeat(
         auto-fill,
-          minmax(300px, var(--max-card-width))
+        minmax(300px, var(--max-card-width))
       );
       grid-gap: var(--project-card-gap);
       column-gap: 10vw;

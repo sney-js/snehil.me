@@ -22,7 +22,7 @@ basic.args = {
       placerat libero vel, euismod.
     </p>
   ),
-  images: [<DummyImage size={'xs'} asImage/>],
+  images: [<DummyImage size={'xs'} asImage />],
   links: [
     {
       to: '/',

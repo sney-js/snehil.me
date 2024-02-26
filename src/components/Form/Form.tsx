@@ -89,8 +89,7 @@ class Form extends React.Component<FormProps, FormState> {
   setInputValidity(name: string, valid: boolean): void {
     if (!this.state) return;
     const inputs = this.state.inputsInvalid;
-    if (inputs[name] === valid) {
-    } else {
+    if (inputs[name] !== valid) {
       inputs[name] = valid;
       const invalids = Object.keys(inputs).filter((e) => inputs[e] === true);
       this.setState({

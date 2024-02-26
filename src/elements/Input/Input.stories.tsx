@@ -14,7 +14,7 @@ export default {
   parameters: {
     componentSubtitle: 'Form'
   },
-  component: Input,
+  component: Input
 };
 
 const defValues = {

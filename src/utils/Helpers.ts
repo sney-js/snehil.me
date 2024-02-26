@@ -1,6 +1,3 @@
-import { LinkData } from '../models/LinkData';
-// import { LinkType } from '../models/Link';
-
 export const makeClass: (
   classes: Array<string | boolean | undefined>
 ) => string = (classes: Array<string | boolean | undefined>) =>

@@ -120,8 +120,9 @@ class RouteGenerator {
     const localisedRoutes = await this.routeDataResolver();
 
     const pathsArray = localisedRoutes.map((routes: RouteDataType[]) => {
-      const articlesAll = routes.find((i) => i.contentType === 'article')
-        ?.pageList;
+      const articlesAll = routes.find(
+        (i) => i.contentType === 'article'
+      )?.pageList;
 
       const categoriesGrouped = groupByArray(
         articlesAll,
@@ -152,9 +153,9 @@ class RouteGenerator {
       );
     });
 
-    const pageCollection = flatten(flatten(pathsArray)) as Array<
-      ReactStaticRoute
-    >;
+    const pageCollection = flatten(
+      flatten(pathsArray)
+    ) as Array<ReactStaticRoute>;
     console.log('::::::::::Rendering pages:::::::::::');
     pageCollection.map((i: ReactStaticRoute) => console.log(i.path));
     console.log('::::::::::::::::::::::::::::::::::::');
