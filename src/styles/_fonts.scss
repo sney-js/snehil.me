@@ -4,7 +4,7 @@ $font-secondary: 'Futura';
 /**
   e.g.: public/assets/fonts/UniverseBP-Bold/UniverseBP-Bold.woff2
  */
-$font-loc: '/assets/fonts/';
+$font-loc: '../../public/assets/fonts/';
 
 @mixin get-font-all($name, $weight) {
   font-family: $name;
