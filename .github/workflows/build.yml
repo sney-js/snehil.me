@@ -64,6 +64,8 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build
         run: |
+          pwd
+          ls
           ${{ steps.detect-package-manager.outputs.runner }} npm run build
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
