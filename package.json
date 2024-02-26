@@ -8,6 +8,7 @@
     "test": "react-scripts test",
     "test:lint": "eslint ./src --ext .ts --ext .tsx",
     "lint:prettier": "prettier --write \"./src/**/*.{js,ts,tsx,json,scss}\"",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "svgr": "svgr --config-file svgrrc.config.js --ext tsx -d src/elements/SvgElements public/assets/svg-elements",
     "storybook": "start-storybook -s ./public -p 9001 -s ./public/assets",
